@@ -52,7 +52,7 @@ public class PostController {
 
     @PostMapping("")
     public String savePost(@ModelAttribute Post post){
-        post.setCompanyId(companyDao.findById(company.getId()).get());
+        post.setCompanyId(companyDao.findById(post.getCompanyId()).getId());
         postDao.save(post);
         return null;
     }
