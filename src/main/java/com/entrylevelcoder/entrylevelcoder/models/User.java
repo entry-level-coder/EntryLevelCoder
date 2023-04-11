@@ -4,6 +4,9 @@ package com.entrylevelcoder.entrylevelcoder.models;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /** MODEL CLASS FOR USER */
 
 @Entity
@@ -26,6 +29,11 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @ManyToMany
+    @JoinTable(name = "Users_posts", joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "post_id"))
+    private List<Post> posts = new ArrayList<>();
 
 
     public User() {

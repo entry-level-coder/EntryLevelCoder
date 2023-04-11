@@ -3,6 +3,9 @@ package com.entrylevelcoder.entrylevelcoder.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /** Post Model */
 
 @Entity
@@ -38,6 +41,9 @@ public class Post {
 
     @Column(nullable = false)
     private String postUrl;
+
+    @ManyToMany(mappedBy = "posts")
+    private List<User> users = new ArrayList<>();
 
 
     public Post() {
