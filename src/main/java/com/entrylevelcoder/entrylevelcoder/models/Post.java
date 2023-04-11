@@ -3,11 +3,13 @@ package com.entrylevelcoder.entrylevelcoder.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /** Post Model */
 
 @Entity
 @Table(name = "posts")
-
 public class Post {
 
 
@@ -15,8 +17,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private long companyId;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     @Column(nullable = false)
     private String title;
@@ -39,13 +42,15 @@ public class Post {
     @Column(nullable = false)
     private String postUrl;
 
+    @ManyToMany(mappedBy = "posts")
+    private List<User> users = new ArrayList<>();
+
 
     public Post() {
     }
 
-    public Post(long id, long companyId, String title, String description, Integer minSalary, Integer maxSalary, String location, Boolean modality, String postUrl) {
-        this.id = id;
-        this.companyId = companyId;
+    public Post(Company company, String title, String description, Integer minSalary, Integer maxSalary, String location, Boolean modality, String postUrl) {
+        this.company = company;
         this.title = title;
         this.description = description;
         this.minSalary = minSalary;
@@ -55,7 +60,6 @@ public class Post {
         this.postUrl = postUrl;
     }
 
-
     public long getId() {
         return id;
     }
@@ -64,12 +68,12 @@ public class Post {
         this.id = id;
     }
 
-    public long getCompanyId() {
-        return companyId;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompanyId(long companyId) {
-        this.companyId = companyId;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public String getTitle() {
