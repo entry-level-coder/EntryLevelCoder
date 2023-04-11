@@ -78,6 +78,7 @@ public class PostController {
         return null;
     }
 
+    @PostMapping("")
     public String deletePost(@PathVariable long id){
         postDao.deleteById(id);
         return null;
