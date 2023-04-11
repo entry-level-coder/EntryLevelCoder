@@ -1,0 +1,184 @@
+:root {
+    --main-green: #90BA44;
+    --white: #FFFFFF;
+    --yellow: #FFF278;
+    --light-grey: #BFBFBF;
+    --dark-grey: #555555;
+    --bg-light: #f8f9fa;
+    --red: #E93549;
+    --open-sans: font-family 'Open Sans', sans-serif;
+}
+body{
+    background-color: var(--bg-light);
+}
+/*Nav Bar Styles*/
+.logo{
+    font-size: 2rem;
+}
+
+/* Centered Nav Items */
+.centered-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-nav .nav-item {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 1.2rem;
+}
+.nav-link:hover{
+    color: var(--main-green);
+}
+button.navbar-toggler:hover{
+    background-color: var(--main-green);
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.centered-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-nav .nav-item {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+/*Browse Jobs Section Styles*/
+
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#job-card-container {
+    height: auto;
+    min-height: 500px; /* adjust the height as needed */
+}
+
+
+#job-modal .modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#job-modal .modal-dialog {
+    overflow-y: initial !important;
+}
+
+#job-modal .modal-content {
+    height: auto;
+}
+
+#job-modal .modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+#job-modal .modal-body::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+}
+
+#job-modal .modal-body::-webkit-scrollbar-thumb {
+    background-color: #a6a6a6;
+}
+
+/*Footer Styles*/
+.footer{
+    background-color: var(--dark-grey);
+    color: var(--light-grey);
+}
+
+i{
+    color: var(--main-green);
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.social-icons a:not(:last-child) {
+    margin-right: 1rem;
+}
+
+/*Login Form Styles*/
+.login-form-header, .login-form-btn{
+    background-color: var(--main-green);
+}
+
+/*About Us Styles*/
+.about-us-title{
+    font-size: 3rem;
+}
+.about-us-lead{
+    font-size: 1.5rem;
+}
+.about-us-para{
+    font-size: 1rem;
+}
+
+/*Contact Us Styles*/
+.contact-us-btn{
+    background-color: var(--main-green);
+}
+/*Company Profile Styles*/
+.profile-header{
+    background-color: var(--main-green);
+}
+/*Company Signup Styles*/
+.company-signup-btn{
+    background-color: var(--main-green);
+}
+.company-login-link{
+    color: var(--dark-grey);
+}
+.form-check-input:checked{
+    background-color: var(--main-green);
+    border-color: var(--main-green);
+}
+.company-signup-header{
+    background-color: var(--main-green);
+}
+
+/*Create Job Styles*/
+.create-job-btn{
+    background-color: var(--main-green);
+}
+.create-job-header {
+    background-color: var(--main-green);
+}
+/*Edit Company Profile Styles*/
+.edit-company-profile-btn{
+    background-color: var(--main-green);
+}
+/*Edit Job Posting Styles*/
+.edit-job-posting-header {
+    background-color: var(--main-green);
+}
+/*Edit User Profile*/
+.edit-user-profile-btn{
+    background-color: var(--main-green);
+}
+/*User Signup Styles*/
+.user-signup-btn{
+    background-color: var(--main-green);
+}
+.user-already-have-account{
+    color: var(--dark-grey);
+}
+.user-signup-header{
+    background-color: var(--main-green);
+}
