@@ -48,7 +48,7 @@ public class UserController {
         User updateUser = userDao.findById(id).get();
         updateUser.setFirstName(user.getFirstName());
         updateUser.setLastName(user.getLastName());
-        updateUser.setEmail(user.getEmail());
+        updateUser.setUsername(user.getUsername());
         updateUser.setPassword(user.getPassword());
 
         // update the post in database using id

@@ -21,14 +21,37 @@ public class User {
     @Column (nullable = false, length = 50)
     private String lastName;
 
-    @Column(nullable = false, length = 50)
-    private String email;
+    @Column(nullable = false, length = 50, name = "email")
+    private String username;
 
     @Column(nullable = false)
     private String password;
 
 
     public User() {
+    }
+
+    public User(long id, String firstName, String lastName, String username, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(String firstName, String lastName, String username, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        username = copy.username;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        password = copy.password;
     }
 
     public long getId() {
@@ -55,12 +78,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
