@@ -1,12 +1,89 @@
 package com.entrylevelcoder.entrylevelcoder.controllers;
 
 
+import com.entrylevelcoder.entrylevelcoder.models.Post;
+import com.entrylevelcoder.entrylevelcoder.models.User;
+import com.entrylevelcoder.entrylevelcoder.repositories.CompanyRepository;
+import com.entrylevelcoder.entrylevelcoder.repositories.PostRepository;
+import com.entrylevelcoder.entrylevelcoder.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 @Controller
 public class
 PostController {
 
+    private final CompanyRepository companyDao;
+    private final PostRepository postDao;
+
+    public PostController( CompanyRepository companyDao, PostRepository postDao) {
+        this.companyDao = companyDao;
+        this.postDao = postDao;
+    }
+
+    @GetMapping("/posts")
+    public String returnPost(Model model){
+        model.addAttribute("posts", postDao.findAll());
+        return null;
+    }
+
+    @GetMapping("/posts/{id}")
+    public String returnPost(@PathVariable Long id, Model model) {
+        Optional<Post> optionalPost = postDao.findById(id);
+        if (optionalPost.isPresent()) {
+            Post post = postDao.findById(id).get();
+            model.addAttribute("post", post);
+            return null;
+        } else {
+            return "redirect:/posts?error=notfound";
+        }
+    }
+
+    @GetMapping("/posts/create")
+    public String returnPostCreateForm(Model model){
+        model.addAttribute("newPost", new Post());
+        return null;
+    }
+
+    @PostMapping("")
+    public String savePost(@ModelAttribute Post post){
+        post.setCompanyId(companyDao.findById(post.getCompanyId()).getId());
+        postDao.save(post);
+        return null;
+    }
+
+    @GetMapping("")
+    public String updateForm(@PathVariable long id, Model model){
+        Post updatePost = postDao.findById(id).get();
+        model.addAttribute("updatePost", updatePost);
+        return null;
+    }
+
+    @PostMapping("")
+    public String saveUpdatePost(@ModelAttribute Post postUpdates){
+        Post postToUpdate = postDao.findById(postUpdates.getId()).get();
+        postToUpdate.setTitle(postUpdates.getTitle());
+        postToUpdate.setDescription(postUpdates.getDescription());
+        postToUpdate.setMinSalary(postUpdates.getMinSalary());
+        postToUpdate.setMaxSalary(postUpdates.getMaxSalary());
+        postToUpdate.setLocation(postUpdates.getLocation());
+        postToUpdate.setModality(postUpdates.getModality());
+        postToUpdate.setPostUrl(postUpdates.getPostUrl());
+        postDao.save(postToUpdate);
+        return null;
+    }
+
+    @PostMapping("")
+    public String deletePost(@PathVariable long id){
+        postDao.deleteById(id);
+        return null;
+    }
 
 
 
