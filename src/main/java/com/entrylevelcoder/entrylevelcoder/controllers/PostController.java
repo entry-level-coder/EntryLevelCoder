@@ -32,7 +32,7 @@ public class PostController {
         return null;
     }
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/posts/{id}/post")
     public String returnPost(@PathVariable Long id, Model model) {
         Optional<Post> optionalPost = postDao.findById(id);
         if (optionalPost.isPresent()) {
@@ -50,21 +50,21 @@ public class PostController {
         return null;
     }
 
-    @PostMapping("")
+    @PostMapping("post/save")
     public String savePost(@ModelAttribute Post post){
-        post.setCompanyId(companyDao.findById(post.getCompanyId()).getId());
+        post.setCompany(companyDao.findById(post.getCompany().getId()));
         postDao.save(post);
         return null;
     }
 
-    @GetMapping("")
+    @GetMapping("post/{id}/update")
     public String updateForm(@PathVariable long id, Model model){
         Post updatePost = postDao.findById(id).get();
         model.addAttribute("updatePost", updatePost);
         return null;
     }
 
-    @PostMapping("")
+    @PostMapping("post/{id}/update")
     public String saveUpdatePost(@ModelAttribute Post postUpdates){
         Post postToUpdate = postDao.findById(postUpdates.getId()).get();
         postToUpdate.setTitle(postUpdates.getTitle());
@@ -78,7 +78,7 @@ public class PostController {
         return null;
     }
 
-    @PostMapping("")
+    @PostMapping("post/{id}/delete")
     public String deletePost(@PathVariable long id){
         postDao.deleteById(id);
         return null;
