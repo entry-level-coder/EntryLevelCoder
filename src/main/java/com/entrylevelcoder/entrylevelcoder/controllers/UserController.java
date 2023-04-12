@@ -57,8 +57,6 @@ public class UserController {
 
     }
 
-
-
     //     Delete user by ID
     @PostMapping("")
     public String deleteUserById(@PathVariable("id") long id, User user) {
