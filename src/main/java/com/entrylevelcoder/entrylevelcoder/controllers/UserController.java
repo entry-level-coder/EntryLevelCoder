@@ -27,7 +27,7 @@ public class UserController {
     @GetMapping("/users/sign-up")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());
-        return "/users/userSignup";
+        return "/userSignup";
     }
 
 
@@ -38,6 +38,11 @@ public class UserController {
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
+    }
+
+    @GetMapping("/users/login")
+    public String usersLogin(){
+        return "/userLogin";
     }
 
 
@@ -53,12 +58,12 @@ public class UserController {
 
         // update the post in database using id
         userDao.save(updateUser);
-        return "redirect:/orders";
+        return "redirect:/posts";
 
     }
 
     //     Delete user by ID
-    @PostMapping("")
+    @PostMapping("/users/{id}/delete")
     public String deleteUserById(@PathVariable("id") long id, User user) {
         // Check if the user exists before deleting
         userDao.deleteById(id);

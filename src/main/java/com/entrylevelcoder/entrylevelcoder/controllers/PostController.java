@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Optional;
 
 @Controller
-public class PostController {
+public class
+PostController {
 
     private final CompanyRepository companyDao;
     private final PostRepository postDao;
@@ -44,46 +45,45 @@ public class PostController {
         }
     }
 
-    @GetMapping("/posts/create")
-    public String returnPostCreateForm(Model model){
-        model.addAttribute("newPost", new Post());
-        return null;
-    }
 
-    @PostMapping("post/save")
-    public String savePost(@ModelAttribute Post post){
-        post.setCompany(companyDao.findById(post.getCompany().getId()));
-        postDao.save(post);
-        return null;
-    }
-
-    @GetMapping("post/{id}/update")
-    public String updateForm(@PathVariable long id, Model model){
-        Post updatePost = postDao.findById(id).get();
-        model.addAttribute("updatePost", updatePost);
-        return null;
-    }
-
-    @PostMapping("post/{id}/update")
-    public String saveUpdatePost(@ModelAttribute Post postUpdates){
-        Post postToUpdate = postDao.findById(postUpdates.getId()).get();
-        postToUpdate.setTitle(postUpdates.getTitle());
-        postToUpdate.setDescription(postUpdates.getDescription());
-        postToUpdate.setMinSalary(postUpdates.getMinSalary());
-        postToUpdate.setMaxSalary(postUpdates.getMaxSalary());
-        postToUpdate.setLocation(postUpdates.getLocation());
-        postToUpdate.setModality(postUpdates.getModality());
-        postToUpdate.setPostUrl(postUpdates.getPostUrl());
-        postDao.save(postToUpdate);
-        return null;
-    }
-
-    @PostMapping("post/{id}/delete")
-    public String deletePost(@PathVariable long id){
-        postDao.deleteById(id);
-        return null;
-    }
-
-
+//    @GetMapping("/posts/create")
+//    public String returnPostCreateForm(Model model){
+//        model.addAttribute("newPost", new Post());
+//        return null;
+//    }
+//
+//    @PostMapping("")
+//    public String savePost(@ModelAttribute Post post){
+//        post.setCompanyId(companyDao.findById(post.getCompanyId()).getId());
+//        postDao.save(post);
+//        return null;
+//    }
+//
+//    @GetMapping("")
+//    public String updateForm(@PathVariable long id, Model model){
+//        Post updatePost = postDao.findById(id).get();
+//        model.addAttribute("updatePost", updatePost);
+//        return null;
+//    }
+//
+//    @PostMapping("")
+//    public String saveUpdatePost(@ModelAttribute Post postUpdates){
+//        Post postToUpdate = postDao.findById(postUpdates.getId()).get();
+//        postToUpdate.setTitle(postUpdates.getTitle());
+//        postToUpdate.setDescription(postUpdates.getDescription());
+//        postToUpdate.setMinSalary(postUpdates.getMinSalary());
+//        postToUpdate.setMaxSalary(postUpdates.getMaxSalary());
+//        postToUpdate.setLocation(postUpdates.getLocation());
+//        postToUpdate.setModality(postUpdates.getModality());
+//        postToUpdate.setPostUrl(postUpdates.getPostUrl());
+//        postDao.save(postToUpdate);
+//        return null;
+//    }
+//
+//    @PostMapping("")
+//    public String deletePost(@PathVariable long id){
+//        postDao.deleteById(id);
+//        return null;
+//    }
 
 }
