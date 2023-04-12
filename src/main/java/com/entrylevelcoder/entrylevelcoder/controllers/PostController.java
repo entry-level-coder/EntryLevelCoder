@@ -33,7 +33,7 @@ PostController {
         return null;
     }
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/posts/{id}/post")
     public String returnPost(@PathVariable Long id, Model model) {
         Optional<Post> optionalPost = postDao.findById(id);
         if (optionalPost.isPresent()) {
@@ -44,6 +44,7 @@ PostController {
             return "redirect:/posts?error=notfound";
         }
     }
+
 
 //    @GetMapping("/posts/create")
 //    public String returnPostCreateForm(Model model){
@@ -84,7 +85,5 @@ PostController {
 //        postDao.deleteById(id);
 //        return null;
 //    }
-
-
 
 }
