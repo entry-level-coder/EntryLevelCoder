@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post a Job</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/commonStyles.css">
+  <!--Google Fonts  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome CSS stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- Font Awesome Icons   -->
+  <script src="https://kit.fontawesome.com/7e4e2e5393.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrapper sticky-footer">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand ms-3 logo" href="#">Entry-Level Coder</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav centered-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="browseJobs.html">Browse Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="companyLogin.html">Post Job</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="aboutUs.html">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contactUs.html">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="userLogin.html">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Job Posting Form -->
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow">
+          <div class="card-header create-job-header text-light">
+            <h2 class="mb-0">Post a Job</h2>
+          </div>
+          <div class="card-body">
+            <form id="jobForm" onsubmit="return validateForm()" method="POST" action="/post-job">
+              <div class="form-group">
+                <label for="job_title">Job Title</label>
+                <input type="text" class="form-control" id="job_title" name="job_title" required>
+              </div>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" name="location" required>
+              </div>
+              <div class="form-group">
+                <label for="pay_range">Pay Range</label>
+                <input type="text" class="form-control" id="pay_range" name="pay_range" required>
+              </div>
+              <div class="form-group">
+                <label for="job_description">Job Description</label>
+                <textarea class="form-control" id="job_description" name="job_description" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="years_of_experience">Years of Experience</label>
+                <input type="number" class="form-control" id="years_of_experience" name="years_of_experience" min="0" max="2" required>
+              </div>
+              <div class="form-group">
+                <label for="basic_requirements">Basic Job Requirements</label>
+                <textarea class="form-control" id="basic_requirements" name="basic_requirements" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="nice_to_have_skills">Nice to Have Skills but Not Required</label>
+                <textarea class="form-control" id="nice_to_have_skills" name="nice_to_have_skills" rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn create-job-btn btn-block mt-3">Submit Job Posting</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <section id="footer">
+    <footer class="footer text-center py-3 mt-5">
+      <div class="container ">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>About Us</h5>
+            <p>Entry-Level Coder is dedicated to connecting entry-level software developers with their dream jobs across the United States.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Contact Us</h5>
+            <p>Email: info@entryleveldcoder.com</p>
+            <p>Phone: +1(555) 123-4567</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Follow Us</h5>
+            <div class="social-icons d-flex justify-content-center">
+              <a href="#"><i class="fa-brands fa-facebook fa-2xl"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter fa-2xl"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <span>© 2023 Entry-Level Coder. All Rights Reserved.</span>
+      </div>
+    </footer>
+  </section>
+</div>
+
+<!--Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<!-- Custom JS -->
+<script src="indexScripts.js"></script>
+
+</body>
+</html>
+<!--
+This updated code adds a job posting form with the required fields: Job title, Location, Pay range, Job description, Years of experience, Basic job requirements, and Nice to have skills but not required. It also includes a "Submit Job Posting" button. Additionally, a JavaScript function validateForm is added to check that the years of experience input is not greater than 2.
+
+ <script>
+    function validateForm() {
+      const form = document.getElementById("jobForm");
+      const yearsOfExperience = form.elements["years_of_experience"].value;
+      if (yearsOfExperience > 2) {
+        alert("Years of experience cannot be greater than 2 years.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+-->
