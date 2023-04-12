@@ -32,6 +32,15 @@ public class SecurityConfiguration {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    @Bean
+    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests()
+                .anyRequest().permitAll()
+                .and().formLogin()
+                .and().httpBasic();
+        return http.build();
+    }
+
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //        http
