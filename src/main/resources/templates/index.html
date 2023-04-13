@@ -21,7 +21,9 @@
 
 <section id="hero-container" class="hero-container">
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light bg-transparent">
+
     <a class="navbar-brand ms-3 logo" th:href="@{/}">Entry-Level Coder</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -32,7 +34,7 @@
           <a class="nav-link" th:href="@{/}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="browseJobs.html">Browse Jobs</a>
+          <a class="nav-link" th:href="@{/posts}">Browse Jobs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" th:href="@{/company/login}">Post Job</a>
@@ -45,6 +47,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" th:href="@{/users/login}">Login</a>
+
         </li>
       </ul>
     </div>
