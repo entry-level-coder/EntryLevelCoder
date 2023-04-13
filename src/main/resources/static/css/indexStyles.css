@@ -1,0 +1,200 @@
+/* Custom CSS */
+:root {
+    --main-green: #90BA44;
+    --white: #FFFFFF;
+    --yellow: #FFF278;
+    --light-grey: #BFBFBF;
+    --dark-grey: #555555;
+    --red: #E93549;
+    --open-sans: font-family 'Open Sans', sans-serif;
+}
+
+body {
+    /*font-family: var(--open-sans);*/
+}
+/*Nav Bar Styles*/
+.logo{
+    font-size: 2rem;
+}
+
+/* Centered Nav Items */
+.centered-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-nav .nav-item {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 1.2rem;
+}
+.nav-link:hover{
+    color: var(--main-green);
+}
+button.navbar-toggler:hover{
+    background-color: var(--main-green);
+}
+
+#hero-container{
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: url('/images/typing.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-position: 0px 50%;
+    height: auto;
+
+}
+
+.hero-btn{
+    background-color: var(--main-green);
+}
+svg {
+    filter: grayscale(100%);
+}
+#how-it-works{
+    background-image: url('/images/typing.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-position: 0px 50%;
+    background-color: rgba(0, 0, 0, 0.5); /* Change the last value (0.5) to adjust the opacity */
+    height: auto;
+}
+
+.jumbotron-title{
+    font-size: 4.5rem;
+}
+.jumbotron-lead{
+    font-size: 1.5rem;
+}
+.featured-employers-title{
+    font-size: 2.5rem;
+}
+#how-it-works{
+    height: auto;
+}
+.how-it-works-text{
+    color: var(--white);
+    font-size: 2.5rem;
+}
+.hiw-card-title{
+    color: var(--main-green);
+    font-size: 1.7rem;
+}
+
+.card-text{
+    font-size: 1.4rem;
+}
+#testimonials{
+    background-color: var(--light-grey);
+}
+.testimonials-title{
+    font-size: 2.5rem;
+}
+
+blockquote{
+    margin-bottom: 5rem !important;
+}
+
+.carousel-indicators [data-bs-target]{
+    background-color: var(--main-green);
+}
+
+.carousel-button{
+    margin-top: 3rem;
+}
+#call-to-action{
+    background-image: url('/images/typing.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-position: 0px 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: auto;
+}
+.cta-title{
+    font-size: 2.5rem;
+}
+.cta-card-title{
+    font-size: 1.7rem;
+}
+.cta-card{
+    height: auto;
+    width: auto;
+}
+.cta-card-text{
+    font-size: 1.4rem;
+}
+
+.cta-btn{
+    background-color: var(--main-green);
+}
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#featured-jobs{
+    height: auto;
+}
+.featured-jobs-title{
+    font-size: 2.5rem;
+}
+
+.view-details-btn{
+    background-color: var(--yellow);
+}
+
+#job-modal .modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#job-modal .modal-dialog {
+    overflow-y: initial !important;
+}
+
+#job-modal .modal-content {
+    height: auto;
+}
+
+#job-modal .modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+#job-modal .modal-body::-webkit-scrollbar-track {
+    background-color: #EEEE;
+}
+
+#job-modal .modal-body::-webkit-scrollbar-thumb {
+    background-color: #EEEE;
+}
+
+.footer{
+    background-color: var(--dark-grey);
+    color: var(--light-grey);
+}
+
+i{
+    color: var(--main-green);
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.social-icons a:not(:last-child) {
+    margin-right: 1rem;
+}
+
