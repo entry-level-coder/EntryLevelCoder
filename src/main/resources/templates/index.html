@@ -18,51 +18,51 @@
   <script src="https://kit.fontawesome.com/7e4e2e5393.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<section th:replace="partials/hero :: hero"></section>
+<!--<section th:replace="partials/hero :: hero"></section>-->
 
-<!--<section id="hero-container" class="hero-container">-->
-<!--  &lt;!&ndash; Navigation Bar &ndash;&gt;-->
-<!--  <nav class="navbar navbar-expand-lg navbar-dark">-->
-<!--    <a class="navbar-brand ms-3 logo" href="index.html">Entry-Level Coder</a>-->
-<!--    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--      <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">-->
-<!--      <ul class="navbar-nav centered-nav">-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="index.html">Home</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="browseJobs.html">Browse Jobs</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="companyLogin.html">Post Job</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="aboutUs.html">About Us</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="contactUs.html">Contact Us</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="userLogin.html">Login</a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--  </nav>-->
+<section id="hero-container" class="hero-container">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand ms-3 logo" href="index.html">Entry-Level Coder</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav centered-nav">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/posts}">Browse Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/company/login}">Post Job</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/aboutus}">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/contactus}">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{users/login}">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-<!--  &lt;!&ndash; Jumbotron &ndash;&gt;-->
-<!--  <section id="hero" class="py-5">-->
-<!--    <div class="jumbotron jumbotron-fluid text-light">-->
-<!--      <div class="container">-->
-<!--        <h1 class="jumbotron-title">Find Your Dream Entry-Level Software Developer Job</h1>-->
-<!--        <p class="jumbotron-lead">Connecting employers and talented entry-level software developers across the United States.</p>-->
-<!--        <a href="userSignup.html" class="btn hero-btn"> Sign up today!</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </section>-->
+  <!-- Jumbotron -->
+  <section id="hero" class="py-5">
+    <div class="jumbotron jumbotron-fluid text-light">
+      <div class="container">
+        <h1 class="jumbotron-title">Find Your Dream Entry-Level Software Developer Job</h1>
+        <p class="jumbotron-lead">Connecting employers and talented entry-level software developers across the United States.</p>
+        <a href="userSignup.html" class="btn hero-btn"> Sign up today!</a>
+      </div>
+    </div>
+  </section>
 
-<!--</section>-->
+</section>
 
 <!-- Featured Employers -->
 <section id="featured-in" class="bg-light py-5">
