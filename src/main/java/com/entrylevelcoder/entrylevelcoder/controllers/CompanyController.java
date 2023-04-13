@@ -33,7 +33,7 @@ public class CompanyController {
         String hashedPassword = passwordEncoder.encode(company.getPassword());
         company.setPassword(hashedPassword);
         companyDao.save(company);
-        return "redirect: posts";
+        return "redirect:/company/login";
     }
 
     @GetMapping("/company/login")
