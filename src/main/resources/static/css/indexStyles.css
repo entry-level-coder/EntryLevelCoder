@@ -8,10 +8,6 @@
     --red: #E93549;
     --open-sans: font-family 'Open Sans', sans-serif;
 }
-
-body {
-    /*font-family: var(--open-sans);*/
-}
 /*Nav Bar Styles*/
 .logo{
     font-size: 2rem;
@@ -38,7 +34,7 @@ button.navbar-toggler:hover{
 
 #hero-container{
     background-color: rgba(0, 0, 0, 0.5);
-    background-image: url('/images/typing.jpeg');
+    background-image: url('/static/images/typing.jpeg');
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
@@ -55,7 +51,7 @@ svg {
     filter: grayscale(100%);
 }
 #how-it-works{
-    background-image: url('/images/typing.jpeg');
+    background-image: url('/static/images/typing.jpeg');
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
@@ -108,7 +104,7 @@ blockquote{
     margin-top: 3rem;
 }
 #call-to-action{
-    background-image: url('/images/typing.jpeg');
+    background-image: url('/static/images/typing.jpeg');
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
