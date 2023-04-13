@@ -3,7 +3,6 @@ package com.entrylevelcoder.entrylevelcoder.models;
 
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import java.util.ArrayList;
 import java.util.List;
 
