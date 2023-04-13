@@ -1,7 +1,7 @@
 
 #jobs{
     background-color: rgba(0, 0, 0, 0.5);
-    background-image: url('/static/images/typing.jpeg');
+    background-image: url('/images/typing.jpeg');
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
