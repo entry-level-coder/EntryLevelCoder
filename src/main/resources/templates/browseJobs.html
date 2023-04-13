@@ -30,7 +30,55 @@
     </div>
 </section>
 
+<!--Job Cards-->
+<section id="job-cards">
+    <div class="container-fluid bg-light">
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="container mt-3">
+                <div class="input-group mb-3">
+                    <input id="search-term" type="text" class="form-control" placeholder="Search for jobs by title, location, or company" aria-label="Search for jobs" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn  search-btn" type="button">Search</button>
+                    </div>
+                    <form class="col-1 ms-5">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="browseJobs.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Filter
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="browseJobs.html" id="high-low">High To Low</a></li>
+                                <li><a class="dropdown-item" href="browseJobs.html" id="new-old">New To Old</a></li>
+                                <li><a class="dropdown-item" href="browseJobs.html" id="full-time">Full-time</a></li>
+                                <li><a class="dropdown-item" href="browseJobs.html" id="part-time">Part-time</a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+                <div id="job-card-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 mb-5">
+                    <!-- Job Card 1 -->
+                    <div class="col">
+                        <div class="card mb-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Job Modal -->
+        <div class="modal fade" id="job-modal" tabindex="-1" aria-labelledby="job-modal-title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="job-modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="job-modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
