@@ -1,0 +1,23 @@
+/*Error Message Styles*/
+body {
+    background-color: #f8f9fa;
+}
+.error-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+.error-code {
+    font-size: 6rem;
+    font-weight: bold;
+}
+.error-message {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+.go-back-btn {
+    margin-top: 1rem;
+}
