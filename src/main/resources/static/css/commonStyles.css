@@ -113,6 +113,14 @@ i{
 .social-icons a:not(:last-child) {
     margin-right: 1rem;
 }
+.entry-level-coder-email{
+    text-decoration: none;
+    color: var(--light-grey);
+}
+.adzuna{
+    text-decoration: none;
+    color: var(--main-green);
+}
 
 /*Login Form Styles*/
 .login-form-header, .login-form-btn{

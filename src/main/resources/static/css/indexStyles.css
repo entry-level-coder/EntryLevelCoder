@@ -180,6 +180,14 @@ blockquote{
     background-color: var(--dark-grey);
     color: var(--light-grey);
 }
+.entry-level-coder-email{
+    text-decoration: none;
+    color: var(--light-grey);
+}
+ .adzuna{
+    text-decoration: none;
+    color: var(--main-green);
+}
 
 i{
     color: var(--main-green);
