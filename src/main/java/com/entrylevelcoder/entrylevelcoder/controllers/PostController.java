@@ -30,7 +30,7 @@ PostController {
     @GetMapping("/posts")
     public String returnPost(Model model){
         model.addAttribute("posts", postDao.findAll());
-        return null;
+        return "browseJobs";
     }
 
     @GetMapping("/posts/{id}/post")
@@ -46,25 +46,25 @@ PostController {
     }
 
 
-//    @GetMapping("/posts/create")
-//    public String returnPostCreateForm(Model model){
-//        model.addAttribute("newPost", new Post());
-//        return null;
-//    }
-//
-//    @PostMapping("")
-//    public String savePost(@ModelAttribute Post post){
-//        post.setCompanyId(companyDao.findById(post.getCompanyId()).getId());
-//        postDao.save(post);
-//        return null;
-//    }
-//
-//    @GetMapping("")
-//    public String updateForm(@PathVariable long id, Model model){
-//        Post updatePost = postDao.findById(id).get();
-//        model.addAttribute("updatePost", updatePost);
-//        return null;
-//    }
+    @GetMapping("/posts/create")
+    public String returnPostCreateForm(Model model){
+        model.addAttribute("newPost", new Post());
+        return "createJob";
+    }
+
+    @PostMapping("/post/create")
+    public String savePost(@ModelAttribute Post post){
+        post.setCompany(companyDao.findById(post.getCompany().getId()));
+        postDao.save(post);
+        return "redirect:company/{id}/profile";
+    }
+
+    @GetMapping("posts/{id}/update")
+    public String updateForm(@PathVariable long id, Model model){
+        Post updatePost = postDao.findById(id);
+        model.addAttribute("updatePost", updatePost);
+        return "editJobPosting";
+    }
 //
 //    @PostMapping("")
 //    public String saveUpdatePost(@ModelAttribute Post postUpdates){
@@ -80,10 +80,10 @@ PostController {
 //        return null;
 //    }
 //
-//    @PostMapping("")
-//    public String deletePost(@PathVariable long id){
-//        postDao.deleteById(id);
-//        return null;
-//    }
+    @PostMapping("posts/delete")
+    public String deletePost(@PathVariable long id){
+        postDao.deleteById(id);
+        return null;
+    }
 
 }
