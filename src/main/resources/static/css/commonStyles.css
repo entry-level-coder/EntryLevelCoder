@@ -101,6 +101,10 @@ button.navbar-toggler:hover{
     color: var(--light-grey);
 }
 
+.flex-grown {
+    flex-grow: 1;
+}
+
 i{
     color: var(--main-green);
 }
