@@ -5,33 +5,72 @@
     <title>navbar partial</title>
 </head>
 <body>
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand ms-3 logo" href="#">Entry-Level Coder</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav centered-nav">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/}" method="get">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/posts}" method="get">Browse Jobs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/company/login}">Post Job</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/aboutus}">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/contactus}">Contact Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/users/login}">Login</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+
+<!--Light themed navbar with dark font-->
+<div th:fragment="navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent">
+        <a class="navbar-brand ms-3 logo" th:href="@{/}">Entry-Level Coder</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav centered-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/posts}">Browse Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/company/login}">Post Job</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/aboutus}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contactus}">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{users/login}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<!--dark themed navbar with white font-->
+<div th:fragment="navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light bg-transparent">
+        <a class="navbar-brand ms-3 logo" th:href="@{/}">Entry-Level Coder</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav centered-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/posts}">Browse Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/company/login}">Post Job</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/aboutus}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contactus}">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{users/login}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
 </body>
 </html>
