@@ -24,7 +24,7 @@ public class UserController {
     }
 
     // Allows User To Input Info
-    @GetMapping("/users/sign-up")
+    @GetMapping("/users/signup")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());
         return "/userSignup";
@@ -32,17 +32,22 @@ public class UserController {
 
 
     // Saves User Input To Database
-    @PostMapping("/users/sign-up")
+    @PostMapping("/users/signup")
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:/users/1/profile";
     }
 
     @GetMapping("/users/login")
     public String usersLogin(){
         return "/userLogin";
+    }
+
+    @GetMapping("users/{id}/profile")
+    public String usersProfile(@PathVariable long id) {
+        return "userProfile";
     }
 
 
