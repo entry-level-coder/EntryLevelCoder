@@ -124,10 +124,10 @@ i{
     font-size: 3rem;
 }
 .about-us-lead{
-    font-size: 1.5rem;
+   font-size: 1.4rem;
 }
 .about-us-para{
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 /*Contact Us Styles*/
@@ -181,4 +181,27 @@ i{
 }
 .user-signup-header{
     background-color: var(--main-green);
+}
+
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    /* CSS rules to be applied when the screen width is between 768px and 1024px */
+    .about-us-lead{
+        font-size: 1.1rem;
+    }
+    .about-us-para{
+        font-size: 1rem;
+    }
+}
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+    /* CSS rules to be applied when the screen width is between 768px and 1024px */
+    .about-us-title{
+        font-size: 3.5rem;
+    }
+    .about-us-lead{
+        font-size: 1.6rem;
+    }
+    .about-us-para{
+        font-size: 1.5rem;
+    }
 }
