@@ -69,4 +69,10 @@ public class UserController {
         userDao.deleteById(id);
         return "redirect:/login";
     }
+
+
+//    @GetMapping("/user/profile")
+//    public String getToProfileFromLogin(){
+//        return "userProfile";
+//    }
 }
