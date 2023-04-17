@@ -36,7 +36,7 @@ public class Post {
     @Column(nullable = false)
     private String location;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "ENUM('REMOTE', 'HYBRID', 'IN_PERSON', 'NOT_PROVIDED_BY_EMPLOYER')")
     @Enumerated(EnumType.STRING)
     private Modality modality;
 
