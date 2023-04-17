@@ -36,8 +36,9 @@ public class Post {
     @Column(nullable = false)
     private String location;
 
-    @Column(nullable = false)
-    private Boolean modality;
+    @Column(nullable = false, columnDefinition = "ENUM('REMOTE', 'HYBRID', 'IN_PERSON', 'NOT_PROVIDED_BY_EMPLOYER')")
+    @Enumerated(EnumType.STRING)
+    private Modality modality;
 
     @Column(nullable = false)
     private String postUrl;
@@ -49,7 +50,7 @@ public class Post {
     public Post() {
     }
 
-    public Post(Company company, String title, String description, Integer minSalary, Integer maxSalary, String location, Boolean modality, String postUrl) {
+    public Post(Company company, String title, String description, Integer minSalary, Integer maxSalary, String location, Modality modality, String postUrl) {
         this.company = company;
         this.title = title;
         this.description = description;
@@ -116,11 +117,11 @@ public class Post {
         this.location = location;
     }
 
-    public Boolean getModality() {
+    public Modality getModality() {
         return modality;
     }
 
-    public void setModality(Boolean modality) {
+    public void setModality(Modality modality) {
         this.modality = modality;
     }
 

@@ -15,15 +15,15 @@ public class Company {
     private String url;
     @Column(nullable = false)
     private String email;
-    @Column(nullable = false)
-    private long number;
+    @Column(nullable = false, name = "phone_number")
+    private String number;
     @Column(nullable = false)
     private String password;
 
     public Company() {
     }
 
-    public Company(String name, String url, String email, long number, String password) {
+    public Company(String name, String url, String email, String number, String password) {
         this.name = name;
         this.url = url;
         this.email = email;
@@ -31,7 +31,7 @@ public class Company {
         this.password = password;
     }
 
-    public Company(String name, String email, long number, String password) {
+    public Company(String name, String email, String number, String password) {
         this.name = name;
         this.email = email;
         this.number = number;
@@ -70,11 +70,11 @@ public class Company {
         this.email = email;
     }
 
-    public long getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(long number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
