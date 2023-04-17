@@ -77,7 +77,7 @@ function createJobCard(job) {
     });
 
     const applyNowLink = document.createElement('a');
-    applyNowLink.className = 'btn btn-primary mb-2 btn btn-primary';
+    applyNowLink.className = 'btn mb-2 text-white apply-now-btn';
     applyNowLink.href = job.redirect_url;
     applyNowLink.innerText = 'Apply Now';
 

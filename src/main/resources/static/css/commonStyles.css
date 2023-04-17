@@ -11,6 +11,11 @@
 body{
     background-color: var(--bg-light);
 }
+
+.flex-grown {
+    flex-grow: 1;
+}
+
 /*Nav Bar Styles*/
 .logo{
     font-size: 2rem;
@@ -95,14 +100,28 @@ button.navbar-toggler:hover{
     background-color: #a6a6a6;
 }
 
+.apply-now-btn {
+    background-color: var(--main-green);
+}
+
+.apply-now-btn:hover {
+    color: black;
+    background-color: var(--light-grey);
+}
+
+.edit-btn {
+    background-color: var(--main-green);
+}
+
+.edit-btn:hover {
+    color: black;
+    background-color: var(--light-grey);
+}
+
 /*Footer Styles*/
 .footer{
     background-color: var(--dark-grey);
     color: var(--light-grey);
-}
-
-.flex-grown {
-    flex-grow: 1;
 }
 
 i{
