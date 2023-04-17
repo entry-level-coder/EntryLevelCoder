@@ -8,84 +8,93 @@
 
 
 <!-- Company Profile -->
-<div class="container my-5 flex-grown" th:each="company : ${company}">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="text-center">Company Profile</h1>
-    <a href="editCompanyProfile.html" class="btn edit-user-profile-btn">Edit Profile</a>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title" th:text="${company.name}"></h3>
-          <h4 class="card-subtitle mb-2 text-muted" th:each="${company.email}"></h4>
-          <hr>
-          <h5 class="card-title">Location:</h5>
-          <p class="card-text">San Francisco, CA</p>
-          <hr>
-          <h5 class="card-title">Industry:</h5>
-          <p class="card-text">Technology</p>
-          <hr>
-          <h5 class="card-title">Company Description:</h5>
-          <p class="card-text">Tech Company Inc. is a leading technology firm that specializes in software development, web design, and digital marketing. We are committed to providing innovative solutions for our clients and creating a dynamic work environment for our employees.</p>
-          <hr>
+<div th:each="company : ${company}">
+<div class="container my-5 flex-grown">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-center">Company Profile</h1>
+        <a href="editCompanyProfile.html" class="btn edit-user-profile-btn">Edit Profile</a>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title" th:text="${company.name}"></h3>
+                    <h4 class="card-subtitle mb-2 text-muted" th:text="${company.email}"></h4>
+                    <hr>
+                    <h5 class="card-title">Location:</h5>
+                    <p class="card-text">San Francisco, CA</p>
+                    <hr>
+                    <h5 class="card-title">Industry:</h5>
+                    <p class="card-text">Technology</p>
+                    <hr>
+                    <h5 class="card-title">Company Description:</h5>
+                    <p class="card-text">Tech Company Inc. is a leading technology firm that specializes in software
+                        development, web design, and digital marketing. We are committed to providing innovative
+                        solutions for our clients and creating a dynamic work environment for our employees.</p>
+                    <hr>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!--Posted Jobs  -->
-  <div class="row mt-5">
-    <div class="col-md-12">
-      <h2 class="text-center">Posted Jobs</h2>
-      <div class="d-flex justify-content-center align-items-center mb-4 mt-4">
-        <a href="createJob.html" class="btn btn-primary">Post New Job</a>
-      </div>
-      <hr>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <div class="d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Junior UX/UI Developer</h5>
-            <div class="text-end">
-              <a href="editJobPosting.html" class="btn btn-success ms-3">Edit Job</a>
-              <a href="editJobPosting.html" class="btn btn-danger ms-3">Delete Job</a>
+    <!--Posted Jobs  -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2 class="text-center">Posted Jobs</h2>
+            <div class="d-flex justify-content-center align-items-center mb-4 mt-4">
+                <a href="createJob.html" class="btn btn-primary">Post New Job</a>
             </div>
-          </div>
-          <p class="mb-0 date">2023-04-02</p>
-          <p class="mb-0"><small>Company: Tech Company Inc.</small> | <small>Location: San Francisco, CA</small></p>
-        </li>
-        <li class="list-group-item">
-          <div class="d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Junior Java Developer</h5>
-            <div class="text-end">
-              <a href="editJobPosting.html" class="btn btn-success ms-3">Edit Job</a>
-              <a href="editJobPosting.html" class="btn btn-danger ms-3">Delete Job</a>
-            </div>
-          </div>
-          <p class="mb-0 date">2023-03-28</p>
-          <p class="mb-0"><small>Company: Tech Company Inc.</small> | <small>Location: San Francisco, CA</small></p>
-        </li>
-        <li class="list-group-item">
-          <div class="d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Entry-Level Web Developer</h5>
-            <div class="text-end">
-              <a href="editJobPosting.html" class="btn btn-success ms-3">Edit Job</a>
-              <a href="editJobPosting.html" class="btn btn-danger ms-3">Delete Job</a>
-            </div>
-          </div>
-          <p class="mb-0 date">2023-03-25</p>
-          <p class="mb-0"><small>Company: Tech Company Inc.</small> | <small>Location: San Francisco, CA</small></p>
-        </li>
-      </ul>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Junior UX/UI Developer</h5>
+                        <div class="text-end">
+                            <a href="editJobPosting.html" class="btn btn-success ms-3">Edit Job</a>
+                            <a href="editJobPosting.html" class="btn btn-danger ms-3">Delete Job</a>
+                        </div>
+                    </div>
+                    <p class="mb-0 date">2023-04-02</p>
+                    <p class="mb-0"><small>Company: Tech Company Inc.</small> | <small>Location: San Francisco,
+                        CA</small></p>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Junior Java Developer</h5>
+                        <div class="text-end">
+                            <a href="editJobPosting.html" class="btn btn-success ms-3">Edit Job</a>
+                            <a href="editJobPosting.html" class="btn btn-danger ms-3">Delete Job</a>
+                        </div>
+                    </div>
+                    <p class="mb-0 date">2023-03-28</p>
+                    <p class="mb-0"><small>Company: Tech Company Inc.</small> | <small>Location: San Francisco,
+                        CA</small></p>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Entry-Level Web Developer</h5>
+                        <div class="text-end">
+                            <a href="editJobPosting.html" class="btn btn-success ms-3">Edit Job</a>
+                            <a href="editJobPosting.html" class="btn btn-danger ms-3">Delete Job</a>
+                        </div>
+                    </div>
+                    <p class="mb-0 date">2023-03-25</p>
+                    <p class="mb-0"><small>Company: Tech Company Inc.</small> | <small>Location: San Francisco,
+                        CA</small></p>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
+</div>
 </div>
 <!-- Footer -->
 <div th:replace="partials/footer :: footer"></div>
 
 
 <!--Bootstrap JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
 <!-- Custom JS -->
 <script src="indexScripts.js"></script>
 </body>

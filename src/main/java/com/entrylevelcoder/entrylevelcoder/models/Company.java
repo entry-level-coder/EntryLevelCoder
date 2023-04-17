@@ -17,6 +17,14 @@ public class Company {
     private String email;
     @Column(nullable = false, name = "phone_number")
     private String number;
+    private String industry;
+
+    private String city;
+@Column(columnDefinition =  "CHAR(2) DEFAULT 'XX'")
+    private String state;
+
+    @Column(length = 2000)
+    private String description;
     @Column(nullable = false)
     private String password;
 
