@@ -8,7 +8,7 @@
 
 
 <!-- Company Profile -->
-<div class="container my-5 flex-grown">
+<div class="container my-5 flex-grown" th:each="company : ${company}">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="text-center">Company Profile</h1>
     <a href="editCompanyProfile.html" class="btn edit-user-profile-btn">Edit Profile</a>
@@ -17,8 +17,8 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-body">
-          <h3 class="card-title">Tech Company Inc.</h3>
-          <h4 class="card-subtitle mb-2 text-muted">contact@techcompanyinc.com</h4>
+          <h3 class="card-title" th:text="${company.name}"></h3>
+          <h4 class="card-subtitle mb-2 text-muted" th:each="${company.email}"></h4>
           <hr>
           <h5 class="card-title">Location:</h5>
           <p class="card-text">San Francisco, CA</p>

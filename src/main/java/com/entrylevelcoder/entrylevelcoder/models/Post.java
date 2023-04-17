@@ -1,6 +1,7 @@
 package com.entrylevelcoder.entrylevelcoder.models;
 
 
+import com.entrylevelcoder.entrylevelcoder.enums.Modality;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

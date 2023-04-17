@@ -52,6 +52,7 @@ public class CompanyController {
     @GetMapping("company/{id}/update")
     public String updateCompany(@PathVariable long id, Model model) {
         Company company = companyDao.findById(id);
+        model.addAttribute("company", company);
         return "editCompanyProfile";
     }
 
