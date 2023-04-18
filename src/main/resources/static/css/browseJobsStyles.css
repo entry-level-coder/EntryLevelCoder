@@ -23,6 +23,10 @@
 .view-details-btn{
     background-color: var(--yellow);
 }
+.view-details-btn:hover{
+    background-color: var(--light-grey);
+    color: white;
+}
 .save-job-btn{
     background-color: var(--main-green);
 }
