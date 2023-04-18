@@ -1,4 +1,4 @@
-package com.entrylevelcoder.entrylevelcoder.models;
+package com.entrylevelcoder.entrylevelcoder.enums;
 
 public enum Modality {
     REMOTE,
