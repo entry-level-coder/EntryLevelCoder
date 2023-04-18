@@ -79,6 +79,7 @@ public class UserController {
     }
 
 
+
     @GetMapping("/users/{id}/profile")
     public String getToProfileFromLogin(@PathVariable long id, Model model){
         User user = userDao.findById(id);
