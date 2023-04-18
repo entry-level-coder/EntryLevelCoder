@@ -56,10 +56,10 @@ public class CompanyController {
         return "editCompanyProfile";
     }
 
-    @PostMapping("company/update")
+    @PostMapping("/company/update")
     public String updateCompanyPost(@ModelAttribute Company company) {
         companyDao.save(company);
-        return "redirect: /";
+        return "redirect:/";
     }
 
     @PostMapping("company/{id}/delete")
