@@ -268,14 +268,14 @@ window.onload = function () {
     function getDataLowToHigh() {
         const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
         console.log(typeof storedData);
-        let jobsHighToLow = storedData.sort((a, b) => a.salary_max - b.salary_max);
-        console.log(jobsHighToLow);
+        let jobsLowToHigh = storedData.sort((a, b) => a.salary_max - b.salary_max);
+        console.log(jobsLowToHigh);
 
         const jobCardContainer = document.getElementById('job-card-container');
         jobCardContainer.innerHTML = ''; // clear previous contents
 
         // Create a job card for each job
-        jobsHighToLow.forEach(job => {
+        jobsLowToHigh.forEach(job => {
             const card = createJobCard(job);
             jobCardContainer.appendChild(card);
         });
@@ -300,14 +300,15 @@ window.onload = function () {
     function getDataOldToNew() {
         const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
         console.log(typeof storedData);
-        let jobsNewToOld = storedData.sort((a, b) => a.created - b.created);
-        console.log(jobsNewToOld);
+        // let jobsOldToNew = storedData.sort((a, b) => a.created - b.created);
+        let jobsOldToNew = storedData.slice().reverse();
+        console.log(jobsOldToNew);
 
         const jobCardContainer = document.getElementById('job-card-container');
         jobCardContainer.innerHTML = ''; // clear previous contents
 
         // Create a job card for each job
-        jobsNewToOld.forEach(job => {
+        jobsOldToNew.forEach(job => {
             const card = createJobCard(job);
             jobCardContainer.appendChild(card);
         });
