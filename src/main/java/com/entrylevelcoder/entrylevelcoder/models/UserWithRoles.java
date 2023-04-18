@@ -39,8 +39,8 @@ public class UserWithRoles extends User implements UserDetails {
         return true;
     }
 
-    @Override
-    public String getUsername() {
-        return user.getUsername();
-    }
+//    @Override
+//    public String getUsername() {
+//        return user.getUsername();
+//    }
 }

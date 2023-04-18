@@ -71,8 +71,8 @@ public class UserController {
     }
 
 
-//    @GetMapping("/user/profile")
-//    public String getToProfileFromLogin(){
-//        return "userProfile";
-//    }
+    @GetMapping("/user/profile")
+    public String getToProfileFromLogin(){
+        return "userProfile";
+    }
 }

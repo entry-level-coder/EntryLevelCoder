@@ -17,7 +17,7 @@
               <h4 class="mb-0">User Login</h4>
             </div>
             <div class="card-body">
-              <form>
+              <form th:action="@{/login}" th:method="post">
                 <div class="form-group mb-4">
                   <label for="email" class="form-label">Email address</label>
                   <input  type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email">
@@ -27,7 +27,7 @@
                   <input type="password" class="form-control" id="password" placeholder="Enter your password">
                 </div>
                 <div class="text-end">
-                  <button type="submit" class="btn login-form-btn" th:href="@{/user/profile}">Login</button>
+                  <button type="submit" class="btn login-form-btn" >Login</button>
                   <a th:href="@{/users/sign-up}" class="btn text-decoration-none">Create an account for free</a>
                 </div>
               </form>
