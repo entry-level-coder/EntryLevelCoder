@@ -22,7 +22,7 @@
                     <h4 class="card-subtitle mb-2 text-muted" th:text="${company.email}"></h4>
                     <hr>
                     <h5 class="card-title">Location:</h5>
-                    <p class="card-text">San Francisco, CA</p>
+                    <p class="card-text"><span th:text="${company.city}"></span>, <span th:text="${company.state}"></span></p>
                     <hr>
                     <h5 class="card-title">Industry:</h5>
                     <p class="card-text">Technology</p>

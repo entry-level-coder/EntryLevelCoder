@@ -31,11 +31,15 @@ public class Company {
     public Company() {
     }
 
-    public Company(String name, String url, String email, String number, String password) {
+    public Company(String name, String url, String email, String number, String industry, String city, String state, String description, String password) {
         this.name = name;
         this.url = url;
         this.email = email;
         this.number = number;
+        this.industry = industry;
+        this.city = city;
+        this.state = state;
+        this.description = description;
         this.password = password;
     }
 
@@ -45,6 +49,8 @@ public class Company {
         this.number = number;
         this.password = password;
     }
+
+
 
     public long getId() {
         return id;
@@ -92,5 +98,37 @@ public class Company {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
