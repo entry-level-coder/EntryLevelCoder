@@ -41,35 +41,35 @@ public class SecurityConfiguration {
         return http.build();
     }
 
-//    @Bean
-//
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                /* Login configuration */
-//                .formLogin()
-//                .loginPage("/login")
-//                .defaultSuccessUrl("/posts") // user's home page, it can be any URL
-//                .permitAll() // Anyone can go to the login page
-//                /* Logout configuration */
-//                .and()
-//                .logout()
-//                .logoutSuccessUrl("/") // append a query string value
-//                /* Pages that can be viewed without having to log in */
-//                /* Pages that require authentication */
-//                .and()
-//                .authorizeHttpRequests()
-//                .requestMatchers(
-//                        "/posts/create", // only authenticated users can create ads
-//                        "/posts/{id}/edit" // only authenticated users can edit ads
-//                )
-//                .authenticated()
-//                .and()
-//                .authorizeHttpRequests()
-//                .requestMatchers("/", "/posts", "/posts/{id}", "/users/sign-up") // anyone can see home, the ads pages, and sign up
-//                .permitAll()
-//        ;
-//        return http.build();
-//    }
+    @Bean
+
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                /* Login configuration */
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/posts") // user's home page, it can be any URL
+                .permitAll() // Anyone can go to the login page
+                /* Logout configuration */
+                .and()
+                .logout()
+                .logoutSuccessUrl("/") // append a query string value
+                /* Pages that can be viewed without having to log in */
+                /* Pages that require authentication */
+                .and()
+                .authorizeHttpRequests()
+                .requestMatchers(
+                        "/posts/create", // only authenticated users can create ads
+                        "/posts/{id}/edit" // only authenticated users can edit ads
+                )
+                .authenticated()
+                .and()
+                .authorizeHttpRequests()
+                .requestMatchers("/", "/posts", "/posts/{id}", "/users/sign-up", "/login") // anyone can see home, the ads pages, and sign up
+                .permitAll()
+        ;
+        return http.build();
+    }
 
 
 }

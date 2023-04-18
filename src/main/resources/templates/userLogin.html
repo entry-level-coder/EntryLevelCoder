@@ -17,7 +17,7 @@
               <h4 class="mb-0">User Login</h4>
             </div>
             <div class="card-body">
-              <form>
+              <form th:action="@{/login}" th:method="get">
                 <div class="form-group mb-4">
                   <label for="email" class="form-label">Email address</label>
                   <input  type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email">
