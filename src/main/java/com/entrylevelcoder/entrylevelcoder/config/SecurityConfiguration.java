@@ -41,18 +41,36 @@ public class SecurityConfiguration {
 //        return http.build();
 //    }
 
+
+
+
+
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                /* Login configuration */
+                /* User Login configuration */
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/company/login")
+                .defaultSuccessUrl("/company/dashboard") // company's home page, it can be any URL
+                .permitAll()
+
+                // Anyone can go to the login page
+
+                /* Company Login configuration */
+                .and()
+                .formLogin()
+                .loginPage("/users/login")
                 .defaultSuccessUrl("/posts") // user's home page, it can be any URL
-                .permitAll() // Anyone can go to the login page
+                .permitAll()
+                 // Anyone can go to the login page
+
                 /* Logout configuration */
                 .and()
                 .logout()
                 .logoutSuccessUrl("/") // append a query string value
+
                 /* Pages that can be viewed without having to log in */
                 /* Pages that require authentication */
                 .and()
@@ -62,15 +80,50 @@ public class SecurityConfiguration {
                         "/posts/{id}/edit", "/user/profile" // only authenticated users can edit ads
                 )
                 .authenticated()
+
+                /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/posts", "/posts/{id}", "/users/sign-up", "/login","/css/**",
-                        "/js/**", "/images/**", "/users/login", "company/login", "/aboutus", "/contactus", "/templates/partials/navbar", "/company/signup"
-                        ) // anyone can see home, the ads pages, and sign up
-                .permitAll()
-        ;
+                .requestMatchers(
+                        "/", "/posts", "/posts/{id}", "/users/sign-up", "/login","/css/**",
+                        "/js/**", "/images/**", "/users/login", "/company/login", "/aboutus", "/contactus", "/templates/partials/navbar", "/company/signup"
+                ) // anyone can see home, the ads pages, and sign up
+                .permitAll();
+
         return http.build();
     }
+
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http
+//                /* Login configuration */
+//                .formLogin()
+////                .loginPage("/login")
+//                .defaultSuccessUrl("/posts") // user's home page, it can be any URL
+//                .permitAll() // Anyone can go to the login page
+//                /* Logout configuration */
+//                .and()
+//                .logout()
+//                .logoutSuccessUrl("/") // append a query string value
+//                /* Pages that can be viewed without having to log in */
+//                /* Pages that require authentication */
+//                .and()
+//                .authorizeHttpRequests()
+//                .requestMatchers(
+//                        "/posts/create", // only authenticated users can create ads
+//                        "/posts/{id}/update", "/user/profile", "/users/{id}/delete", "/user/user/profile" // only authenticated users can edit ads
+//
+//                )
+//                .authenticated()
+//                .and()
+//                .authorizeHttpRequests()
+//                .requestMatchers("/", "/posts", "/posts/{id}", "/users/sign-up", "/login","/css/**",
+//                        "/js/**", "/images/**", "/users/login", "/company/login", "/aboutus", "/contactus", "/templates/partials/navbar", "/company/signup"
+//                        ) // anyone can see home, the ads pages, and sign up
+//                .permitAll()
+//        ;
+//        return http.build();
+//    }
 
 
 }

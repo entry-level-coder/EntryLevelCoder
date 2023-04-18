@@ -36,11 +36,11 @@ public class CompanyController {
         return "redirect:/company/login";
     }
 
-    @GetMapping("/company/login")
-    public String companyLogin(Model model) {
-        model.getAttribute("company");
-        return "companyLogin";
-    }
+//    @GetMapping("/company/login")
+//    public String companyLogin(Model model) {
+//        model.getAttribute("company");
+//        return "companyLogin";
+//    }
 
     @GetMapping("/company/{id}/profile")
     public String companyProfile(@PathVariable long id, Model model) {

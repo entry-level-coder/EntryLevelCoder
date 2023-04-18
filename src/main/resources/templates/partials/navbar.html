@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>navbar partial</title>
@@ -31,14 +31,16 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/contactus}">Contact Us</a>
                 </li>
-                <li class="nav-item"  >
-                    <a class="nav-link" th:href="@{users/login}">Login</a>
+                <li class="nav-item"  sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link" th:href="@{user/profile}" >Profile</a>
                 </li>
-                <li class="nav-item" >
-                    <a class="nav-link" th:href="@{users/logout}">Logout</a>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:href="@{/logout}" th:method="post">
+                    <a class="nav-link" >Logout</a>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -70,14 +72,17 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/contactus}">Contact Us</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
                     <a class="nav-link" th:href="@{users/login}">Login</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{users/profile}">Profile</a>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{user/profile}">Profile</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{users/logout}">Logout</a>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:href="@{/logout}" th:method="post">
+                        <button class="nav-link" >Logout</button>
+                    </form>
+
                 </li>
             </ul>
         </div>

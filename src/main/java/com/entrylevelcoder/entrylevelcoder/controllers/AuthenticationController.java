@@ -13,21 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AuthenticationController {
 
-@GetMapping("/login")
-public String returnLoginPage(){
-    return "userProfile";
+
+
+@GetMapping("/users/login")
+public String returnUserLoginPage(){
+    System.out.println("inside returnLoginPage method");
+    return "userLogin";
 }
 
-    @PostMapping("/login")
-    public String loginUser(HttpServletRequest request, Model model) {
+@GetMapping("/company/login")
+public String returnCompanyLoginPage(){
+    return "companyLogin";
+}
 
-        // Check if user is already logged in
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
-            // Redirect to user profile view
-            return "redirect:/user/profile";
-        }
 
-        return null;
-    }
 }
