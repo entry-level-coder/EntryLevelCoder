@@ -129,6 +129,10 @@ async function getData() {
 
         console.log(jobsData);
 
+        // Hide the loading page and show the job cards container
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('job-card-container').style.display = 'block';
+
     } catch (error) {
         console.error('Error:', error);
     }

@@ -113,6 +113,10 @@ async function fetchData() {
 // Update featured jobs
         updateFeaturedJobs(data);
 
+        // Hide the loading page and show the job cards container
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('featured-jobs-container').style.display = 'block';
+
 
 
     } catch (error) {
