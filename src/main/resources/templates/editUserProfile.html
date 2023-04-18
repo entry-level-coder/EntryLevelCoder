@@ -15,35 +15,22 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Edit Profile Information</h3>
-          <form>
+          <form th:action="@{users/update}" th:object="${user}">
             <div class="mb-3">
-              <label for="name" class="form-label">Name:</label>
-              <input type="text" class="form-control" id="name" name="name" value="Jane Doe" required>
+              <label for="firstName" class="form-label">First Name:</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}" required>
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Last Name:</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}" required>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" name="email" value="janedoe@example.com" required>
+              <input type="email" class="form-control" id="email" name="email" th:field="*{username}" required>
             </div>
-            <div class="mb-3">
-              <label for="location" class="form-label">Location:</label>
-              <input type="text" class="form-control" id="location" name="location" value="Los Angeles, CA" required>
-            </div>
-            <div class="mb-3">
-              <label for="preferredJobTitles" class="form-label">Preferred Job Titles:</label>
-              <input type="text" class="form-control" id="preferredJobTitles" name="preferredJobTitles" value="Junior Developer, Web Developer" required>
-            </div>
-            <div class="mb-3">
-              <label for="preferredJobLocations" class="form-label">Preferred Job Locations:</label>
-              <input type="text" class="form-control" id="preferredJobLocations" name="preferredJobLocations" value="Remote, Los Angeles, CA" required>
-            </div>
-            <div class="mb-3">
-              <label for="summary" class="form-label">Summary:</label>
-              <textarea class="form-control" id="summary" name="summary" rows="5" required>Passionate entry-level software developer with experience in web development using HTML, CSS, and JavaScript. Eager to learn and contribute to a growing team.</textarea>
-            </div>
-            <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-success">Submit Edit</button>
-              <button type="button" class="btn btn-primary">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
+            <div class="d-flex justify-content-evenly">
+              <button type="submit" class="btn edit-user-profile-btn">Submit Edit</button>
+              <button type="button" class="btn btn-danger">Delete Account</button>
             </div>
           </form>
         </div>
