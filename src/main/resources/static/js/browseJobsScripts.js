@@ -2,6 +2,7 @@ const jobKey = keys.adzuna;
 
 let jobsData;
 let searchedJobs;
+
 function createJobCard(job) {
     const card = document.createElement('div');
     card.className = 'card';
@@ -39,8 +40,8 @@ function createJobCard(job) {
 
     const cardSalary = document.createElement('p');
     cardSalary.className = 'cardSalary';
-    const formattedMinSalary = job.salary_min.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    const formattedMaxSalary = job.salary_max.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    const formattedMinSalary = job.salary_min.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+    const formattedMaxSalary = job.salary_max.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
     cardSalary.innerText = `Salary Range: ${formattedMinSalary} - ${formattedMaxSalary}`;
 
 
@@ -174,30 +175,36 @@ function searchJobs() {
     updateJobCards(filteredJobs);
 }
 
-// function filterJobs(filterId) {
-//     let filteredJobs;
-//     switch (filterId) {
-//         case 'high-low':
-//             filteredJobs = jobsData.slice().sort((a, b) => b.salary_max - a.salary_max);
-//             break;
-//         case 'low-high':
-//             filteredJobs = jobsData.slice().sort((a, b) => a.salary_max - b.salary_max);
-//             break;
-//         case 'new-old':
-//             filteredJobs = jobsData.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
-//             break;
-//         case 'old-new':
-//             filteredJobs = jobsData.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
-//             break;
-//         case 'location':
-//             const searchTerm = document.getElementById('search-term').value.toLowerCase().trim();
-//             filteredJobs = jobsData.filter(job => job.location.display_name.toLowerCase().includes(searchTerm))
-//             break;
-//         default:
-//             filteredJobs = jobsData;
-//     }
-//     updateJobCards(filteredJobs);
-// }
+function filterJobs(filterId) {
+    let filteredJobs;
+    switch (filterId) {
+        case 'high-low':
+            filteredJobs = jobsData.slice().sort((a, b) => b.salary_max - a.salary_max);
+            break;
+        case 'low-high':
+            filteredJobs = jobsData.slice().sort((a, b) => a.salary_max - b.salary_max);
+            break;
+        case 'new-old':
+            filteredJobs = jobsData.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
+            break;
+        case 'old-new':
+            filteredJobs = jobsData.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
+            break;
+        case 'full-time':
+            filteredJobs = jobsData.filter(job => job.contract_time === "full_time");
+            break;
+        case 'part-time':
+            filteredJobs = jobsData.filter(job => job.contract_time === "part_time");
+            break;
+        case 'contract':
+            filteredJobs = jobsData.filter(job => job.contract_time === "contract" +
+                "}");
+            break;
+        default:
+            filteredJobs = jobsData;
+    }
+    updateJobCards(filteredJobs);
+}
 
 window.onload = function () {
     getData();
@@ -220,186 +227,187 @@ window.onload = function () {
         }
     });
 
-    document.querySelector(`#high-low`).addEventListener(`click`, function (e){
-        e.preventDefault();
-        getDataHighToLow();
-    })
-    document.querySelector(`#low-high`).addEventListener(`click`, function (e){
-        e.preventDefault();
-        getDataLowToHigh();
-    })
-    document.querySelector(`#new-old`).addEventListener(`click`, function (e){
-        e.preventDefault();
-        getDataNewToOld();
-    })
-    document.querySelector(`#old-new`).addEventListener(`click`, function (e){
-        e.preventDefault();
-        getDataOldToNew();
-    })
-    document.querySelector(`#full-time`).addEventListener(`click`, function (e){
-        e.preventDefault();
-        getDataFullTime();
-    })
-    document.querySelector(`#part-time`).addEventListener(`click`, function (e){
-        e.preventDefault();
-        getDataPartTime();
-    })
-    document.querySelector(`#contract`).addEventListener(`click`, function (e){
-        e.preventDefault();
-        getDataContract();
-    })
+    // document.querySelector(`#high-low`).addEventListener(`click`, function (e) {
+    //     e.preventDefault();
+    //     getDataHighToLow();
+    // })
+    // document.querySelector(`#low-high`).addEventListener(`click`, function (e) {
+    //     e.preventDefault();
+    //     getDataLowToHigh();
+    // })
+    // document.querySelector(`#new-old`).addEventListener(`click`, function (e) {
+    //     e.preventDefault();
+    //     getDataNewToOld();
+    // })
+    // document.querySelector(`#old-new`).addEventListener(`click`, function (e) {
+    //     e.preventDefault();
+    //     getDataOldToNew();
+    // })
+    // document.querySelector(`#full-time`).addEventListener(`click`, function (e) {
+    //     e.preventDefault();
+    //     getDataFullTime();
+    // })
+    // document.querySelector(`#part-time`).addEventListener(`click`, function (e) {
+    //     e.preventDefault();
+    //     getDataPartTime();
+    // })
+    // document.querySelector(`#contract`).addEventListener(`click`, function (e) {
+    //     e.preventDefault();
+    //     getDataContract();
+    // })
+    //
+    // function getDataHighToLow() {
+    //     const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
+    //     console.log(typeof storedData);
+    //     let jobsHighToLow = storedData.sort((a, b) => b.salary_max - a.salary_max);
+    //     console.log(jobsHighToLow);
+    //
+    //     const jobCardContainer = document.getElementById('job-card-container');
+    //     jobCardContainer.innerHTML = ''; // clear previous contents
+    //
+    //     // Create a job card for each job
+    //     jobsHighToLow.forEach(job => {
+    //         const card = createJobCard(job);
+    //         jobCardContainer.appendChild(card);
+    //     });
+    // }
+    //
+    // function getDataLowToHigh() {
+    //     const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
+    //     console.log(typeof storedData);
+    //     let jobsLowToHigh = storedData.sort((a, b) => a.salary_max - b.salary_max);
+    //     console.log(jobsLowToHigh);
+    //
+    //     const jobCardContainer = document.getElementById('job-card-container');
+    //     jobCardContainer.innerHTML = ''; // clear previous contents
+    //
+    //     // Create a job card for each job
+    //     jobsLowToHigh.forEach(job => {
+    //         const card = createJobCard(job);
+    //         jobCardContainer.appendChild(card);
+    //     });
+    // }
+    //
+    // function getDataNewToOld() {
+    //     const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
+    //     console.log(typeof storedData);
+    //     let jobsNewToOld = storedData.sort((a, b) => b.created - a.created);
+    //     console.log(jobsNewToOld);
+    //
+    //     const jobCardContainer = document.getElementById('job-card-container');
+    //     jobCardContainer.innerHTML = ''; // clear previous contents
+    //
+    //     // Create a job card for each job
+    //     jobsNewToOld.forEach(job => {
+    //         const card = createJobCard(job);
+    //         jobCardContainer.appendChild(card);
+    //     });
+    // }
+    //
+    // function getDataOldToNew() {
+    //     const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
+    //     console.log(typeof storedData);
+    //     // let jobsOldToNew = storedData.sort((a, b) => a.created - b.created);
+    //     let jobsOldToNew = storedData.slice().reverse();
+    //     console.log(jobsOldToNew);
+    //
+    //     const jobCardContainer = document.getElementById('job-card-container');
+    //     jobCardContainer.innerHTML = ''; // clear previous contents
+    //
+    //     // Create a job card for each job
+    //     jobsOldToNew.forEach(job => {
+    //         const card = createJobCard(job);
+    //         jobCardContainer.appendChild(card);
+    //     });
+    // }
+    //
+    // function getDataFullTime() {
+    //     const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
+    //     let jobsFullTime = checkFullTime(storedData);
+    //     console.log(jobsFullTime);
+    //
+    //     const jobCardContainer = document.getElementById('job-card-container');
+    //     jobCardContainer.innerHTML = ''; // clear previous contents
+    //
+    //     // Create a job card for each job
+    //     jobsFullTime.forEach(job => {
+    //         const card = createJobCard(job);
+    //         jobCardContainer.appendChild(card);
+    //     });
+    // }
+    //
+    // function checkFullTime(array) {
+    //     let fullTimeJobs = [];
+    //     for (i = 0; i < array.length; i += 1) {
+    //         if (array[i].contract_time === undefined) {
+    //             i += 1;
+    //         } else if (array[i].contract_time === "full_time") {
+    //             fullTimeJobs.push(array[i]);
+    //         }
+    //     }
+    //     return fullTimeJobs;
+    // }
+    //
+    //
+    // function getDataPartTime() {
+    //     const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
+    //     let jobsPartTime = checkPartTime(storedData);
+    //     console.log(jobsPartTime);
+    //
+    //     const jobCardContainer = document.getElementById('job-card-container');
+    //     jobCardContainer.innerHTML = ''; // clear previous contents
+    //
+    //     // Create a job card for each job
+    //     jobsPartTime.forEach(job => {
+    //         const card = createJobCard(job);
+    //         jobCardContainer.appendChild(card);
+    //     });
+    // }
+    //
+    // function checkPartTime(array) {
+    //     let partTimeJobs = [];
+    //     for (i = 0; i < array.length; i += 1) {
+    //         if (array[i].contract_time === undefined) {
+    //             i += 1;
+    //         } else if (array[i].contract_time === "part_time") {
+    //             partTimeJobs.push(array[i]);
+    //         }
+    //     }
+    //     return partTimeJobs;
+    // }
+    //
+    // function getDataContract() {
+    //     const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
+    //     let contractJobs = checkContract(storedData);
+    //     console.log(contractJobs);
+    //
+    //     const jobCardContainer = document.getElementById('job-card-container');
+    //     jobCardContainer.innerHTML = ''; // clear previous contents
+    //
+    //     // Create a job card for each job
+    //     contractJobs.forEach(job => {
+    //         const card = createJobCard(job);
+    //         jobCardContainer.appendChild(card);
+    //     });
+    // }
+    //
+    // function checkContract(array) {
+    //     let contractJobs = [];
+    //     for (i = 0; i < array.length; i += 1) {
+    //         if (array[i].contract_time === undefined) {
+    //             i += 1;
+    //         } else if (array[i].contract_time === "contract") {
+    //             contractJobs.push(array[i]);
+    //         }
+    //     }
+    //     return contractJobs;
+    // }
 
-    function getDataHighToLow() {
-        const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
-        console.log(typeof storedData);
-        let jobsHighToLow = storedData.sort((a, b) => b.salary_max - a.salary_max);
-        console.log(jobsHighToLow);
-
-        const jobCardContainer = document.getElementById('job-card-container');
-        jobCardContainer.innerHTML = ''; // clear previous contents
-
-        // Create a job card for each job
-        jobsHighToLow.forEach(job => {
-            const card = createJobCard(job);
-            jobCardContainer.appendChild(card);
-        });
-    }
-
-    function getDataLowToHigh() {
-        const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
-        console.log(typeof storedData);
-        let jobsLowToHigh = storedData.sort((a, b) => a.salary_max - b.salary_max);
-        console.log(jobsLowToHigh);
-
-        const jobCardContainer = document.getElementById('job-card-container');
-        jobCardContainer.innerHTML = ''; // clear previous contents
-
-        // Create a job card for each job
-        jobsLowToHigh.forEach(job => {
-            const card = createJobCard(job);
-            jobCardContainer.appendChild(card);
-        });
-    }
-
-    function getDataNewToOld() {
-        const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
-        console.log(typeof storedData);
-        let jobsNewToOld = storedData.sort((a, b) => b.created - a.created);
-        console.log(jobsNewToOld);
-
-        const jobCardContainer = document.getElementById('job-card-container');
-        jobCardContainer.innerHTML = ''; // clear previous contents
-
-        // Create a job card for each job
-        jobsNewToOld.forEach(job => {
-            const card = createJobCard(job);
-            jobCardContainer.appendChild(card);
-        });
-    }
-
-    function getDataOldToNew() {
-        const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
-        console.log(typeof storedData);
-        // let jobsOldToNew = storedData.sort((a, b) => a.created - b.created);
-        let jobsOldToNew = storedData.slice().reverse();
-        console.log(jobsOldToNew);
-
-        const jobCardContainer = document.getElementById('job-card-container');
-        jobCardContainer.innerHTML = ''; // clear previous contents
-
-        // Create a job card for each job
-        jobsOldToNew.forEach(job => {
-            const card = createJobCard(job);
-            jobCardContainer.appendChild(card);
-        });
-    }
-
-    function getDataFullTime() {
-        const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
-        let jobsFullTime = checkFullTime(storedData);
-        console.log(jobsFullTime);
-
-        const jobCardContainer = document.getElementById('job-card-container');
-        jobCardContainer.innerHTML = ''; // clear previous contents
-
-        // Create a job card for each job
-        jobsFullTime.forEach(job => {
-            const card = createJobCard(job);
-            jobCardContainer.appendChild(card);
-        });
-    }
-
-    function checkFullTime(array) {
-        let fullTimeJobs = [];
-        for(i = 0; i < array.length; i += 1) {
-            if(array[i].contract_time === undefined) {
-                i += 1;
-            } else if (array[i].contract_time === "full_time"){
-                fullTimeJobs.push(array[i]);
-            }
-        }
-        return fullTimeJobs;
-    }
-
-
-    function getDataPartTime() {
-        const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
-        let jobsPartTime = checkPartTime(storedData);
-        console.log(jobsPartTime);
-
-        const jobCardContainer = document.getElementById('job-card-container');
-        jobCardContainer.innerHTML = ''; // clear previous contents
-
-        // Create a job card for each job
-        jobsPartTime.forEach(job => {
-            const card = createJobCard(job);
-            jobCardContainer.appendChild(card);
-        });
-    }
-
-    function checkPartTime(array) {
-        let partTimeJobs = [];
-        for(i = 0; i < array.length; i += 1) {
-            if(array[i].contract_time === undefined) {
-                i += 1;
-            } else if (array[i].contract_time === "part_time"){
-                partTimeJobs.push(array[i]);
-            }
-        }
-        return partTimeJobs;
-    }
-
-    function getDataContract() {
-        const storedData = JSON.parse(localStorage.getItem('browseJobsData'));
-        let contractJobs = checkContract(storedData);
-        console.log(contractJobs);
-
-        const jobCardContainer = document.getElementById('job-card-container');
-        jobCardContainer.innerHTML = ''; // clear previous contents
-
-        // Create a job card for each job
-        contractJobs.forEach(job => {
-            const card = createJobCard(job);
-            jobCardContainer.appendChild(card);
-        });
-    }
-
-    function checkContract(array) {
-        let contractJobs = [];
-        for(i = 0; i < array.length; i += 1) {
-            if(array[i].contract_time === undefined) {
-                i += 1;
-            } else if (array[i].contract_time === "contract"){
-                contractJobs.push(array[i]);
-            }
-        }
-        return contractJobs;
-    }
-
-    // const filterDropdown = document.querySelector('.dropdown-menu');
-    // filterDropdown.addEventListener('click', (event) => {
-    //     const filterId = event.target.id;
-    //     filterJobs(filterId);
-    // });
+    const filterDropdown = document.querySelector('.dropdown-menu');
+    filterDropdown.addEventListener('click', (event) => {
+        const filterId = event.target.id;
+        filterJobs(filterId);
+    });
 };
+
 
