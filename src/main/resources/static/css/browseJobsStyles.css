@@ -12,6 +12,10 @@
 .featured-jobs-title{
     font-size: 2.5rem;
 }
+.filter-item:hover{
+    cursor: pointer;
+    color: var(--main-green);
+}
 .search-btn{
     background-color: var(--main-green);
     color: var(--white);

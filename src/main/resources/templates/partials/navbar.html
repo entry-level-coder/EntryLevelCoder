@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>navbar partial</title>
@@ -31,13 +31,13 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/contactus}">Contact Us</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item"  >
                     <a class="nav-link" th:href="@{users/login}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{users/profile}">Profile</a>
+                    <a class="nav-link" th:href="@{user/profile}" >Profile</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" >
                     <a class="nav-link" th:href="@{users/logout}">Logout</a>
                 </li>
             </ul>

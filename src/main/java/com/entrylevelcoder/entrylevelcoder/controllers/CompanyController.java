@@ -52,13 +52,14 @@ public class CompanyController {
     @GetMapping("company/{id}/update")
     public String updateCompany(@PathVariable long id, Model model) {
         Company company = companyDao.findById(id);
+        model.addAttribute("company", company);
         return "editCompanyProfile";
     }
 
     @PostMapping("company/update")
     public String updateCompanyPost(@ModelAttribute Company company) {
         companyDao.save(company);
-        return "redirect: editCompanyProfile";
+        return "redirect: /";
     }
 
     @PostMapping("company/{id}/delete")

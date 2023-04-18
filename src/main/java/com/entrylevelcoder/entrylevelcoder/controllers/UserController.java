@@ -24,7 +24,7 @@ public class UserController {
     }
 
     // Allows User To Input Info
-    @GetMapping("/users/sign-up")
+    @GetMapping("/users/signup")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());
         return "/userSignup";
@@ -32,12 +32,12 @@ public class UserController {
 
 
     // Saves User Input To Database
-    @PostMapping("/users/sign-up")
+    @PostMapping("/users/signup")
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:/users/login";
     }
 
     @GetMapping("/users/login")
@@ -46,11 +46,19 @@ public class UserController {
     }
 
 
+    @GetMapping("/users/{id}/update")
+    public String updateUsersGet(@PathVariable long id, Model model) {
+        User user = userDao.findById(id);
+        model.addAttribute("user", user);
+        return "editUserProfile";
+    }
+
+
 
     //Updates User Info
     @PostMapping("/users/{id}/update")
-    public String updateUser(@PathVariable("id") Long id, @ModelAttribute User user) {
-        User updateUser = userDao.findById(id).get();
+    public String updateUser(@PathVariable("id") long id, @ModelAttribute User user) {
+        User updateUser = userDao.findById(id);
         updateUser.setFirstName(user.getFirstName());
         updateUser.setLastName(user.getLastName());
         updateUser.setUsername(user.getUsername());
@@ -58,7 +66,7 @@ public class UserController {
 
         // update the post in database using id
         userDao.save(updateUser);
-        return "redirect:/posts";
+        return "redirect:posts";
 
     }
 
@@ -71,8 +79,11 @@ public class UserController {
     }
 
 
-//    @GetMapping("/user/profile")
-//    public String getToProfileFromLogin(){
-//        return "userProfile";
-//    }
+
+    @GetMapping("/users/{id}/profile")
+    public String getToProfileFromLogin(@PathVariable long id, Model model){
+        User user = userDao.findById(id);
+        model.addAttribute("user", user);
+        return "userProfile";
+    }
 }

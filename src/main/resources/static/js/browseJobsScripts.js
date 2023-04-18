@@ -2,6 +2,7 @@ const jobKey = keys.adzuna;
 
 let jobsData;
 let searchedJobs;
+
 function createJobCard(job) {
     const card = document.createElement('div');
     card.className = 'card';
@@ -39,8 +40,8 @@ function createJobCard(job) {
 
     const cardSalary = document.createElement('p');
     cardSalary.className = 'cardSalary';
-    const formattedMinSalary = job.salary_min.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    const formattedMaxSalary = job.salary_max.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    const formattedMinSalary = job.salary_min.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+    const formattedMaxSalary = job.salary_max.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
     cardSalary.innerText = `Salary Range: ${formattedMinSalary} - ${formattedMaxSalary}`;
 
 
@@ -129,6 +130,10 @@ async function getData() {
 
         console.log(jobsData);
 
+        // Hide the loading page and show the job cards container
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('job-card-container').style.display = 'block';
+
     } catch (error) {
         console.error('Error:', error);
     }
@@ -201,9 +206,14 @@ function filterJobs(filterId) {
         case 'old-new':
             filteredJobs = jobsData.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
             break;
-        case 'location':
-            const searchTerm = document.getElementById('search-term').value.toLowerCase().trim();
-            filteredJobs = jobsData.filter(job => job.location.display_name.toLowerCase().includes(searchTerm))
+        case 'full-time':
+            filteredJobs = jobsData.filter(job => job.contract_time === "full_time");
+            break;
+        case 'part-time':
+            filteredJobs = jobsData.filter(job => job.contract_time === "part_time");
+            break;
+        case 'contract':
+            filteredJobs = jobsData.filter(job => job.contract_time === "contract");
             break;
         case 'full-time':
             filteredJobs = jobsData.filter(job => job.contract_time === 'full_time');
@@ -247,4 +257,5 @@ window.onload = function () {
         filterJobs(filterId);
     });
 };
+
 
