@@ -3,6 +3,7 @@
 <head th:replace="partials/header :: header-browser"></head>
 
 <body>
+
 <section id="jobs" class="jobs">
 <!--    nav bar -->
     <div th:replace="partials/navbar :: navbar-dark"></div>
@@ -47,10 +48,25 @@
                         </div>
                     </form>
                 </div>
+
                 <div id="job-card-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 mb-5">
+
                     <!-- Job Card 1 -->
                     <div class="col">
                         <div class="card mb-4"></div>
+                        <div class="loader" id="loader">
+                            <p class="heading">Loading Job Information</p>
+                            <div class="loading">
+                                <div class="load"></div>
+                                <div class="load"></div>
+                                <div class="load"></div>
+                                <div class="load"></div>
+                                <div class="load"></div>
+                                <div class="load"></div>
+                                <div class="load"></div>
+                                <div class="load"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
