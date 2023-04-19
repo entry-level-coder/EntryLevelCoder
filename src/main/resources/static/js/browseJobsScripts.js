@@ -2,6 +2,7 @@ const jobKey = keys.adzuna;
 
 let jobsData;
 let searchedJobs;
+
 function createJobCard(job) {
     const card = document.createElement('div');
     card.className = 'card';
@@ -39,8 +40,8 @@ function createJobCard(job) {
 
     const cardSalary = document.createElement('p');
     cardSalary.className = 'cardSalary';
-    const formattedMinSalary = job.salary_min.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    const formattedMaxSalary = job.salary_max.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    const formattedMinSalary = job.salary_min.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+    const formattedMaxSalary = job.salary_max.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
     cardSalary.innerText = `Salary Range: ${formattedMinSalary} - ${formattedMaxSalary}`;
 
 
@@ -159,12 +160,28 @@ function searchJobs() {
     }
 
     const filteredJobs = jobsData.filter((job) => {
+
+        // Provide default values for any undefined properties
+        const title = job.title?.toLowerCase() || '';
+        const locationName = job.location?.display_name?.toLowerCase() || '';
+        const area = job.location?.area || [];
+        const country = area[0] || '';
+        const state = area[1] || '';
+        const county = area[2] || '';
+        const city = area[3] || '';
+        const companyName = job.company?.display_name?.toLowerCase() || '';
+        const description = job.description?.toLowerCase() || '';
+
         // Filter by job title, location, or company name
         return (
-            job.title.toLowerCase().includes(searchTerm) ||
-            job.location.display_name.toLowerCase().includes(searchTerm) ||
-            job.company.display_name.toLowerCase().includes(searchTerm) ||
-            job.description.toLowerCase().includes(searchTerm)
+            title.includes(searchTerm) ||
+            locationName.includes(searchTerm) ||
+            country.toLowerCase().includes(searchTerm) ||
+            state.toLowerCase().includes(searchTerm) ||
+            county.toLowerCase().includes(searchTerm) ||
+            city.toLowerCase().includes(searchTerm) ||
+            companyName.includes(searchTerm) ||
+            description.includes(searchTerm)
         );
     });
 
@@ -189,9 +206,23 @@ function filterJobs(filterId) {
         case 'old-new':
             filteredJobs = jobsData.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
             break;
-        case 'location':
-            const searchTerm = document.getElementById('search-term').value.toLowerCase().trim();
-            filteredJobs = jobsData.filter(job => job.location.display_name.toLowerCase().includes(searchTerm))
+        case 'full-time':
+            filteredJobs = jobsData.filter(job => job.contract_time === "full_time");
+            break;
+        case 'part-time':
+            filteredJobs = jobsData.filter(job => job.contract_time === "part_time");
+            break;
+        case 'contract':
+            filteredJobs = jobsData.filter(job => job.contract_time === "contract");
+            break;
+        case 'full-time':
+            filteredJobs = jobsData.filter(job => job.contract_time === 'full_time');
+            break;
+        case 'part-time':
+            filteredJobs = jobsData.filter(job => job.contract_time === 'part_time');
+            break;
+        case 'contract':
+            filteredJobs = jobsData.filter(job => job.contract_time === 'contract');
             break;
         default:
             filteredJobs = jobsData;
@@ -220,10 +251,11 @@ window.onload = function () {
         }
     });
 
-    const filterDropdown = document.querySelector('.dropdown-menu');
-    filterDropdown.addEventListener('click', (event) => {
-        const filterId = event.target.id;
+    const filterSelect = document.querySelector('.form-select select');
+    filterSelect.addEventListener('change', (event) => {
+        const filterId = event.target.value;
         filterJobs(filterId);
     });
 };
+
 
