@@ -81,3 +81,7 @@ public class SecurityConfiguration {
                 .permitAll();
 
 
+        return http.build();
+    }
+
+}
