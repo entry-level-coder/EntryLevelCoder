@@ -59,6 +59,125 @@ button.navbar-toggler:hover{
 
 /*Browse Jobs Section Styles*/
 
+
+/*Search Bar*/
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-form-control {
+    flex: 0.7;
+}
+.search-btn {
+    margin: 0 10px;
+}
+#search-term{
+    border: 2px solid var(--main-green); /* set a solid green border */
+    border-top-width: 2px; /* override the default top border width */
+    border-left-width: 2px; /* override the default left border width */
+    border-radius: 5px;
+}
+
+div.form-select.custom-select-style {
+    width: 100%;
+}
+
+/*Filter Button Styles*/
+
+.custom-select-style select {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: inherit;
+}
+
+div.form-select{
+    width: auto;
+}
+
+.form-control {
+    display: inline-block;
+    min-width: 100%; /* Set a default minimum width */
+}
+
+.form-control option {
+    font-size: inherit;
+}
+
+/* Use the :focus selector to override the min-width property when the select element is focused */
+.form-control:focus {
+    min-width: unset;
+}
+
+/*Loading Page Message Styles*/
+.loader {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*height: 100%;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.heading {
+    color: black;
+    letter-spacing: 0.2em;
+    margin-bottom: 1em;
+}
+
+.loading {
+    display: flex;
+    width: 15em;
+    align-items: center;
+    justify-content: center;
+}
+
+.load {
+    width: 23px;
+    height: 3px;
+    background-color: var(--main-green);
+    animation: 1s move_5011 infinite;
+    border-radius: 5px;
+    margin: 0.1em;
+}
+
+.load:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.load:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.load:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes move_5011 {
+    0% {
+        width: 0.2em;
+    }
+
+    25% {
+        width: 0.7em;
+    }
+
+    50% {
+        width: 1.5em;
+    }
+
+    100% {
+        width: 0.2em;
+    }
+}
+
+
+/*Job Cards*/
 .card {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
@@ -215,72 +334,22 @@ i{
 }
 
 
+/*Media Queries Styles*/
 
-/*Loading Page Message Styles*/
-.loader {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    /*height: 100%;*/
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.heading {
-    color: black;
-    letter-spacing: 0.2em;
-    margin-bottom: 1em;
-}
-
-.loading {
-    display: flex;
-    width: 15em;
-    align-items: center;
-    justify-content: center;
-}
-
-.load {
-    width: 23px;
-    height: 3px;
-    background-color: var(--main-green);
-    animation: 1s move_5011 infinite;
-    border-radius: 5px;
-    margin: 0.1em;
-}
-
-.load:nth-child(1) {
-    animation-delay: 0.2s;
-}
-
-.load:nth-child(2) {
-    animation-delay: 0.4s;
-}
-
-.load:nth-child(3) {
-    animation-delay: 0.6s;
-}
-
-@keyframes move_5011 {
-    0% {
-        width: 0.2em;
-    }
-
-    25% {
-        width: 0.7em;
-    }
-
-    50% {
-        width: 1.5em;
-    }
-
-    100% {
-        width: 0.2em;
+@media only screen and (min-width: 250px) and (max-width: 500px) {
+    /* CSS rules to be applied when the screen width is between 768px and 1024px */
+    div.form-select.custom-select-style {
+        width: 100%;
+        margin-top: 0.5rem;
     }
 }
 
+@media only screen and (min-width: 250px) and (max-width: 767px) {
+    /* CSS rules to be applied when the screen width is between 768px and 1024px */
+   .form-select{
+       padding: 0;
+   }
+}
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     /* CSS rules to be applied when the screen width is between 768px and 1024px */
@@ -291,7 +360,6 @@ i{
         font-size: 1rem;
     }
 }
-
 
 @media only screen and (min-width: 1400px) and (max-width: 2000px) {
     /* CSS rules to be applied when the screen width is between 768px and 1024px */
