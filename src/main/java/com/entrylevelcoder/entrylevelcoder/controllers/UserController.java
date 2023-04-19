@@ -34,16 +34,17 @@ public class UserController {
     // Saves User Input To Database
     @PostMapping("/users/signup")
     public String saveUser(@ModelAttribute User user){
+        System.out.println("inside saveuser");
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/users/login";
     }
-
-    @GetMapping("/users/login")
-    public String usersLogin(){
-        return "/userLogin";
-    }
+//
+//    @GetMapping("/users/login")
+//    public String usersLogin(){
+//        return "/userLogin";
+//    }
 
 
     @GetMapping("/users/{id}/update")
