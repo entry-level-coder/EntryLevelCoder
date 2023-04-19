@@ -195,37 +195,28 @@ function filterJobs(filterId) {
     let filteredJobs;
     switch (filterId) {
         case 'high-low':
-            filteredJobs = jobsData.slice().sort((a, b) => b.salary_max - a.salary_max);
+            filteredJobs = searchedJobs.slice().sort((a, b) => b.salary_max - a.salary_max);
             break;
         case 'low-high':
-            filteredJobs = jobsData.slice().sort((a, b) => a.salary_max - b.salary_max);
+            filteredJobs = searchedJobs.slice().sort((a, b) => a.salary_max - b.salary_max);
             break;
         case 'new-old':
-            filteredJobs = jobsData.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
+            filteredJobs = searchedJobs.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
             break;
         case 'old-new':
-            filteredJobs = jobsData.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
+            filteredJobs = searchedJobs.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
             break;
         case 'full-time':
-            filteredJobs = jobsData.filter(job => job.contract_time === "full_time");
+            filteredJobs = searchedJobs.filter(job => job.contract_time === "full_time");
             break;
         case 'part-time':
-            filteredJobs = jobsData.filter(job => job.contract_time === "part_time");
+            filteredJobs = searchedJobs.filter(job => job.contract_time === "part_time");
             break;
         case 'contract':
-            filteredJobs = jobsData.filter(job => job.contract_time === "contract");
-            break;
-        case 'full-time':
-            filteredJobs = jobsData.filter(job => job.contract_time === 'full_time');
-            break;
-        case 'part-time':
-            filteredJobs = jobsData.filter(job => job.contract_time === 'part_time');
-            break;
-        case 'contract':
-            filteredJobs = jobsData.filter(job => job.contract_time === 'contract');
+            filteredJobs = searchedJobs.filter(job => job.contract_time === "contract");
             break;
         default:
-            filteredJobs = jobsData;
+            filteredJobs = searchedJobs;
     }
     updateJobCards(filteredJobs);
 }
