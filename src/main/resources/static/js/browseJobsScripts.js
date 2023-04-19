@@ -193,32 +193,32 @@ function searchJobs() {
 
 function filterJobs(filterId) {
     let filteredJobs;
-    switch (filterId) {
-        case 'high-low':
-            filteredJobs = searchedJobs.slice().sort((a, b) => b.salary_max - a.salary_max);
-            break;
-        case 'low-high':
-            filteredJobs = searchedJobs.slice().sort((a, b) => a.salary_max - b.salary_max);
-            break;
-        case 'new-old':
-            filteredJobs = searchedJobs.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
-            break;
-        case 'old-new':
-            filteredJobs = searchedJobs.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
-            break;
-        case 'full-time':
-            filteredJobs = searchedJobs.filter(job => job.contract_time === "full_time");
-            break;
-        case 'part-time':
-            filteredJobs = searchedJobs.filter(job => job.contract_time === "part_time");
-            break;
-        case 'contract':
-            filteredJobs = searchedJobs.filter(job => job.contract_time === "contract");
-            break;
-        default:
-            filteredJobs = searchedJobs;
-    }
-    updateJobCards(filteredJobs);
+        switch (filterId) {
+            case 'high-low':
+                filteredJobs = searchedJobs.slice().sort((a, b) => b.salary_max - a.salary_max);
+                break;
+            case 'low-high':
+                filteredJobs = searchedJobs.slice().sort((a, b) => a.salary_max - b.salary_max);
+                break;
+            case 'new-old':
+                filteredJobs = searchedJobs.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
+                break;
+            case 'old-new':
+                filteredJobs = searchedJobs.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
+                break;
+            case 'full-time':
+                filteredJobs = searchedJobs.filter(job => job.contract_time === "full_time");
+                break;
+            case 'part-time':
+                filteredJobs = searchedJobs.filter(job => job.contract_time === "part_time");
+                break;
+            case 'contract':
+                filteredJobs = searchedJobs.filter(job => job.contract_time === "contract");
+                break;
+            default:
+                filteredJobs = searchedJobs;
+        }
+        updateJobCards(filteredJobs);
 }
 
 window.onload = function () {
@@ -238,6 +238,7 @@ window.onload = function () {
     searchTermInput.addEventListener('input', (event) => {
         if (!event.target.value.trim()) {
             // If the search term is empty, show all jobs
+            searchedJobs = jobsData;
             updateJobCards(jobsData);
         }
     });
