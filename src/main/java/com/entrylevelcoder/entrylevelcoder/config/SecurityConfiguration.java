@@ -43,24 +43,13 @@ public class SecurityConfiguration {
 //    }
 
 
-
-
-
-
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                /* Company Login configuration */
 
-//                .formLogin()
-//                .loginPage("/company/login")
-//                .defaultSuccessUrl("/company/dashboard") // company's home page, it can be any URL
-//                .permitAll()
 
 
                 /* User Login configuration */
-//                .and()
                 .formLogin()
                 .loginPage("/users/login")
                 .defaultSuccessUrl("/posts") // user's home page, it can be any URL
@@ -91,3 +80,8 @@ public class SecurityConfiguration {
                 ) // anyone can see home, the ads pages, and sign up
                 .permitAll();
 
+
+        return http.build();
+    }
+
+}
