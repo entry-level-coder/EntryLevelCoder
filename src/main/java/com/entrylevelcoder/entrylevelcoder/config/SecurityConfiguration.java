@@ -32,6 +32,7 @@ public class SecurityConfiguration {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+
 //    @Bean
 //    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 //        http.authorizeHttpRequests()
@@ -79,7 +80,4 @@ public class SecurityConfiguration {
                 ) // anyone can see home, the ads pages, and sign up
                 .permitAll();
 
-        return http.build();
-    }
 
-}
