@@ -20,7 +20,7 @@ public class Post {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "company_id")
-    private Company company;
+    private User company;
 
     @Column(nullable = false)
     private String title;
@@ -51,7 +51,7 @@ public class Post {
     public Post() {
     }
 
-    public Post(Company company, String title, String description, Integer minSalary, Integer maxSalary, String location, Modality modality, String postUrl) {
+    public Post(User company, String title, String description, Integer minSalary, Integer maxSalary, String location, Modality modality, String postUrl) {
         this.company = company;
         this.title = title;
         this.description = description;
@@ -70,11 +70,11 @@ public class Post {
         this.id = id;
     }
 
-    public Company getCompany() {
+    public User getCompany() {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(User company) {
         this.company = company;
     }
 
