@@ -54,6 +54,14 @@ public class SecurityConfiguration {
                 .loginPage("/users/login")
                 .defaultSuccessUrl("/posts") // user's home page, it can be any URL
                 .permitAll()
+
+
+                //Company login
+                .and()
+                .formLogin()
+                .loginPage("/company/login")
+                .defaultSuccessUrl("/posts")
+                .permitAll()
                  // Anyone can go to the login page
 
                 /* Logout configuration */
@@ -67,7 +75,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/posts/create", // only authenticated users can create ads
-                        "/posts/{id}/edit", "/user/profile" // only authenticated users can edit ads
+                        "/posts/{id}/update", "/users/profile" // only authenticated users can edit ads
                 )
                 .authenticated()
 
@@ -75,13 +83,14 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                         "/", "/posts", "/posts/{id}", "/users/signup", "/login","/css/**",
-                        "/js/**", "/images/**", "/users/login", "/company/login", "/aboutus", "/contactus", "/templates/partials/navbar", "/company/signup"
-                ) // anyone can see home, the ads pages, and sign up
+                         "/", "/posts", "/users/signup","/company/signup","/css/**",
+                        "/js/**", "/images/**", "/users/login", "/company/login", "/aboutus", "/contactus", "/templates/partials/navbar"
+                ) // anyone can see home, the post pages, and sign ups
                 .permitAll();
 
 
         return http.build();
     }
+
 
 }
