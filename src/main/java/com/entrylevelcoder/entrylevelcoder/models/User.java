@@ -25,6 +25,8 @@ public class User {
     private String password;
 
     //COMPANY PORTION OF USER
+    @Column(name = "is_company")
+    private boolean isCompany;
 
     @Column(name = "company_name")
     private String companyName;
@@ -61,6 +63,20 @@ public class User {
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+    }
+
+    public User(String username, String password, boolean isCompany, String companyName, String number, String industry, String city, String state, String description, String url, List<Post> posts) {
+        this.username = username;
+        this.password = password;
+        this.isCompany = isCompany;
+        this.companyName = companyName;
+        this.number = number;
+        this.industry = industry;
+        this.city = city;
+        this.state = state;
+        this.description = description;
+        this.url = url;
+        this.posts = posts;
     }
 
     //COMPANY CONSTRUCTOR W/O JOB POST
@@ -202,5 +218,13 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public boolean isCompany() {
+        return isCompany;
+    }
+
+    public void setCompany(boolean company) {
+        isCompany = company;
     }
 }
