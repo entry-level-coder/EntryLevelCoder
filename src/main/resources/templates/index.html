@@ -16,7 +16,7 @@
       <div class="container">
         <h1 class="jumbotron-title">Find Your Dream Entry-Level Software Developer Job</h1>
         <p class="jumbotron-lead">Connecting employers and talented entry-level software developers across the United States.</p>
-        <a th:href="@{/users/sign-up}" class="btn hero-btn"> Sign up today!</a>
+        <a th:href="@{/users/signup}" class="btn hero-btn"> Sign up today!</a>
       </div>
     </div>
   </section>
@@ -104,7 +104,7 @@
             </div>
             <div class="col-md-8">
               <blockquote class="blockquote">
-                <p class="mb-0">"Thanks to this job board website, I was able to find the perfect entry-level web developer job for me. I highly recommend it to anyone looking to kickstart their career in tech."</p>
+                <p class="mb-0">"Thanks to entrylevelcoder.com, I was able to find the perfect entry-level web developer job for me. I highly recommend it to anyone looking to kickstart their career in tech."</p>
                 <footer class="blockquote-footer mt-2">Justin Reich, Entry-Level Web Developer</footer>
               </blockquote>
             </div>
@@ -194,7 +194,10 @@
           </div>
           <div class="card-body">
             <p class="lead mb-4 cta-card-text">Sign up for a free account today to access our exclusive network of entry-level software developer / web developer jobs from top companies.</p>
-            <a href="userSignup.html" class="btn btn-lg cta-btn">Find a Job</a>
+<!--            if user is not logged in-->
+            <a th:href="@{/users/signup}" class="btn btn-lg cta-btn">Find a Job</a>
+<!--            if user or company is logged in-->
+<!--            <a th:href="@{/posts}" class="btn btn-lg cta-btn">Find a Job</a>-->
           </div>
         </div>
       </div>
@@ -205,7 +208,10 @@
           </div>
           <div class="card-body">
             <p class="lead mb-4 cta-card-text">Sign up for a free account today to post your entry-level software developer / web developer job listings and find the best junior talent for your business.</p>
-            <a href="companySignup.html" class="btn btn-lg cta-btn">Post a Job</a>
+<!--            if company or user is not logged in-->
+            <a th:href="@{/company/signup}" class="btn btn-lg cta-btn">Post a Job</a>
+<!--            if company is logged in-->
+<!--            <a th:href="@{/posts/create}" class="btn btn-lg cta-btn">Post a Job</a>-->
           </div>
         </div>
       </div>
