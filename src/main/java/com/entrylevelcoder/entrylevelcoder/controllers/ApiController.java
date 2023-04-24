@@ -12,6 +12,12 @@ public class ApiController {
     @Value("${adzuna_key}")
     private String adzunaKey;
 
+    @GetMapping("/")
+    public String landingPage(Model model) {
+        model.addAttribute("adzuna_key", adzunaKey);
+        return "index";
+    }
+
 
     @GetMapping("/posts")
     public String returnJobs(Model model){
