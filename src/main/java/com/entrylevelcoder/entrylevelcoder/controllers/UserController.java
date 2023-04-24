@@ -36,6 +36,7 @@ public class UserController {
     public String saveUser(@ModelAttribute User user){
         System.out.println("inside saveuser");
         String hash = passwordEncoder.encode(user.getPassword());
+        user.setCompany(false);
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/users/login";
@@ -86,5 +87,54 @@ public class UserController {
         User user = userDao.findById(id);
         model.addAttribute("user", user);
         return "userProfile";
+    }
+
+    // Company mapping
+
+    @GetMapping("/company/signup")
+    public String createCompany(Model model) {
+        model.addAttribute("company", new User());
+        return "companySignup";
+    }
+
+    @PostMapping("/company/signup")
+    public String createCompanyPost(@ModelAttribute User company) {
+        String hashedPassword = passwordEncoder.encode(company.getPassword());
+        company.setPassword(hashedPassword);
+        company.setCompany(true);
+        userDao.save(company);
+        return "redirect:/company/login";
+    }
+
+//    @GetMapping("/company/login")
+//    public String companyLogin(Model model) {
+//        model.getAttribute("company");
+//        return "companyLogin";
+//    }
+
+    @GetMapping("/company/{id}/profile")
+    public String companyProfile(@PathVariable long id, Model model) {
+        User company = userDao.findById(id);
+        model.addAttribute("company", company);
+        return "companyProfile";
+    }
+
+    @GetMapping("company/{id}/update")
+    public String updateCompany(@PathVariable long id, Model model) {
+        User company = userDao.findById(id);
+        model.addAttribute("company", company);
+        return "editCompanyProfile";
+    }
+
+    @PostMapping("company/update")
+    public String updateCompanyPost(@ModelAttribute User company) {
+        userDao.save(company);
+        return "redirect: /";
+    }
+
+    @PostMapping("company/{id}/delete")
+    public String deleteCompany(@PathVariable long id) {
+        userDao.deleteById(id);
+        return null;
     }
 }

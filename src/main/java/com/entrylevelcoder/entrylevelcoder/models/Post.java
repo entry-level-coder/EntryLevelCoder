@@ -16,11 +16,11 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "company_id")
-    private Company company;
+    private User company;
 
     @Column(nullable = false)
     private String title;
@@ -44,14 +44,14 @@ public class Post {
     @Column(nullable = false)
     private String postUrl;
 
-    @ManyToMany(mappedBy = "posts")
+    @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER)
     private List<User> users = new ArrayList<>();
 
 
     public Post() {
     }
 
-    public Post(Company company, String title, String description, Integer minSalary, Integer maxSalary, String location, Modality modality, String postUrl) {
+    public Post(User company, String title, String description, Integer minSalary, Integer maxSalary, String location, Modality modality, String postUrl) {
         this.company = company;
         this.title = title;
         this.description = description;
@@ -62,19 +62,20 @@ public class Post {
         this.postUrl = postUrl;
     }
 
-    public long getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Company getCompany() {
+    public User getCompany() {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(User company) {
         this.company = company;
     }
 
@@ -132,5 +133,14 @@ public class Post {
 
     public void setPostUrl(String postUrl) {
         this.postUrl = postUrl;
+    }
+
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
