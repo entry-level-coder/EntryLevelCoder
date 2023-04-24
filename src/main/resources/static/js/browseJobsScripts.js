@@ -126,6 +126,7 @@ async function getData() {
             jobsData = apiData.results;
             localStorage.setItem('browseJobsData', JSON.stringify(jobsData));
         }
+        searchJobs = jobsData;
         updateJobCards(jobsData);
 
         console.log(jobsData);
@@ -185,9 +186,8 @@ function searchJobs() {
         );
     });
 
-
+    // Update the job cards with the filtered jobs
     searchedJobs = filteredJobs;
-
     updateJobCards(filteredJobs);
 }
 
@@ -230,6 +230,7 @@ function filterJobs(filterId) {
     updateJobCards(filteredJobs);
 }
 
+//event listeners
 window.onload = function () {
     getData();
 
