@@ -2,8 +2,6 @@ package com.entrylevelcoder.entrylevelcoder.controllers;
 
 
 import com.entrylevelcoder.entrylevelcoder.models.Post;
-import com.entrylevelcoder.entrylevelcoder.models.User;
-import com.entrylevelcoder.entrylevelcoder.repositories.CompanyRepository;
 import com.entrylevelcoder.entrylevelcoder.repositories.PostRepository;
 import com.entrylevelcoder.entrylevelcoder.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -19,19 +17,19 @@ import java.util.Optional;
 public class
 PostController {
 
-    private final CompanyRepository companyDao;
+    private final UserRepository companyDao;
     private final PostRepository postDao;
 
-    public PostController( CompanyRepository companyDao, PostRepository postDao) {
+    public PostController( UserRepository companyDao, PostRepository postDao) {
         this.companyDao = companyDao;
         this.postDao = postDao;
     }
 
-    @GetMapping("/posts")
-    public String returnPost(Model model){
-        model.addAttribute("posts", postDao.findAll());
-        return "browseJobs";
-    }
+//    @GetMapping("/posts")
+//    public String returnPost(Model model){
+//        model.addAttribute("posts", postDao.findAll());
+//        return "browseJobs";
+//    }
 
     @GetMapping("/posts/{id}/post")
     public String returnPost(@PathVariable Long id, Model model) {

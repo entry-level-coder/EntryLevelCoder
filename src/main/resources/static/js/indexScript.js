@@ -1,4 +1,4 @@
-const key = keys.adzuna;
+const key = apiKey;
 
 function createJobCard(job) {
     const card = document.createElement('div');
@@ -29,21 +29,26 @@ function createJobCard(job) {
 // Construct the formatted date string
     const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
 
-    cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
+    let today = new Date;
+    let thisDay = today.getDate();
+    let xDays = thisDay - day;
+
+    cardJobDate.innerText = "Posted: " + xDays + " days ago";
+
+    // cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
 
     const cardJobId = document.createElement('p');
-    cardJobId.className = 'cardJobId';
-    cardJobId.innerText = `Job ID: ${job.id}`;
+    cardJobId.className = 'cardJobId hidden';
 
     const cardSalary = document.createElement('p');
     cardSalary.className = 'cardSalary';
     const formattedMinSalary = job.salary_min.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     const formattedMaxSalary = job.salary_max.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    cardSalary.innerText = `Salary Range: ${formattedMinSalary} - ${formattedMaxSalary}`;
+    cardSalary.innerText = `${formattedMinSalary} - ${formattedMaxSalary}`;
 
     const cardLocation = document.createElement('p');
     cardLocation.className = 'cardLocation';
-    cardLocation.innerText = `Location: ${job.location.area[3]}, ${job.location.area[1]}`;
+    cardLocation.innerText = `${job.location.area[3]}, ${job.location.area[1]}`;
 
     const cardDescription = document.createElement('p');
     cardDescription.className = 'cardDescription';
@@ -75,6 +80,7 @@ function createJobCard(job) {
 
     const applyNowLink = document.createElement('a');
     applyNowLink.className = 'btn mb-2 apply-now-btn';
+    applyNowLink.target = '_blank';
     applyNowLink.href = job.redirect_url;
     applyNowLink.innerText = 'Apply Now';
 
