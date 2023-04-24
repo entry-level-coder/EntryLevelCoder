@@ -7,7 +7,9 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Post Model */
+/**
+ * Post Model
+ */
 
 @Entity
 @Table(name = "posts")
@@ -35,7 +37,10 @@ public class Post {
     private Integer maxSalary;
 
     @Column(nullable = false)
-    private String location;
+    private String city;
+
+    @Column(columnDefinition = "CHAR(2) DEFAULT 'XX'")
+    private String state;
 
     @Column(nullable = false, columnDefinition = "ENUM('REMOTE', 'HYBRID', 'IN_PERSON', 'NOT_PROVIDED_BY_EMPLOYER')")
     @Enumerated(EnumType.STRING)
@@ -51,13 +56,18 @@ public class Post {
     public Post() {
     }
 
-    public Post(User company, String title, String description, Integer minSalary, Integer maxSalary, String location, Modality modality, String postUrl) {
+    public Post(Long id) {
+        this.id = id;
+    }
+
+    public Post(User company, String title, String description, Integer minSalary, Integer maxSalary, String city, String state, Modality modality, String postUrl) {
         this.company = company;
         this.title = title;
         this.description = description;
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
-        this.location = location;
+        this.city = city;
+        this.state = state;
         this.modality = modality;
         this.postUrl = postUrl;
     }
@@ -111,12 +121,20 @@ public class Post {
         this.maxSalary = maxSalary;
     }
 
-    public String getLocation() {
-        return location;
+    public String getCity() {
+        return city;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Modality getModality() {

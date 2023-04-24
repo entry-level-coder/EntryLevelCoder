@@ -34,7 +34,6 @@ public class UserController {
     // Saves User Input To Database
     @PostMapping("/users/signup")
     public String saveUser(@ModelAttribute User user){
-        System.out.println("inside saveuser");
         String hash = passwordEncoder.encode(user.getPassword());
         user.setCompany(false);
         user.setPassword(hash);
