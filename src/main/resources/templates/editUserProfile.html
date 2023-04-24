@@ -30,9 +30,13 @@
             </div>
             <div class="d-flex justify-content-evenly">
               <button type="submit" class="btn edit-user-profile-btn">Submit Edit</button>
+
               <div>
-              <button type="submit" class="btn btn-danger" th:action="@{/users/{id}/delete(id=${user})}" th:method="post">Delete Account</button>
+                <form th:action="@{/users/{id}/delete(id=${user.id})}" th:method="post">
+                  <button type="submit" class="btn btn-danger" >Delete Account</button>
+                </form>
               </div>
+
             </div>
           </form>
         </div>
