@@ -50,7 +50,7 @@ PostController {
         return "createJob";
     }
 
-    @PostMapping("/post/create")
+    @PostMapping("/posts/create")
     public String savePost(@ModelAttribute Post post){
         post.setCompany(companyDao.findById(post.getCompany().getId()));
         postDao.save(post);
