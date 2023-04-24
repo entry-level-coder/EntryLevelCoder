@@ -3,6 +3,7 @@ package com.entrylevelcoder.entrylevelcoder.controllers;
 
 import com.entrylevelcoder.entrylevelcoder.repositories.UserRepository;
 import com.entrylevelcoder.entrylevelcoder.models.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,9 +82,10 @@ public class UserController {
 
 
 
-    @GetMapping("/users/{id}/profile")
-    public String getToProfileFromLogin(@PathVariable long id, Model model){
-        User user = userDao.findById(id);
+    @GetMapping("/users/profile")
+    public String getToProfileFromLogin( Model model){
+
+        User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         model.addAttribute("user", user);
         return "userProfile";
     }
