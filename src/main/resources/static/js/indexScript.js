@@ -1,4 +1,4 @@
-const key = keys.adzuna;
+const key = apiKey;
 
 function createJobCard(job) {
     const card = document.createElement('div');
@@ -75,6 +75,7 @@ function createJobCard(job) {
 
     const applyNowLink = document.createElement('a');
     applyNowLink.className = 'btn mb-2 apply-now-btn';
+    applyNowLink.target = '_blank';
     applyNowLink.href = job.redirect_url;
     applyNowLink.innerText = 'Apply Now';
 
