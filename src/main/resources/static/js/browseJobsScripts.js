@@ -65,7 +65,7 @@ function createJobCard(job) {
         modalBody.innerHTML = `
       <p><strong>Company:</strong> ${job.company.display_name}</p>
       <p><strong>Job ID:</strong> ${job.id}</p>
-      <p><strong>Salary Range:</strong> ${job.salary_min} - ${job.salary_max}</p>
+      <p><strong>Salary Range:</strong> <span>$</span>${job.salary_min} - <span>$</span>${job.salary_max}</p>
       <p><strong>Location:</strong> ${job.location.area[3]}, ${job.location.area[1]}</p>
       <p><strong>Description:</strong> ${job.description}</p>
     `;
