@@ -5,7 +5,7 @@ let searchedJobs;
 
 function createJobCard(job) {
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'card m-3';
 
     const cardBody = document.createElement('div');
     cardBody.className = 'card-body text-center';
@@ -32,22 +32,27 @@ function createJobCard(job) {
 // Construct the formatted date string
     const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
 
-    cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
+    let today = new Date;
+    let thisDay = today.getDate();
+    let xDays = thisDay - day;
+
+    cardJobDate.innerText = "Posted: " + xDays + " days ago";
+
+    // cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
 
     const cardJobId = document.createElement('p');
-    cardJobId.className = 'cardJobId';
-    cardJobId.innerText = `Job ID: ${job.id}`;
+    cardJobId.className = 'cardJobId hidden';
 
     const cardSalary = document.createElement('p');
     cardSalary.className = 'cardSalary';
     const formattedMinSalary = job.salary_min.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
     const formattedMaxSalary = job.salary_max.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
-    cardSalary.innerText = `Salary Range: ${formattedMinSalary} - ${formattedMaxSalary}`;
+    cardSalary.innerText = `${formattedMaxSalary} - ${formattedMinSalary}`;
 
 
     const cardLocation = document.createElement('p');
     cardLocation.className = 'cardLocation';
-    cardLocation.innerText = `Location: ${job.location.area[3]}, ${job.location.area[1]}`;
+    cardLocation.innerText = `${job.location.area[3]}, ${job.location.area[1]}`;
 
     const cardDescription = document.createElement('p');
     cardDescription.className = 'cardDescription';
@@ -56,7 +61,7 @@ function createJobCard(job) {
     const viewDetailsLink = document.createElement('button');
     viewDetailsLink.className = 'btn view-details-btn text-center mb-2';
     viewDetailsLink.href = '#';
-    viewDetailsLink.innerText = 'Preview Job Details';
+    viewDetailsLink.innerText = 'Preview Job';
     viewDetailsLink.addEventListener('click', () => {
         const modalTitle = document.getElementById('job-modal-title');
         const modalBody = document.getElementById('job-modal-body');
@@ -65,7 +70,7 @@ function createJobCard(job) {
         modalBody.innerHTML = `
       <p><strong>Company:</strong> ${job.company.display_name}</p>
       <p><strong>Job ID:</strong> ${job.id}</p>
-      <p><strong>Salary Range:</strong> ${job.salary_min} - ${job.salary_max}</p>
+      <p><strong>Salary Range:</strong> <span>$</span>${job.salary_min} - <span>$</span>${job.salary_max}</p>
       <p><strong>Location:</strong> ${job.location.area[3]}, ${job.location.area[1]}</p>
       <p><strong>Description:</strong> ${job.description}</p>
     `;
@@ -83,13 +88,13 @@ function createJobCard(job) {
     applyNowLink.href = job.redirect_url;
     applyNowLink.innerText = 'Apply Now';
 
-    const saveJobButton = document.createElement('button');
-    saveJobButton.className = 'btn save-job-btn mb-2';
-    saveJobButton.innerText = 'Save Job';
-    saveJobButton.addEventListener('click', () => {
-        // Save the job to the user's saved jobs list
-        alert(`Job ${job.id} saved!`);
-    });
+    // const saveJobButton = document.createElement('button');
+    // saveJobButton.className = 'btn save-job-btn mb-2';
+    // saveJobButton.innerText = 'Save Job';
+    // saveJobButton.addEventListener('click', () => {
+    //     // Save the job to the user's saved jobs list
+    //     alert(`Job ${job.id} saved!`);
+    // });
 
     const buttonsWrapper = document.createElement('div'); // added wrapper for buttons
     buttonsWrapper.className = 'd-flex flex-column align-items-center justify-content-center'; // added class for centering
@@ -195,32 +200,32 @@ function searchJobs() {
 
 function filterJobs(filterId) {
     let filteredJobs;
-        switch (filterId) {
-            case 'high-low':
-                filteredJobs = searchedJobs.slice().sort((a, b) => b.salary_max - a.salary_max);
-                break;
-            case 'low-high':
-                filteredJobs = searchedJobs.slice().sort((a, b) => a.salary_max - b.salary_max);
-                break;
-            case 'new-old':
-                filteredJobs = searchedJobs.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
-                break;
-            case 'old-new':
-                filteredJobs = searchedJobs.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
-                break;
-            case 'full-time':
-                filteredJobs = searchedJobs.filter(job => job.contract_time === "full_time");
-                break;
-            case 'part-time':
-                filteredJobs = searchedJobs.filter(job => job.contract_time === "part_time");
-                break;
-            case 'contract':
-                filteredJobs = searchedJobs.filter(job => job.contract_time === "contract");
-                break;
-            default:
-                filteredJobs = searchedJobs;
-        }
-        updateJobCards(filteredJobs);
+    switch (filterId) {
+        case 'high-low':
+            filteredJobs = searchedJobs.slice().sort((a, b) => b.salary_max - a.salary_max);
+            break;
+        case 'low-high':
+            filteredJobs = searchedJobs.slice().sort((a, b) => a.salary_max - b.salary_max);
+            break;
+        case 'new-old':
+            filteredJobs = searchedJobs.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
+            break;
+        case 'old-new':
+            filteredJobs = searchedJobs.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
+            break;
+        case 'full-time':
+            filteredJobs = searchedJobs.filter(job => job.contract_time === "full_time");
+            break;
+        case 'part-time':
+            filteredJobs = searchedJobs.filter(job => job.contract_time === "part_time");
+            break;
+        case 'contract':
+            filteredJobs = searchedJobs.filter(job => job.contract_time === "contract");
+            break;
+        default:
+            filteredJobs = searchedJobs;
+    }
+    updateJobCards(filteredJobs);
 }
 
 window.onload = function () {

@@ -49,3 +49,6 @@
     color: var(--main-green);
 }
 
+.hidden{
+    visibility: hidden;
+}
