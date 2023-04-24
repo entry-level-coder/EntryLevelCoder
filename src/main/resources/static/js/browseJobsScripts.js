@@ -42,7 +42,7 @@ function createJobCard(job) {
     cardSalary.className = 'cardSalary';
     const formattedMinSalary = job.salary_min.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
     const formattedMaxSalary = job.salary_max.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
-    cardSalary.innerText = `${formattedMinSalary} - ${formattedMaxSalary}`;
+    cardSalary.innerText = `${formattedMaxSalary} - ${formattedMinSalary}`;
 
 
     const cardLocation = document.createElement('p');
