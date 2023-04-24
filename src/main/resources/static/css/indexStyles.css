@@ -184,6 +184,20 @@ blockquote{
     background-color: var(--dark-grey);
     color: var(--light-grey);
 }
+.about-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
+}
+.about-us-footer:hover{
+    color: var(--main-green);
+}
+.contact-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
+}
+.contact-us-footer:hover{
+    color: var(--main-green);
+}
 .entry-level-coder-email{
     text-decoration: none;
     color: var(--light-grey);
