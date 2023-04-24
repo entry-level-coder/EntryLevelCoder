@@ -32,11 +32,19 @@ function createJobCard(job) {
 // Construct the formatted date string
     const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
 
-    cardJobDate.innerText = `Posted (x) days ago`;
+    let today = new Date;
+    let thisDay = today.getDate();
+    let xDays = thisDay - day;
+
+    console.log(today);
+    console.log(thisDay);
+    console.log(day);
+    console.log(xDays);
+
+    cardJobDate.innerText = "Posted: " + xDays + " days ago";
 
     const cardJobId = document.createElement('p');
     cardJobId.className = 'cardJobId hidden';
-    cardJobId.innerText = `Job ID: ${job.id}`;
 
     const cardSalary = document.createElement('p');
     cardSalary.className = 'cardSalary';
