@@ -15,7 +15,7 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Edit Profile Information</h3>
-          <form th:action="@{users/update}" th:object="${user}">
+          <form th:action="@{users/{id}/update (id=${user.id})}" th:object="${user}">
             <div class="mb-3">
               <label for="firstName" class="form-label">First Name:</label>
               <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}" required>
@@ -30,7 +30,9 @@
             </div>
             <div class="d-flex justify-content-evenly">
               <button type="submit" class="btn edit-user-profile-btn">Submit Edit</button>
-              <button type="button" class="btn btn-danger">Delete Account</button>
+              <div>
+              <button type="submit" class="btn btn-danger" th:action="@{/users/{id}/delete (id=${user.id})}">Delete Account</button>
+              </div>
             </div>
           </form>
         </div>
