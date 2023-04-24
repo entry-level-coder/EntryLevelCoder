@@ -110,7 +110,7 @@ function createJobCard(job) {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
             });
-            salaryElement.innerHTML = `<strong>Salary:</strong>${formattedSalary}`;
+            salaryElement.innerHTML = `<strong>Salary:</strong> ${formattedSalary}`;
         }
 
         modalBody.innerHTML = `
