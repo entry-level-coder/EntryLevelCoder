@@ -1,4 +1,4 @@
-const jobKey = keys.adzuna;
+const jobKey = apiKey;
 
 let jobsData;
 let searchedJobs;
@@ -79,6 +79,7 @@ function createJobCard(job) {
 
     const applyNowLink = document.createElement('a');
     applyNowLink.className = 'btn mb-2 text-white apply-now-btn';
+    applyNowLink.target = '_blank';
     applyNowLink.href = job.redirect_url;
     applyNowLink.innerText = 'Apply Now';
 
@@ -126,6 +127,7 @@ async function getData() {
             jobsData = apiData.results;
             localStorage.setItem('browseJobsData', JSON.stringify(jobsData));
         }
+        searchedJobs = jobsData;
         updateJobCards(jobsData);
 
         console.log(jobsData);

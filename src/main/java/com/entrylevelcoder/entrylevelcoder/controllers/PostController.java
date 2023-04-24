@@ -27,11 +27,11 @@ PostController {
         this.postDao = postDao;
     }
 
-    @GetMapping("/posts")
-    public String returnPost(Model model){
-        model.addAttribute("posts", postDao.findAll());
-        return "browseJobs";
-    }
+//    @GetMapping("/posts")
+//    public String returnPost(Model model){
+//        model.addAttribute("posts", postDao.findAll());
+//        return "browseJobs";
+//    }
 
     @GetMapping("/posts/{id}/post")
     public String returnPost(@PathVariable Long id, Model model) {
