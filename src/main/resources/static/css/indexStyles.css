@@ -67,6 +67,10 @@ svg {
 .jumbotron-lead{
     font-size: 1.5rem;
 }
+.jumbotron-signup-btn:hover {
+    background-color: var(--dark-grey);
+    color: var(--main-green);
+}
 .featured-employers-title{
     font-size: 2.5rem;
 }
@@ -143,6 +147,10 @@ blockquote{
 .apply-now-btn {
     background-color: var(--main-green);
 }
+.apply-now-btn:hover {
+    background-color: var(--light-grey);
+    color: var(--white);
+}
 
 #featured-jobs{
     height: auto;
@@ -153,6 +161,11 @@ blockquote{
 
 .view-details-btn{
     background-color: var(--yellow);
+}
+
+.view-details-btn:hover {
+    background-color: var(--light-grey);
+    color: var(--white);
 }
 
 #job-modal .modal-body {
@@ -183,6 +196,20 @@ blockquote{
 .footer{
     background-color: var(--dark-grey);
     color: var(--light-grey);
+}
+.about-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
+}
+.about-us-footer:hover{
+    color: var(--main-green);
+}
+.contact-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
+}
+.contact-us-footer:hover{
+    color: var(--main-green);
 }
 .entry-level-coder-email{
     text-decoration: none;
