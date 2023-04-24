@@ -75,6 +75,7 @@ function createJobCard(job) {
 
     const applyNowLink = document.createElement('a');
     applyNowLink.className = 'btn mb-2 apply-now-btn';
+    applyNowLink.target = '_blank';
     applyNowLink.href = job.redirect_url;
     applyNowLink.innerText = 'Apply Now';
 
