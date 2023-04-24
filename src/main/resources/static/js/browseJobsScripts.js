@@ -36,12 +36,9 @@ function createJobCard(job) {
     let thisDay = today.getDate();
     let xDays = thisDay - day;
 
-    console.log(today);
-    console.log(thisDay);
-    console.log(day);
-    console.log(xDays);
-
     cardJobDate.innerText = "Posted: " + xDays + " days ago";
+
+    // cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
 
     const cardJobId = document.createElement('p');
     cardJobId.className = 'cardJobId hidden';
@@ -91,13 +88,13 @@ function createJobCard(job) {
     applyNowLink.href = job.redirect_url;
     applyNowLink.innerText = 'Apply Now';
 
-    const saveJobButton = document.createElement('button');
-    saveJobButton.className = 'btn save-job-btn mb-2';
-    saveJobButton.innerText = 'Save Job';
-    saveJobButton.addEventListener('click', () => {
-        // Save the job to the user's saved jobs list
-        alert(`Job ${job.id} saved!`);
-    });
+    // const saveJobButton = document.createElement('button');
+    // saveJobButton.className = 'btn save-job-btn mb-2';
+    // saveJobButton.innerText = 'Save Job';
+    // saveJobButton.addEventListener('click', () => {
+    //     // Save the job to the user's saved jobs list
+    //     alert(`Job ${job.id} saved!`);
+    // });
 
     const buttonsWrapper = document.createElement('div'); // added wrapper for buttons
     buttonsWrapper.className = 'd-flex flex-column align-items-center justify-content-center'; // added class for centering
