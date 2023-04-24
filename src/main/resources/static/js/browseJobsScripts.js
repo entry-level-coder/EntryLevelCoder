@@ -225,6 +225,18 @@ function filterJobs(filterId) {
         default:
             filteredJobs = searchedJobs;
     }
+
+    const jobCardContainer = document.getElementById('job-card-container');
+    jobCardContainer.innerHTML = ''; // clear previous contents
+
+    if (filteredJobs.length === 0) {
+        const noResultsMessage = document.createElement('p');
+        noResultsMessage.className = 'no-results-message text-center';
+        noResultsMessage.innerText = 'Sorry...No results found.';
+        jobCardContainer.appendChild(noResultsMessage);
+        return;
+    }
+
     updateJobCards(filteredJobs);
 }
 
