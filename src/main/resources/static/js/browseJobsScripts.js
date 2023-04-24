@@ -5,7 +5,7 @@ let searchedJobs;
 
 function createJobCard(job) {
     const card = document.createElement('div');
-    card.className = 'card m-1';
+    card.className = 'card m-2';
 
     const cardBody = document.createElement('div');
     cardBody.className = 'card-body text-center';
