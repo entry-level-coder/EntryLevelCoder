@@ -192,6 +192,16 @@ function searchJobs() {
         );
     });
 
+    if (filteredJobs.length === 0) {
+        const noResultsMessage = document.createElement('p');
+        noResultsMessage.className = 'no-results-message text-center';
+        noResultsMessage.innerText = 'Sorry...No results found.';
+        const jobCardContainer = document.getElementById('job-card-container');
+        jobCardContainer.innerHTML = ''; // clear previous contents
+        jobCardContainer.appendChild(noResultsMessage);
+        return;
+    }
+
 
     searchedJobs = filteredJobs;
 
