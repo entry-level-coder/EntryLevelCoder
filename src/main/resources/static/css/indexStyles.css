@@ -13,13 +13,11 @@
     font-size: 2rem;
 }
 
-/* Centered Nav Items */
-.centered-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* Nav Items */
 
+.navbar-nav {
+    margin-right: 0;
+}
 .centered-nav .nav-item {
     margin-left: 2rem;
     margin-right: 2rem;
