@@ -1,7 +1,7 @@
 package com.entrylevelcoder.entrylevelcoder.config;
 
+
 import com.entrylevelcoder.entrylevelcoder.services.UserDetailsLoader;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
 
     private UserDetailsLoader usersLoader;
+
 
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
         this.usersLoader = usersLoader;
@@ -51,17 +52,17 @@ public class SecurityConfiguration {
 
                 /* User Login configuration */
                 .formLogin()
-                .loginPage("/users/login")
-                .defaultSuccessUrl("/posts") // user's home page, it can be any URL
+                .loginPage("/login")
+                .defaultSuccessUrl("/") // user's home page, it can be any URL
                 .permitAll()
 
 
                 //Company login
-                .and()
-                .formLogin()
-                .loginPage("/company/login")
-                .defaultSuccessUrl("/posts")
-                .permitAll()
+//                .and()
+//                .formLogin()
+//                .loginPage("/company/login")
+//                .defaultSuccessUrl("/")
+//                .permitAll()
                  // Anyone can go to the login page
 
                 /* Logout configuration */

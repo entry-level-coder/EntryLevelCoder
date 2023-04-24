@@ -108,8 +108,16 @@ public class User {
     public User(User copy) {
         id = copy.id;
         username = copy.username;
-        this.firstName = copy.firstName;
-        this.lastName = copy.lastName;
+        isCompany = copy.isCompany;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        city = copy.city;
+        state = copy.state;
+        industry = copy.industry;
+        number = copy.number;
+        description = copy.description;
+        url = copy.url;
+        posts = copy.posts;
         password = copy.password;
     }
 
