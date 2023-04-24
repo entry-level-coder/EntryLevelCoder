@@ -127,6 +127,7 @@ async function getData() {
             jobsData = apiData.results;
             localStorage.setItem('browseJobsData', JSON.stringify(jobsData));
         }
+        searchedJobs = jobsData;
         updateJobCards(jobsData);
 
         console.log(jobsData);
