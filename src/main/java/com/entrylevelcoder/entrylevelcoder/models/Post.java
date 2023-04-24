@@ -44,7 +44,7 @@ public class Post {
     @Column(nullable = false)
     private String postUrl;
 
-    @ManyToMany(mappedBy = "posts")
+    @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER)
     private List<User> users = new ArrayList<>();
 
 
@@ -62,11 +62,12 @@ public class Post {
         this.postUrl = postUrl;
     }
 
-    public long getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -132,5 +133,14 @@ public class Post {
 
     public void setPostUrl(String postUrl) {
         this.postUrl = postUrl;
+    }
+
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

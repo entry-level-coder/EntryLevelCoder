@@ -42,10 +42,10 @@ public class UserController {
         return "redirect:/users/login";
     }
 //
-    @GetMapping("/users/login")
-    public String usersLogin(){
-        return "/userLogin";
-    }
+//    @GetMapping("/users/login")
+//    public String usersLogin(){
+//        return "/userLogin";
+//    }
 
 
     @GetMapping("/users/{id}/update")
