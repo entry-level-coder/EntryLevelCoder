@@ -42,9 +42,30 @@ function createJobCard(job) {
 
     const cardSalary = document.createElement('p');
     cardSalary.className = 'cardSalary';
-    const formattedMinSalary = job.salary_min.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    const formattedMaxSalary = job.salary_max.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    cardSalary.innerText = `${formattedMinSalary} - ${formattedMaxSalary}`;
+
+    if (job.salary_min !== job.salary_max) {
+        const formattedMinSalary = job.salary_min.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+        const formattedMaxSalary = job.salary_max.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+        cardSalary.innerText = `${formattedMinSalary} - ${formattedMaxSalary}`;
+    } else {
+        const formattedSalary = job.salary_max.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+        cardSalary.innerText = `${formattedSalary}`;
+    }
 
     const cardLocation = document.createElement('p');
     cardLocation.className = 'cardLocation';
@@ -63,10 +84,36 @@ function createJobCard(job) {
         const modalBody = document.getElementById('job-modal-body');
 
         modalTitle.innerText = job.title;
+
+        let salaryElement = document.createElement('p');
+        if (job.salary_min !== job.salary_max) {
+            const formattedMinSalary = job.salary_min.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            const formattedMaxSalary = job.salary_max.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            salaryElement.innerHTML = `<strong>Salary Range:</strong> ${formattedMinSalary} - ${formattedMaxSalary}`;
+        } else {
+            const formattedSalary = job.salary_max.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            salaryElement.innerHTML = `<strong>Salary:</strong> ${formattedSalary}`;
+        }
+
         modalBody.innerHTML = `
       <p><strong>Company:</strong> ${job.company.display_name}</p>
       <p><strong>Job ID:</strong> ${job.id}</p>
-      <p><strong>Salary Range:</strong> ${job.salary_min} - ${job.salary_max}</p>
+       ${salaryElement.outerHTML}
       <p><strong>Location:</strong> ${job.location.area[3]}, ${job.location.area[1]}</p>
       <p><strong>Description:</strong> ${job.description}</p>
     `;
