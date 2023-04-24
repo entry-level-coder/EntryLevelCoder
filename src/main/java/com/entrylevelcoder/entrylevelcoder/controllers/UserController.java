@@ -77,7 +77,7 @@ public class UserController {
     public String deleteUserById(@PathVariable("id") long id) {
         // Check if the user exists before deleting
         userDao.deleteById(id);
-        return "redirect:/login";
+        return "redirect:/users/login";
     }
 
 
