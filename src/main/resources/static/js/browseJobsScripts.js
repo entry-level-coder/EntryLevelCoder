@@ -1,4 +1,4 @@
-const jobKey = keys.adzuna;
+const jobKey = apiKey;
 
 let jobsData;
 let searchedJobs;

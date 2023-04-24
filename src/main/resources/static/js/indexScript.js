@@ -1,4 +1,4 @@
-const key = keys.adzuna;
+const key = apiKey;
 
 function createJobCard(job) {
     const card = document.createElement('div');
