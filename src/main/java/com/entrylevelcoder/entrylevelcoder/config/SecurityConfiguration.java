@@ -1,7 +1,7 @@
 package com.entrylevelcoder.entrylevelcoder.config;
 
+
 import com.entrylevelcoder.entrylevelcoder.services.UserDetailsLoader;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
 
     private UserDetailsLoader usersLoader;
+
 
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
         this.usersLoader = usersLoader;
@@ -51,9 +52,17 @@ public class SecurityConfiguration {
 
                 /* User Login configuration */
                 .formLogin()
-                .loginPage("/users/login")
-                .defaultSuccessUrl("/posts") // user's home page, it can be any URL
+                .loginPage("/login")
+                .defaultSuccessUrl("/") // user's home page, it can be any URL
                 .permitAll()
+
+
+                //Company login
+//                .and()
+//                .formLogin()
+//                .loginPage("/company/login")
+//                .defaultSuccessUrl("/")
+//                .permitAll()
                  // Anyone can go to the login page
 
                 /* Logout configuration */
@@ -67,7 +76,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/posts/create", // only authenticated users can create ads
-                        "/posts/{id}/edit", "/user/profile" // only authenticated users can edit ads
+                        "/posts/{id}/update", "/users/profile" // only authenticated users can edit ads
                 )
                 .authenticated()
 
@@ -75,13 +84,14 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                         "/", "/posts", "/posts/{id}", "/users/signup", "/login","/css/**",
-                        "/js/**", "/images/**", "/users/login", "/company/login", "/aboutus", "/contactus", "/templates/partials/navbar", "/company/signup"
-                ) // anyone can see home, the ads pages, and sign up
+                         "/", "/posts", "/users/signup","/company/signup","/css/**",
+                        "/js/**", "/images/**", "/users/login", "/company/login", "/aboutus", "/contactus", "/templates/partials/navbar"
+                ) // anyone can see home, the post pages, and sign ups
                 .permitAll();
 
 
         return http.build();
     }
+
 
 }

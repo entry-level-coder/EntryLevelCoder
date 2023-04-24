@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public class UserWithRoles extends User implements UserDetails {
 
-    private User user;
+//    private User users;
 
     public UserWithRoles(User user) {
         super(user);
@@ -41,6 +41,6 @@ public class UserWithRoles extends User implements UserDetails {
 
 //    @Override
 //    public String getUsername() {
-//        return user.getUsername();
+//        return users.getUsername();
 //    }
 }
