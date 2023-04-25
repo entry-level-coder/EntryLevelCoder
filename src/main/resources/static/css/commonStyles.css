@@ -216,6 +216,10 @@ i{
     background-color: var(--main-green);
 }
 
+.job-seeker-link:hover, .employer-link:hover {
+    color: var(--main-green);
+}
+
 /*About Us Styles*/
 .about-us-title{
     font-size: 3rem;
@@ -241,6 +245,9 @@ i{
 }
 .company-login-link{
     color: var(--dark-grey);
+}
+.company-login-link:hover{
+    color: var(--main-green);
 }
 .form-check-input:checked{
     background-color: var(--main-green);
@@ -275,6 +282,9 @@ i{
 }
 .user-already-have-account{
     color: var(--dark-grey);
+}
+.user-already-have-account:hover{
+    color: var(--main-green);
 }
 .user-signup-header{
     background-color: var(--main-green);
