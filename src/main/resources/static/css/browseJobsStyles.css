@@ -121,4 +121,14 @@
     }
 }
 
-
+.card {
+    min-height: 400px; /* Adjust this value as needed for your design */
+}
+.buttonsWrapper {
+    margin-top: 1rem;
+}
+@media (max-width: 576px) {
+    .buttonsWrapper {
+        flex-direction: row;
+    }
+}
