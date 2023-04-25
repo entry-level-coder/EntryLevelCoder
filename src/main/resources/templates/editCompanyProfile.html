@@ -15,15 +15,18 @@
                     <div class="card-body">
                         <h3 class="card-title">Edit Profile Information</h3>
                         <form th:action="@{company/update}" th:object="${company}">
+                            <input type="hidden" th:field="*{company}">
+                            <input type="hidden" th:field="*{password}">
+
                             <div class="mb-3">
                                 <label for="companyName" class="form-label"> Company Name:</label>
                                 <input type="text" class="form-control" id="companyName" name="companyName"
-                                th:field="*{name}" required>
+                                th:field="*{companyName}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="companyEmail" class="form-label">Email:</label>
                                 <input type="email" class="form-control" id="companyEmail" name="companyEmail"
-                                       th:field="*{email}" required>
+                                       th:field="*{username}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="city" class="form-label">City:</label>
