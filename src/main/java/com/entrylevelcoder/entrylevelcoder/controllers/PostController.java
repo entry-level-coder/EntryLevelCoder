@@ -66,8 +66,13 @@ PostController {
 
     @GetMapping("posts/{id}/update")
     public String updateForm(@PathVariable long id, Model model){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post updatePost = postDao.findById(id);
-        model.addAttribute("updatePost", updatePost);
+        if (updatePost.getId() == sessionUser.getId()) {
+            model.addAttribute("updatePost", updatePost);
+        } else {
+            return "redirect:/company/" + sessionUser.getId() + "/profile";
+        }
         return "editJobPosting";
     }
 //
