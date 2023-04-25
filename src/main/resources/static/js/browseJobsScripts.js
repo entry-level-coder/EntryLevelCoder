@@ -5,10 +5,10 @@ let searchedJobs;
 
 function createJobCard(job) {
     const card = document.createElement('div');
-    card.className = 'card m-3';
+    card.className = 'card m-3 position-relative';
 
     const cardBody = document.createElement('div');
-    cardBody.className = 'card-body text-center';
+    cardBody.className = 'card-body d-flex flex-column justify-content-between';
 
     const cardTitle = document.createElement('h5');
     cardTitle.className = 'card-title';
@@ -41,7 +41,8 @@ function createJobCard(job) {
     // cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
 
     const cardJobId = document.createElement('p');
-    cardJobId.className = 'cardJobId hidden';
+    cardJobId.className = 'cardJobId';
+    cardJobId.innerText = "Job Id: " + job.id;
 
     const cardSalary = document.createElement('p');
     cardSalary.className = 'cardSalary';
@@ -142,18 +143,23 @@ function createJobCard(job) {
     //     alert(`Job ${job.id} saved!`);
     // });
 
-    const buttonsWrapper = document.createElement('div'); // added wrapper for buttons
-    buttonsWrapper.className = 'd-flex flex-column align-items-center justify-content-center'; // added class for centering
-    buttonsWrapper.appendChild(viewDetailsLink);
-    buttonsWrapper.appendChild(applyNowLink);
-    // buttonsWrapper.appendChild(saveJobButton);
+
+    const cardContent = document.createElement('div');
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardSubtitle);
     cardBody.appendChild(cardJobDate);
-    cardBody.appendChild(cardJobId);
+    // cardBody.appendChild(cardJobId);
     cardBody.appendChild(cardSalary);
     cardBody.appendChild(cardLocation);
+
+    const buttonsWrapper = document.createElement('div'); // added wrapper for buttons
+    buttonsWrapper.className = 'd-flex flex-column align-items-start justify-content-center'; // added class for centering
+    buttonsWrapper.appendChild(viewDetailsLink);
+    buttonsWrapper.appendChild(applyNowLink);
+    // buttonsWrapper.appendChild(saveJobButton);
+
+    cardBody.appendChild(cardContent);
     cardBody.appendChild(buttonsWrapper); // added wrapper for buttons
 
     card.appendChild(cardBody);
