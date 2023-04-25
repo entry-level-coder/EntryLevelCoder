@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head th:replace="partials/header :: header-common"></head>
 
 <body>
@@ -15,7 +15,7 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Edit Profile Information</h3>
-          <form th:action="@{users/{id}/update}" th:object="${user}">
+          <form th:action="@{users/{id}/update(id=${user.id})}" th:object="${user}" th:method="post">
 
             <div class="mb-3">
               <label for="firstName" class="form-label">First Name:</label>
@@ -32,9 +32,8 @@
             <div class="d-flex justify-content-evenly">
               <button type="submit" class="btn edit-user-profile-btn">Submit Edit</button>
 
-
               <div>
-                <form th:action="@{/users/delete}" >
+                <form th:action="@{/users/{id}/delete(id=${user.id})}" th:method="post">
                   <button  class="btn btn-danger">Delete Profile</button>
                 </form>
               </div>
