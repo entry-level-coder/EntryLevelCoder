@@ -84,6 +84,10 @@ svg {
     font-size: 1.7rem;
 }
 
+.card {
+    height: 100%;
+}
+
 .card-text{
     font-size: 1.4rem;
 }
@@ -121,10 +125,7 @@ blockquote{
 .cta-card-title{
     font-size: 1.7rem;
 }
-.cta-card{
-    height: auto;
-    width: auto;
-}
+
 .cta-card-text{
     font-size: 1.4rem;
 }
@@ -295,4 +296,14 @@ i{
         width: 0.2em;
     }
 }
-
+@media (max-width: 767px) {
+    /* apply these rules when screen width is 576px or less */
+    .featured-jobs-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .card {
+        margin-bottom: 1rem;
+    }
+}

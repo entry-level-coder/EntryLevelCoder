@@ -2,10 +2,10 @@
 
 function createJobCard(job) {
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'card m-3 position-relative';
 
     const cardBody = document.createElement('div');
-    cardBody.className = 'card-body text-center';
+    cardBody.className = 'card-body d-flex flex-column justify-content-between';
 
     const cardTitle = document.createElement('h5');
     cardTitle.className = 'card-title';
@@ -78,7 +78,7 @@ function createJobCard(job) {
     const viewDetailsLink = document.createElement('button');
     viewDetailsLink.className = 'btn view-details-btn text-center mb-2';
     viewDetailsLink.href = '#';
-    viewDetailsLink.innerText = 'View Details';
+    viewDetailsLink.innerText = 'Preview Job';
     viewDetailsLink.addEventListener('click', () => {
         const modalTitle = document.getElementById('job-modal-title');
         const modalBody = document.getElementById('job-modal-body');
@@ -126,22 +126,27 @@ function createJobCard(job) {
     });
 
     const applyNowLink = document.createElement('a');
-    applyNowLink.className = 'btn mb-2 apply-now-btn';
+    applyNowLink.className = 'btn mb-2 text-white apply-now-btn';
     applyNowLink.target = '_blank';
     applyNowLink.href = job.redirect_url;
     applyNowLink.innerText = 'Apply Now';
 
-    const buttonsWrapper = document.createElement('div'); // added wrapper for buttons
-    buttonsWrapper.className = 'd-flex flex-column align-items-center justify-content-center'; // added class for centering
-    buttonsWrapper.appendChild(viewDetailsLink);
-    buttonsWrapper.appendChild(applyNowLink);
+    const cardContent = document.createElement('div');
+
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardSubtitle);
     cardBody.appendChild(cardJobDate);
-    cardBody.appendChild(cardJobId);
+    // cardBody.appendChild(cardJobId);
     cardBody.appendChild(cardSalary);
     cardBody.appendChild(cardLocation);
+
+    const buttonsWrapper = document.createElement('div'); // added wrapper for buttons
+    buttonsWrapper.className = 'd-flex flex-column align-items-start justify-content-center'; // added class for centering
+    buttonsWrapper.appendChild(viewDetailsLink);
+    buttonsWrapper.appendChild(applyNowLink);
+
+    cardBody.appendChild(cardContent);
     cardBody.appendChild(buttonsWrapper); // added wrapper for buttons
 
     card.appendChild(cardBody);
