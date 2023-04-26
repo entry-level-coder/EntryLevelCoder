@@ -33,9 +33,7 @@ function createJobCard(job) {
     const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
 
     let today = new Date;
-    console.log(today);
     let thisDay = today.getDate();
-    console.log(thisDay);
     let xDays = thisDay - day;
 
     if(xDays < 0) {
