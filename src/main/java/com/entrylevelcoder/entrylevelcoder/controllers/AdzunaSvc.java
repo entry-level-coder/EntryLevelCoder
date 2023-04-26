@@ -10,7 +10,7 @@ import java.io.IOException;
 @Service
 public class AdzunaSvc {
 
-        @Value("${adzuna_app_id}")
+        @Value("${adzunaId}")
         public String appId;
 
         @Value("${adzuna}")
