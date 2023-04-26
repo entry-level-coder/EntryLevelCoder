@@ -140,7 +140,7 @@ blockquote{
 
 .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(144, 186, 68, 1);
 }
 
 .apply-now-btn {
@@ -239,10 +239,6 @@ i{
     align-items: center;
     justify-content: center;
     height: 100%;
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*left: 50%;*/
-    /*transform: translate(-50%, -50%);*/
 }
 
 .heading {
