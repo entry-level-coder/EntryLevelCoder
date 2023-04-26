@@ -1,4 +1,4 @@
-// const key = apiKey;
+const key = apiKey;
 
 function createJobCard(job) {
     const card = document.createElement('div');
