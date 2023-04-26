@@ -31,6 +31,9 @@
     color: var(--main-green);
     margin: 5rem 0;
 }
+.buttonsWrapper {
+    margin-top: 1rem;
+}
 .view-details-btn{
     background-color: var(--yellow);
 }
@@ -121,12 +124,6 @@
     }
 }
 
-.card {
-    /*min-height: 400px; !* Adjust this value as needed for your design *!*/
-}
-.buttonsWrapper {
-    margin-top: 1rem;
-}
 @media (max-width: 576px) {
     .buttonsWrapper {
         flex-direction: row;
