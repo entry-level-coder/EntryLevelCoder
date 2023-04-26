@@ -1,4 +1,4 @@
-// const jobKey = apiKey;
+const jobKey = apiKey;
 
 let jobsData;
 let searchedJobs;
