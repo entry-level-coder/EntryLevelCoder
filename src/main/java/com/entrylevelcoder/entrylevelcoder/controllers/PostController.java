@@ -5,7 +5,6 @@ import com.entrylevelcoder.entrylevelcoder.models.Post;
 import com.entrylevelcoder.entrylevelcoder.models.User;
 import com.entrylevelcoder.entrylevelcoder.repositories.PostRepository;
 import com.entrylevelcoder.entrylevelcoder.repositories.UserRepository;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,8 +50,12 @@ PostController {
     public String returnPostCreateForm(Model model){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = new Post();
+        if(sessionUser.getCompany()) {
         post.setCompany(companyDao.findById(sessionUser.getId()));
         model.addAttribute("newPost", post);
+        } else {
+            return "redirect:/";
+        }
         return "createJob";
     }
 
@@ -66,8 +69,13 @@ PostController {
 
     @GetMapping("posts/{id}/update")
     public String updateForm(@PathVariable long id, Model model){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post updatePost = postDao.findById(id);
-        model.addAttribute("updatePost", updatePost);
+        if (updatePost.getId() == sessionUser.getId()) {
+            model.addAttribute("updatePost", updatePost);
+        } else {
+            return "redirect:/company/" + sessionUser.getId() + "/profile";
+        }
         return "editJobPosting";
     }
 //
@@ -86,8 +94,9 @@ PostController {
 //    }
 //
     @PostMapping("posts/delete")
-    public String deletePost(@PathVariable long id){
-        postDao.deleteById(id);
+    public String deletePost(){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         return null;
     }
 
