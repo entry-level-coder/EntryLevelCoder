@@ -2,6 +2,7 @@ package com.entrylevelcoder.entrylevelcoder.controllers;
 
 import com.entrylevelcoder.entrylevelcoder.services.AdzunaService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,11 +15,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
             this.adzunaService = adzunaService;
         }
 
-        @GetMapping("/posts")
+        @GetMapping(
+                value = "/json",
+                produces="application/json"
+        )
         @ResponseBody
         public String returnJobs() {
             return adzunaService.returnJSON();
         }
 
+        @GetMapping("/posts")
+        public String returnedJobsView() {
+            return "browseJobs";
+        }
+        @GetMapping("/")
+        public String returnedIndexJobsView() {
+            return "index";
+        }
     }
 
