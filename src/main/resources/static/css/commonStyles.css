@@ -132,7 +132,7 @@ div.form-select{
 
 .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(144, 186, 68, 1);
 }
 
 #job-card-container {
