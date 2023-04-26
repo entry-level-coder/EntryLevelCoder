@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ApiController {
 
-    @Value("${adzuna.key}")
+    @Value("${adzuna}")
     private String adzunaKey;
 
     @GetMapping("/")
     public String landingPage(Model model) {
-        model.addAttribute("adzuna.key", adzunaKey);
+        model.addAttribute("adzuna", adzunaKey);
         return "index";
     }
 
 
     @GetMapping("/posts")
     public String returnJobs(Model model){
-        model.addAttribute("adzuna.key", adzunaKey);
+        model.addAttribute("adzuna", adzunaKey);
         return "browseJobs";
     }
 }
