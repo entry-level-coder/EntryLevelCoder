@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
-
 @Controller
 public class
 PostController {
@@ -99,5 +98,6 @@ PostController {
 
         return null;
     }
+
 
 }
