@@ -47,27 +47,31 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
 
-
-
                 /* User Login configuration */
                 .formLogin()
                 .loginPage("/users/login")
                 .defaultSuccessUrl("/posts") // user's home page, it can be any URL
                 .permitAll()
+
                  // Anyone can go to the login page
+
 
                 /* Logout configuration */
                 .and()
                 .logout()
                 .logoutSuccessUrl("/") // append a query string value
 
-
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
+
                         "/posts/create", // only authenticated users can create ads
                         "/posts/{id}/edit", "/users/profile" // only authenticated users can edit ads
+
+                         // only authenticated users can create ads
+                        "/posts/{id}/update", "/company/profile", "/company/update" // only authenticated users can edit ads
+
                 )
                 .authenticated()
 
@@ -75,9 +79,15 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
+
                          "/", "/posts", "/posts/{id}", "/users/signup", "/login","/css/**",
                         "/js/**", "/images/**", "/users/login", "/company/login", "/aboutus", "/contactus", "/templates/partials/navbar", "/company/signup"
                 ) // anyone can see home, the ads pages, and sign up
+
+                         "/", "/posts", "/posts/create" ,"/users/signup","/company/signup","/css/**",
+                        "/js/**", "/images/**", "/users/login", "/aboutus", "/contactus", "/templates/partials/navbar"
+                ) // anyone can see home, the post pages, and sign ups
+
                 .permitAll();
 
 

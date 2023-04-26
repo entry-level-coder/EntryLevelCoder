@@ -2,7 +2,7 @@ package com.entrylevelcoder.entrylevelcoder.models;
 
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class User {
 
     //COMPANY PORTION OF USER
     @Column(name = "is_company")
-    private boolean isCompany;
+    private boolean company;
 
     @Column(name = "company_name")
     private String companyName;
@@ -65,10 +65,10 @@ public class User {
         this.password = password;
     }
 
-    public User(String username, String password, boolean isCompany, String companyName, String number, String industry, String city, String state, String description, String url, List<Post> posts) {
+    public User(String username, String password, boolean company, String companyName, String number, String industry, String city, String state, String description, String url, List<Post> posts) {
         this.username = username;
         this.password = password;
-        this.isCompany = isCompany;
+        this.company = company;
         this.companyName = companyName;
         this.number = number;
         this.industry = industry;
@@ -108,7 +108,7 @@ public class User {
     public User(User copy) {
         id = copy.id;
         username = copy.username;
-        isCompany = copy.isCompany;
+        company = copy.company;
         firstName = copy.firstName;
         lastName = copy.lastName;
         city = copy.city;
@@ -228,11 +228,11 @@ public class User {
         this.posts = posts;
     }
 
-    public boolean isCompany() {
-        return isCompany;
+    public boolean getCompany() {
+        return company;
     }
 
     public void setCompany(boolean company) {
-        isCompany = company;
+        this.company = company;
     }
 }
