@@ -64,7 +64,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                          // only authenticated users can create ads
-                        "/posts/{id}/update", "/users/profile" // only authenticated users can edit ads
+                        "/posts/{id}/update", "/company/profile", "/company/update" // only authenticated users can edit ads
                 )
                 .authenticated()
 

@@ -3,6 +3,7 @@ package com.entrylevelcoder.entrylevelcoder.controllers;
 
 import com.entrylevelcoder.entrylevelcoder.repositories.UserRepository;
 import com.entrylevelcoder.entrylevelcoder.models.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -111,17 +112,28 @@ public class UserController {
 //        return "companyLogin";
 //    }
 
-    @GetMapping("/company/{id}/profile")
-    public String companyProfile(@PathVariable long id, Model model) {
-        User company = userDao.findById(id);
+    @GetMapping("/company/profile")
+    public String companyProfile(Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User company = userDao.findById(sessionUser.getId());
+        if(company.getCompany()) {
         model.addAttribute("company", company);
+        } else {
+            return "redirect:/";
+        }
         return "companyProfile";
     }
 
-    @GetMapping("company/{id}/update")
-    public String updateCompany(@PathVariable long id, Model model) {
-        User company = userDao.findById(id);
-        model.addAttribute("company", company);
+    @GetMapping("company/update")
+    public String updateCompany(Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User company = userDao.findById(sessionUser.getId());
+        System.out.println(company.getCompany());
+        if(company.getCompany()) {
+            model.addAttribute("company", company);
+        } else {
+            return "redirect:/";
+        }
         return "editCompanyProfile";
     }
 
