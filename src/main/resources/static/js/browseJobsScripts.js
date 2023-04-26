@@ -308,18 +308,6 @@ function filterJobs(filterId) {
     updateJobCards(filteredJobs);
 }
 
-// function getPostedAgo(date){
-//     let today = new Date;
-//     let thisDay = today.getDate();
-//     let dateCreated = date.getDate();
-//     let xDay = thisDay - dateCreated;
-//     if(xDay < 0){
-//         return 0;
-//     } else {
-//         return xDay
-//     }
-// }
-
 window.onload = function () {
     getData();
 
