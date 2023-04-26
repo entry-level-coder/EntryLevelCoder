@@ -7,10 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -59,15 +56,15 @@ public class UserController {
 
     //Updates User Info
     @PostMapping("/users/{id}/update")
-    public String updateUser(@PathVariable("id") long id, @ModelAttribute User user) {
+    public String updateUser(@PathVariable("id") long id, @RequestParam("firstName") String firstName,  @RequestParam("lastName") String lastName , @RequestParam("username") String username,  @ModelAttribute User user, Model model) {
         User updateUser = userDao.findById(id);
-        updateUser.setFirstName(user.getFirstName());
-        updateUser.setLastName(user.getLastName());
-        updateUser.setUsername(user.getUsername());
-        updateUser.setPassword(user.getPassword());
+        updateUser.setFirstName(firstName);
+        updateUser.setLastName(lastName);
+        updateUser.setUsername(username);
 
         // update the post in database using id
         userDao.save(updateUser);
+        model.addAttribute("message", "User updated successfully.");
         return "redirect:/posts";
 
     }
