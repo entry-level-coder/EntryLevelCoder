@@ -33,10 +33,18 @@ function createJobCard(job) {
     const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
 
     let today = new Date;
+    console.log(today);
     let thisDay = today.getDate();
+    console.log(thisDay);
     let xDays = thisDay - day;
 
+    if(xDays < 0) {
+        cardJobDate.innerText = "Posted: Unknown";
+    } else {
     cardJobDate.innerText = "Posted: " + xDays + " days ago";
+    }
+
+    // cardJobDate.innerText = "Posted: " + getPostedAgo(formattedDate) + " days ago";
 
     // cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
 
@@ -301,6 +309,18 @@ function filterJobs(filterId) {
 
     updateJobCards(filteredJobs);
 }
+
+// function getPostedAgo(date){
+//     let today = new Date;
+//     let thisDay = today.getDate();
+//     let dateCreated = date.getDate();
+//     let xDay = thisDay - dateCreated;
+//     if(xDay < 0){
+//         return 0;
+//     } else {
+//         return xDay
+//     }
+// }
 
 window.onload = function () {
     getData();
