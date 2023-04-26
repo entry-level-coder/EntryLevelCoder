@@ -9,6 +9,7 @@
     background-position: 0px 50%;
     height: auto;
 }
+
 .featured-jobs-title{
     font-size: 2.5rem;
 }
@@ -24,6 +25,12 @@
     background-color: var(--light-grey);
     color: var(--white);
 }
+.no-results-message {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--main-green);
+    margin: 5rem 0;
+}
 .view-details-btn{
     background-color: var(--yellow);
 }
@@ -34,4 +41,94 @@
 .save-job-btn{
     background-color: var(--main-green);
 }
+.about-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
+}
+.about-us-footer:hover{
+    color: var(--main-green);
+}
+.contact-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
+}
+.contact-us-footer:hover{
+    color: var(--main-green);
+}
 
+.hidden{
+    visibility: hidden;
+}
+
+/*Loading Page Message Styles*/
+
+/* Loader Styles */
+.loader {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.heading {
+    color: black;
+    margin-bottom: 1em;
+    font-size: 1rem;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.load {
+    width: 23px;
+    height: 3px;
+    background-color: var(--main-green);
+    animation: 1s move_5011 infinite;
+    border-radius: 5px;
+    margin: 0.1em;
+}
+
+.load:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.load:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.load:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+
+@keyframes move_5011 {
+    0% {
+        width: 0.2em;
+    }
+
+    25% {
+        width: 0.7em;
+    }
+
+    50% {
+        width: 1.5em;
+    }
+
+    100% {
+        width: 0.2em;
+    }
+}
+
+.card {
+    /*min-height: 400px; !* Adjust this value as needed for your design *!*/
+}
+.buttonsWrapper {
+    margin-top: 1rem;
+}
+@media (max-width: 576px) {
+    .buttonsWrapper {
+        flex-direction: row;
+    }
+}

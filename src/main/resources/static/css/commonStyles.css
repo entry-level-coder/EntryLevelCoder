@@ -21,13 +21,11 @@ body{
     font-size: 2rem;
 }
 
-/* Centered Nav Items */
-.centered-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/*Nav Items */
 
+.navbar-nav {
+    margin-right: 0;
+}
 .centered-nav .nav-item {
     margin-left: 2rem;
     margin-right: 2rem;
@@ -110,70 +108,19 @@ div.form-select{
 .form-control:focus {
     min-width: unset;
 }
-
-/*Loading Page Message Styles*/
-.loader {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    /*height: 100%;*/
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.about-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
 }
-
-.heading {
-    color: black;
-    letter-spacing: 0.2em;
-    margin-bottom: 1em;
+.about-us-footer:hover{
+    color: var(--main-green);
 }
-
-.loading {
-    display: flex;
-    width: 15em;
-    align-items: center;
-    justify-content: center;
+.contact-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
 }
-
-.load {
-    width: 23px;
-    height: 3px;
-    background-color: var(--main-green);
-    animation: 1s move_5011 infinite;
-    border-radius: 5px;
-    margin: 0.1em;
-}
-
-.load:nth-child(1) {
-    animation-delay: 0.2s;
-}
-
-.load:nth-child(2) {
-    animation-delay: 0.4s;
-}
-
-.load:nth-child(3) {
-    animation-delay: 0.6s;
-}
-
-@keyframes move_5011 {
-    0% {
-        width: 0.2em;
-    }
-
-    25% {
-        width: 0.7em;
-    }
-
-    50% {
-        width: 1.5em;
-    }
-
-    100% {
-        width: 0.2em;
-    }
+.contact-us-footer:hover{
+    color: var(--main-green);
 }
 
 
@@ -269,6 +216,10 @@ i{
     background-color: var(--main-green);
 }
 
+.job-seeker-link:hover, .employer-link:hover {
+    color: var(--main-green);
+}
+
 /*About Us Styles*/
 .about-us-title{
     font-size: 3rem;
@@ -294,6 +245,9 @@ i{
 }
 .company-login-link{
     color: var(--dark-grey);
+}
+.company-login-link:hover{
+    color: var(--main-green);
 }
 .form-check-input:checked{
     background-color: var(--main-green);
@@ -328,6 +282,9 @@ i{
 }
 .user-already-have-account{
     color: var(--dark-grey);
+}
+.user-already-have-account:hover{
+    color: var(--main-green);
 }
 .user-signup-header{
     background-color: var(--main-green);

@@ -13,13 +13,11 @@
     font-size: 2rem;
 }
 
-/* Centered Nav Items */
-.centered-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* Nav Items */
 
+.navbar-nav {
+    margin-right: 0;
+}
 .centered-nav .nav-item {
     margin-left: 2rem;
     margin-right: 2rem;
@@ -67,6 +65,10 @@ svg {
 .jumbotron-lead{
     font-size: 1.5rem;
 }
+.jumbotron-signup-btn:hover {
+    background-color: var(--dark-grey);
+    color: var(--main-green);
+}
 .featured-employers-title{
     font-size: 2.5rem;
 }
@@ -80,6 +82,10 @@ svg {
 .hiw-card-title{
     color: var(--main-green);
     font-size: 1.7rem;
+}
+
+.card {
+    height: 100%;
 }
 
 .card-text{
@@ -119,10 +125,7 @@ blockquote{
 .cta-card-title{
     font-size: 1.7rem;
 }
-.cta-card{
-    height: auto;
-    width: auto;
-}
+
 .cta-card-text{
     font-size: 1.4rem;
 }
@@ -143,6 +146,10 @@ blockquote{
 .apply-now-btn {
     background-color: var(--main-green);
 }
+.apply-now-btn:hover {
+    background-color: var(--light-grey);
+    color: var(--white);
+}
 
 #featured-jobs{
     height: auto;
@@ -153,6 +160,11 @@ blockquote{
 
 .view-details-btn{
     background-color: var(--yellow);
+}
+
+.view-details-btn:hover {
+    background-color: var(--light-grey);
+    color: var(--white);
 }
 
 #job-modal .modal-body {
@@ -183,6 +195,20 @@ blockquote{
 .footer{
     background-color: var(--dark-grey);
     color: var(--light-grey);
+}
+.about-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
+}
+.about-us-footer:hover{
+    color: var(--main-green);
+}
+.contact-us-footer{
+    color: var(--light-grey);
+    text-decoration: none;
+}
+.contact-us-footer:hover{
+    color: var(--main-green);
 }
 .entry-level-coder-email{
     text-decoration: none;
@@ -270,4 +296,14 @@ i{
         width: 0.2em;
     }
 }
-
+@media (max-width: 767px) {
+    /* apply these rules when screen width is 576px or less */
+    .featured-jobs-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .card {
+        margin-bottom: 1rem;
+    }
+}

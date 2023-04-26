@@ -14,10 +14,10 @@
         <div class="col-md-6 offset-md-3">
           <div class="card shadow">
             <div class="card-header login-form-header text-white">
-              <h4 class="mb-0">User Login</h4>
+              <h4 class="mb-0">Login</h4>
             </div>
             <div class="card-body">
-              <form th:action="@{/users/login}" method="post">
+              <form th:action="@{/login}" th:method="POST">
                 <div class="form-group mb-4">
                   <label for="username" class="form-label">Email address</label>
                   <input  type="email" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Enter your email">
@@ -26,9 +26,10 @@
                   <label for="password" class="form-label">Password</label>"
                   <input type="password" class="form-control"  name="password" id="password" placeholder="Enter your password">
                 </div>
-                <div class="text-end">
-                  <button type="submit" class="btn login-form-btn" th:href="@{/user/profile}">Login</button>
-                  <a th:href="@{/users/signup}" class="btn text-decoration-none">Create an account for free</a>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button type="submit" class="btn login-form-btn">Login</button>
+                  <a th:href="@{/users/signup}" class="btn text-decoration-none job-seeker-link">Are you a job seeker?</a>
+                  <a th:href="@{/company/signup}" class="btn text-decoration-none employer-link">Are you an employer looking to post a job?</a>
                 </div>
               </form>
             </div>
