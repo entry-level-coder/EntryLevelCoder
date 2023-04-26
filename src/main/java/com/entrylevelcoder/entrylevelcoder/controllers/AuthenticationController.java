@@ -14,17 +14,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class AuthenticationController {
 
 
-
 @GetMapping("/users/login")
 public String returnUserLoginPage(){
     System.out.println("inside returnLoginPage method");
     return "userLogin";
 }
 
-@GetMapping("/company/login")
-public String returnCompanyLoginPage(){
-    return "companyLogin";
-}
+
+
+//@GetMapping("/company/login")
+//public String returnCompanyLoginPage(){
+//    return "companyLogin";
+//}
 
 
 }

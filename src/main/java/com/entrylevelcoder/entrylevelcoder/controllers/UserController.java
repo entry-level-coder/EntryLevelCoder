@@ -68,7 +68,7 @@ public class UserController {
 
         // update the post in database using id
         userDao.save(updateUser);
-        return "redirect:posts";
+        return "redirect:/posts";
 
     }
 
@@ -77,6 +77,7 @@ public class UserController {
     public String deleteUserById(@PathVariable("id") long id) {
         // Check if the user exists before deleting
         userDao.deleteById(id);
+
         return "redirect:/users/login";
     }
 
@@ -84,7 +85,6 @@ public class UserController {
 
     @GetMapping("/users/profile")
     public String getToProfileFromLogin( Model model){
-
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         model.addAttribute("user", user);
         return "userProfile";

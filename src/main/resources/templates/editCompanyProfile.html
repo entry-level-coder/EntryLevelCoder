@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header :: header-common"></head>
 
 <body>
@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">Edit Profile Information</h3>
-                        <form th:action="@{company/update}" th:object="${company}">
+                        <form th:action="@{company/update}" th:object="${company}" >
                             <div class="mb-3">
                                 <label for="companyName" class="form-label"> Company Name:</label>
                                 <input type="text" class="form-control" id="companyName" name="companyName"
