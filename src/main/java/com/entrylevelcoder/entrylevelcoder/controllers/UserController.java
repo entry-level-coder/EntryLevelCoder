@@ -32,8 +32,8 @@ public class UserController {
     // Saves User Input To Database
     @PostMapping("/users/signup")
     public String saveUser(@ModelAttribute User user){
-        System.out.println("inside saveuser");
         String hash = passwordEncoder.encode(user.getPassword());
+        user.setCompany(false);
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/users/login";
@@ -85,5 +85,65 @@ public class UserController {
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         model.addAttribute("user", user);
         return "userProfile";
+    }
+
+    // Company mapping
+
+    @GetMapping("/company/signup")
+    public String createCompany(Model model) {
+        model.addAttribute("company", new User());
+        return "companySignup";
+    }
+
+    @PostMapping("/company/signup")
+    public String createCompanyPost(@ModelAttribute User company) {
+        String hashedPassword = passwordEncoder.encode(company.getPassword());
+        company.setPassword(hashedPassword);
+        company.setCompany(true);
+        userDao.save(company);
+        return "redirect:/company/login";
+    }
+
+//    @GetMapping("/company/login")
+//    public String companyLogin(Model model) {
+//        model.getAttribute("company");
+//        return "companyLogin";
+//    }
+
+    @GetMapping("/company/profile")
+    public String companyProfile(Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User company = userDao.findById(sessionUser.getId());
+        if(company.getCompany()) {
+        model.addAttribute("company", company);
+        } else {
+            return "redirect:/";
+        }
+        return "companyProfile";
+    }
+
+    @GetMapping("company/update")
+    public String updateCompany(Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User company = userDao.findById(sessionUser.getId());
+        System.out.println(company.getCompany());
+        if(company.getCompany()) {
+            model.addAttribute("company", company);
+        } else {
+            return "redirect:/";
+        }
+        return "editCompanyProfile";
+    }
+
+    @PostMapping("company/update")
+    public String updateCompanyPost(@ModelAttribute User company) {
+        userDao.save(company);
+        return "redirect: /";
+    }
+
+    @PostMapping("company/{id}/delete")
+    public String deleteCompany(@PathVariable long id) {
+        userDao.deleteById(id);
+        return null;
     }
 }

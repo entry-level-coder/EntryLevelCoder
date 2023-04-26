@@ -1,11 +1,11 @@
-const key = keys.adzuna;
+const key = apiKey;
 
 function createJobCard(job) {
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'card m-3 position-relative';
 
     const cardBody = document.createElement('div');
-    cardBody.className = 'card-body text-center';
+    cardBody.className = 'card-body d-flex flex-column justify-content-between';
 
     const cardTitle = document.createElement('h5');
     cardTitle.className = 'card-title';
@@ -29,21 +29,53 @@ function createJobCard(job) {
 // Construct the formatted date string
     const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
 
-    cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
+    let today = new Date;
+    console.log(today);
+    let thisDay = today.getDate();
+    console.log(thisDay);
+    let xDays = thisDay - day;
+
+    if(xDays < 0) {
+        cardJobDate.innerText = "Posted: Unknown";
+    } else {
+        cardJobDate.innerText = "Posted: " + xDays + " days ago";
+    }
+
+    // cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
 
     const cardJobId = document.createElement('p');
-    cardJobId.className = 'cardJobId';
-    cardJobId.innerText = `Job ID: ${job.id}`;
+    cardJobId.className = 'cardJobId hidden';
 
     const cardSalary = document.createElement('p');
     cardSalary.className = 'cardSalary';
-    const formattedMinSalary = job.salary_min.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    const formattedMaxSalary = job.salary_max.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    cardSalary.innerText = `Salary Range: ${formattedMinSalary} - ${formattedMaxSalary}`;
+
+    if (job.salary_min !== job.salary_max) {
+        const formattedMinSalary = job.salary_min.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+        const formattedMaxSalary = job.salary_max.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+        cardSalary.innerText = `${formattedMinSalary} - ${formattedMaxSalary}`;
+    } else {
+        const formattedSalary = job.salary_max.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+        cardSalary.innerText = `${formattedSalary}`;
+    }
 
     const cardLocation = document.createElement('p');
     cardLocation.className = 'cardLocation';
-    cardLocation.innerText = `Location: ${job.location.area[3]}, ${job.location.area[1]}`;
+    cardLocation.innerText = `${job.location.area[3]}, ${job.location.area[1]}`;
 
     const cardDescription = document.createElement('p');
     cardDescription.className = 'cardDescription';
@@ -52,16 +84,42 @@ function createJobCard(job) {
     const viewDetailsLink = document.createElement('button');
     viewDetailsLink.className = 'btn view-details-btn text-center mb-2';
     viewDetailsLink.href = '#';
-    viewDetailsLink.innerText = 'View Details';
+    viewDetailsLink.innerText = 'Preview Job';
     viewDetailsLink.addEventListener('click', () => {
         const modalTitle = document.getElementById('job-modal-title');
         const modalBody = document.getElementById('job-modal-body');
 
         modalTitle.innerText = job.title;
+
+        let salaryElement = document.createElement('p');
+        if (job.salary_min !== job.salary_max) {
+            const formattedMinSalary = job.salary_min.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            const formattedMaxSalary = job.salary_max.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            salaryElement.innerHTML = `<strong>Salary Range:</strong> ${formattedMinSalary} - ${formattedMaxSalary}`;
+        } else {
+            const formattedSalary = job.salary_max.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            salaryElement.innerHTML = `<strong>Salary:</strong> ${formattedSalary}`;
+        }
+
         modalBody.innerHTML = `
       <p><strong>Company:</strong> ${job.company.display_name}</p>
       <p><strong>Job ID:</strong> ${job.id}</p>
-      <p><strong>Salary Range:</strong> ${job.salary_min} - ${job.salary_max}</p>
+       ${salaryElement.outerHTML}
       <p><strong>Location:</strong> ${job.location.area[3]}, ${job.location.area[1]}</p>
       <p><strong>Description:</strong> ${job.description}</p>
     `;
@@ -74,21 +132,27 @@ function createJobCard(job) {
     });
 
     const applyNowLink = document.createElement('a');
-    applyNowLink.className = 'btn mb-2 apply-now-btn';
+    applyNowLink.className = 'btn mb-2 text-white apply-now-btn';
+    applyNowLink.target = '_blank';
     applyNowLink.href = job.redirect_url;
     applyNowLink.innerText = 'Apply Now';
 
-    const buttonsWrapper = document.createElement('div'); // added wrapper for buttons
-    buttonsWrapper.className = 'd-flex flex-column align-items-center justify-content-center'; // added class for centering
-    buttonsWrapper.appendChild(viewDetailsLink);
-    buttonsWrapper.appendChild(applyNowLink);
+    const cardContent = document.createElement('div');
+
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardSubtitle);
     cardBody.appendChild(cardJobDate);
-    cardBody.appendChild(cardJobId);
+    // cardBody.appendChild(cardJobId);
     cardBody.appendChild(cardSalary);
     cardBody.appendChild(cardLocation);
+
+    const buttonsWrapper = document.createElement('div'); // added wrapper for buttons
+    buttonsWrapper.className = 'd-flex flex-column align-items-start justify-content-center'; // added class for centering
+    buttonsWrapper.appendChild(viewDetailsLink);
+    buttonsWrapper.appendChild(applyNowLink);
+
+    cardBody.appendChild(cardContent);
     cardBody.appendChild(buttonsWrapper); // added wrapper for buttons
 
     card.appendChild(cardBody);
