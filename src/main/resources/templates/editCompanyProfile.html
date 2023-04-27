@@ -17,9 +17,9 @@
 
 
 
-                        <form th:action="@{company/{id}/update(id=${user.id})}" th:object="${user}" th:method="post">
-<!--                            <input type="hidden" th:field="*{company}">-->
-<!--                            <input type="hidden" th:field="*{password}">-->
+                        <form th:action="@{company/{id}/update(id=${company.id})}" th:object="${company}" th:method="post">
+                            <input type="hidden" th:field="*{company}">
+                            <input type="hidden" th:field="*{password}">
 
 
                             <div class="mb-3">
@@ -27,18 +27,24 @@
                                 <input type="text" class="form-control" id="companyName" name="companyName"
                                 th:field="*{companyName}" >
                             </div>
+
                             <div class="mb-3">
                                 <label for="companyEmail" class="form-label">Email:</label>
                                 <input type="email" class="form-control" id="companyEmail" name="companyEmail"
                                        th:field="*{username}" >
                             </div>
+
                             <div class="mb-3">
                                 <label for="city" class="form-label">City:</label>
                                 <input type="text" class="form-control" id="city" name="city" th:field="*{city}" >
                             </div>
+
                             <div class="mb-3">
+
                                 <label for="state">State:</label>
+
                                 <br/>
+
                                 <select id="state" name="state" class="form-select" aria-label="Alabama" th:field="*{state}">
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
@@ -93,34 +99,39 @@
                                     <option value="WY">Wyoming</option>
                                 </select>
                             </div>
+
                             <div class="mb-3">
                                 <label for="industry" class="form-label">Industry:</label>
                                 <input type="text" class="form-control" id="industry" name="industry" value="Technology"
                                 th:field="*{industry}" >
                             </div>
+
                             <div class="mb-3">
                                 <label for="jobBoardUrl" class="form-label">Job Board URL:</label>
                                 <input type="text" class="form-control" id="jobBoardUrl" name="jobBoardUrl" value="Technology"
                                 th:field="*{url}" >
                             </div>
+
                             <div class="mb-3">
                                 <label for="companyDescription" class="form-label">Company Description:</label>
                                 <textarea class="form-control" id="companyDescription" name="companyDescription"
                                  th:field="*{description}" rows="5" ></textarea>
                             </div>
+
                             <div class=" d-flex justify-content-between">
                             <button type="submit" class="btn edit-company-profile-btn">Edit Profile</button>
                             </div>
+
                         </form>
 
 
                     <div>
-                        <form th:action="@{company/{id}/delete(id=${user.id})}" th:method="post">
+                        <form th:action="@{company/{id}/delete(id=${company.id})}" th:method="post">
                             <button  type="submit" class="btn btn-danger">Delete Account</button>
                         </form>
+                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -136,5 +147,6 @@
         crossorigin="anonymous"></script>
 <!-- Custom JS -->
 <script src="/js/indexScript.js"></script>
+
 </body>
 </html>

@@ -118,13 +118,13 @@ public class UserController {
         return "companyProfile";
     }
 
-    @GetMapping("company/update")
-    public String updateCompany(Model model) {
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.findById(sessionUser.getId());
-        System.out.println(user.getCompany());
-        if(user.getCompany()) {
-            model.addAttribute("user", user);
+    @GetMapping("company/{id}/edit")
+    public String updateCompany(@PathVariable("id") long id, Model model) {
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User company = userDao.findById(id);
+        System.out.println(company.getCompany());
+        if(company.getCompany()) {
+            model.addAttribute("company", company);
         } else {
             return "redirect:/";
         }
