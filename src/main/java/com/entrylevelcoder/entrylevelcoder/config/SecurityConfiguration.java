@@ -72,7 +72,7 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                         "/", "/posts", "/posts/create" ,"/users/signup","/company/signup", "/json","/css/**",
+                         "/", "/posts", "/posts/create" ,"/users/signup","/company/signup", "/json", "/error/**", "/css/**",
                         "/js/**", "/images/**", "/users/login", "/aboutus", "/contactus", "/templates/partials/navbar"
                 ) // anyone can see home, the post pages, and sign ups
                 .permitAll();
