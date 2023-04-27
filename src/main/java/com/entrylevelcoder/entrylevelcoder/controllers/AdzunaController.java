@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
         @GetMapping("/posts")
         public String returnedJobsView() {
+
             return "browseJobs";
         }
         @GetMapping("/")

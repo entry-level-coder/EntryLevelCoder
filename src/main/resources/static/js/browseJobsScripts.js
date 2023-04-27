@@ -1,7 +1,5 @@
-// const jobKey = apiKey;
-//
-// let jobsData;
-// let searchedJobs;
+let jobsData;
+let searchedJobs;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const jobCardContainer = document.getElementById('job-card-container');
@@ -16,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function createJobCard(job) {
         const card = document.createElement('div');
-        card.className = 'card m-3 position-relative';
+        card.className = 'card m-3';
 
         const cardBody = document.createElement('div');
         cardBody.className = 'card-body d-flex flex-column justify-content-between';
