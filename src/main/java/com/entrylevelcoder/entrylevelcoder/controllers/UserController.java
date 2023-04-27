@@ -84,8 +84,13 @@ public class UserController {
     @GetMapping("/users/profile")
     public String getToProfileFromLogin(Model model){
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
-        model.addAttribute("user", user);
-        return "userProfile";
+        if (!user.getCompany()) {
+            model.addAttribute("user", user);
+            return "userProfile";
+        } else {
+            model.addAttribute("company", user);
+            return "companyProfile";
+        }
     }
 
     // Company mapping
@@ -134,6 +139,7 @@ public class UserController {
 
     @PostMapping("company/{id}/update")
     public String updateCompanyPost(@ModelAttribute User updateCompanies) {
+        System.out.println("Inside updateCompanyPost");
         User updateCompany = userDao.findById(updateCompanies.getId());
         updateCompany.setCompanyName(updateCompanies.getCompanyName());
         updateCompany.setUsername(updateCompanies.getUsername());

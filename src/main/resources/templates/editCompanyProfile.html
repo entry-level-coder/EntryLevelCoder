@@ -17,7 +17,7 @@
 
 
 
-                        <form th:action="@{company/{id}/update(id=${company.id})}" th:object="${company}" th:method="post">
+                        <form th:action="@{/company/{id}/update(id=${company.id})}" th:object="${company}" th:method="post">
                             <input type="hidden" th:field="*{company}">
                             <input type="hidden" th:field="*{password}">
 
