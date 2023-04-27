@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const cardLocation = document.createElement('p');
         cardLocation.className = 'cardLocation';
         // checking to see if the length of area array is 4 and if city or state is undefined or null
-        if(job.location.area.length < 4) {
+        if(job.location.area.length <= 3) {
             cardLocation.innerText = `Location: Not Provided`;
         } else if (job.location.area[1] === "undefined" || job.location.area[1] === null) {
             cardLocation.innerText = `Location: Not Provided`;
