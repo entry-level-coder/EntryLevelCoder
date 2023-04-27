@@ -50,8 +50,6 @@ function createJobCard(job) {
         cardJobDate.innerText = "Posted: " + xDays + " days ago";
     }
 
-    // cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
-
     const cardJobId = document.createElement('p');
     cardJobId.className = 'cardJobId hidden';
 

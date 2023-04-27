@@ -27,16 +27,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         cardSubtitle.className = 'card-subtitle mb-2 text-muted';
         cardSubtitle.innerText = job.company.display_name;
 
-        const cardJobDate = document.createElement('p');
-        cardJobDate.className = 'cardJobDate';
-
-// Create a new Date object from the "2023-04-06T18:38:10Z" string
-        const jobDate = new Date(job.created);
-
-// Extract the individual date components
-        const month = jobDate.getMonth() + 1; // Add 1 to get the zero-based month index
-        const day = jobDate.getDate();
-        const year = jobDate.getFullYear();
+    const cardJobId = document.createElement('p');
+    cardJobId.className = 'cardJobId';
+    cardJobId.innerText = "Job Id: " + job.id;
 
 // Construct the formatted date string
         const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
@@ -182,10 +175,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         return card;
     }
 
-    async function renderJobs() {
-        const jobs = await fetchJobs();
-        // Hide the loader
-        loader.style.display = 'none';
+
+    updateJobCards(filteredJobs);
+}
+
+window.onload = function () {
+    getData();
+
 
         // Clear the job card container
         jobCardContainer.innerHTML = '';
