@@ -1,8 +1,19 @@
-const key = apiKey;
+// const key = apiKey;
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const featuredJobsContainer = document.getElementById('featured-jobs-container');
+    const loader = document.getElementById('loader');
+
+
+    async function fetchJobs() {
+        const response = await fetch('/json');
+        const jobs = await response.json();
+        return jobs.results;
+    }
 
 function createJobCard(job) {
     const card = document.createElement('div');
-    card.className = 'card m-3 position-relative';
+    card.className = 'card featured-job-card m-3 col position-relative';
 
     const cardBody = document.createElement('div');
     cardBody.className = 'card-body d-flex flex-column justify-content-between';
@@ -155,63 +166,36 @@ function createJobCard(job) {
 
     card.appendChild(cardBody);
 
+    // add classes to the job card container's child elements
+
+
     return card;
 }
 
-async function fetchData() {
-    try {
-        let data = JSON.parse(localStorage.getItem('jobData'));
+async function renderJobs() {
+    const jobs = await fetchJobs();
 
-        if (!data) {
-            const response = await fetch(`${key}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            data = await response.json();
-            localStorage.setItem('jobData', JSON.stringify(data));
-        }
-        console.log(data);
+    // Sort jobs by salary (descending order)
+    jobs.sort((a, b) => b.salary_max - a.salary_max);
 
-// Update featured jobs
-        updateFeaturedJobs(data);
-
-        // Hide the loading page and show the job cards container
-        document.getElementById('loader').style.display = 'none';
-        document.getElementById('featured-jobs-container').style.display = 'block';
+    // Display only the top 3 highest paying jobs
+    const topThreeJobs = jobs.slice(0, 3);
 
 
+    // Hide the loader
+    loader.style.display = 'none';
 
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-function updateFeaturedJobs(data) {
-    const featuredJobsContainer = document.querySelector('.featured-jobs-container');
+    // Clear the job card container
     featuredJobsContainer.innerHTML = '';
 
-    let jobs = [];
-    if (data.results && data.results.length > 0) {
-        jobs = data.results;
-    } else if (data.length > 0) {
-        jobs = data;
-    }
-
-    // Sort jobs by salary in descending order and select the top 3
-    const topSalaryJobs = jobs.sort((a, b) => b.salary_max - a.salary_max).slice(0, 3);
-
-    topSalaryJobs.forEach(job => {
+    topThreeJobs.forEach((job) => {
         const jobCard = createJobCard(job);
-        const col = document.createElement('div');
-        col.className = 'col-md-4';
-        col.appendChild(jobCard);
-        featuredJobsContainer.appendChild(col);
+        featuredJobsContainer.appendChild(jobCard);
     });
 }
 
-window.onload = function () {
-    fetchData();
-};
+await renderJobs();
+});
 
 
 
