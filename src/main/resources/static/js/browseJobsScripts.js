@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (searchedJobs.length === 0) {
             // Create a message element
             const message = document.createElement('div');
-            message.className = ' text-center mt-5 col-12 col-md-8 offset-md-2';
+            message.className = 'search-error-message text-center mt-5 col-12 col-md-8 offset-md-2';
             message.innerText = "Sorry...there were no results found";
 
             // Append the message element to the job card container
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (filteredJobs.length === 0) {
             // Create a message element
             const message = document.createElement('div');
-            message.className = 'text-center mt-5 col-12 col-md-8 offset-md-2';
+            message.className = 'search-error-message text-center mt-5 col-12 col-md-8 offset-md-2';
             message.innerText = `Sorry...there are no results for the selected filter`;
 
             // Append the message element to the job card container
