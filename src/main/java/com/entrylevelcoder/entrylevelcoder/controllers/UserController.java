@@ -105,11 +105,6 @@ public class UserController {
         return "redirect:/login";
     }
 
-//    @GetMapping("/company/login")
-//    public String companyLogin(Model model) {
-//        model.getAttribute("company");
-//        return "companyLogin";
-//    }
 
     @GetMapping("/company/profile")
     public String companyProfile(Model model) {
@@ -136,12 +131,6 @@ public class UserController {
         return "editCompanyProfile";
     }
 
-//    @GetMapping("/company/{id}/update")
-//    public String updateCompanyGet(@PathVariable("id") long id, Model model) {
-//        User company = userDao.findById(id);
-//        model.addAttribute("user", company);
-//        return "editUserProfile";
-//    }
 
     @PostMapping("company/{id}/update")
     public String updateCompanyPost(@ModelAttribute User updateCompanies) {
@@ -157,9 +146,9 @@ public class UserController {
         return "redirect:/company/profile";
     }
 
-    @PostMapping("company/delete")
+    @PostMapping("company/{id}/delete")
     public String deleteCompany(@PathVariable long id) {
         userDao.deleteById(id);
-        return "redirect:/company/profile";
+        return "redirect:/login";
     }
 }
