@@ -25,12 +25,12 @@
     background-color: var(--light-grey);
     color: var(--white);
 }
-.no-results-message {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--main-green);
-    margin: 5rem 0;
-}
+/*#search-error-message {*/
+/*    font-size: 2rem;*/
+/*    font-weight: bold;*/
+/*    color: var(--main-green);*/
+/*    margin: 5rem 0;*/
+/*}*/
 .buttonsWrapper {
     margin-top: 1rem;
 }
