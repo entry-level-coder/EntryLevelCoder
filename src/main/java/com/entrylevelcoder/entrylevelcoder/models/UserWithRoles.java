@@ -13,10 +13,8 @@ public class UserWithRoles extends User implements UserDetails {
 
 //    private User users;
 
-    public UserWithRoles(User user) {
-        super(user);
-    }
 
+    public UserWithRoles(User user) {super(user);}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

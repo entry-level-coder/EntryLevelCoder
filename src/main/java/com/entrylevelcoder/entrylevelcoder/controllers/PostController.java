@@ -49,12 +49,12 @@ PostController {
     public String returnPostCreateForm(Model model){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = new Post();
-        if(sessionUser.getCompany()) {
+//        if(sessionUser.getCompany()) {
         post.setCompany(companyDao.findById(sessionUser.getId()));
         model.addAttribute("newPost", post);
-        } else {
-            return "redirect:/";
-        }
+//        } else {
+//            return "redirect:/";
+//        }
         return "createJob";
     }
 
