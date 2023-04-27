@@ -1,5 +1,5 @@
-let jobsData;
-let searchedJobs;
+// let jobsData;
+// let searchedJobs;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const jobCardContainer = document.getElementById('job-card-container');
@@ -27,9 +27,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         cardSubtitle.className = 'card-subtitle mb-2 text-muted';
         cardSubtitle.innerText = job.company.display_name;
 
-    const cardJobId = document.createElement('p');
-    cardJobId.className = 'cardJobId';
-    cardJobId.innerText = "Job Id: " + job.id;
+        const cardJobDate = document.createElement('p');
+        cardJobDate.className = 'cardJobDate';
+
+// Create a new Date object from the "2023-04-06T18:38:10Z" string
+        const jobDate = new Date(job.created);
+
+// Extract the individual date components
+        const month = jobDate.getMonth() + 1; // Add 1 to get the zero-based month index
+        const day = jobDate.getDate();
+        const year = jobDate.getFullYear();
 
 // Construct the formatted date string
         const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
@@ -175,28 +182,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         return card;
     }
 
+    async function renderJobs() {
+        const jobs = await fetchJobs();
 
-    updateJobCards(filteredJobs);
-}
-
-window.onload = function () {
-    getData();
-
+        // Hide the loader
+        loader.style.display = 'none';
 
         // Clear the job card container
         jobCardContainer.innerHTML = '';
 
+        // Render the job cards
         jobs.forEach((job) => {
             const jobCard = createJobCard(job);
             jobCardContainer.appendChild(jobCard);
         });
-    }
 
+    }
     await renderJobs();
 
 });
-
-
 
 
 // async function getData() {
