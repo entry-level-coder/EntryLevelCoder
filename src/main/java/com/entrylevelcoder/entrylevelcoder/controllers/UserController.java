@@ -126,10 +126,10 @@ public class UserController {
     @GetMapping("company/update")
     public String updateCompany(Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User company = userDao.findById(sessionUser.getId());
-        System.out.println(company.getCompany());
-        if(company.getCompany()) {
-            model.addAttribute("company", company);
+        User user = userDao.findById(sessionUser.getId());
+        System.out.println(user.getCompany());
+        if(user.getCompany()) {
+            model.addAttribute("user", user);
         } else {
             return "redirect:/";
         }
@@ -154,7 +154,7 @@ public class UserController {
         updateCompany.setUrl(updateCompanies.getUrl());
         updateCompany.setDescription(updateCompanies.getDescription());
         userDao.save(updateCompany);
-        return "redirect: /company/profile";
+        return "redirect:/company/profile";
     }
 
     @PostMapping("company/delete")
