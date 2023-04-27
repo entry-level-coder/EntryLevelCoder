@@ -120,7 +120,7 @@ public class UserController {
 
     @GetMapping("company/{id}/edit")
     public String updateCompany(@PathVariable("id") long id, Model model) {
-//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User company = userDao.findById(id);
         System.out.println(company.getCompany());
         if(company.getCompany()) {

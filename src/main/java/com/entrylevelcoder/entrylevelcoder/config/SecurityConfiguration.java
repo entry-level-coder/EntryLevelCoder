@@ -81,10 +81,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                          "/", "/posts", "/posts/{id}", "/users/signup", "/css/**",
-                        "/js/**", "/images/**", "/login", "/aboutus", "/contactus", "/templates/partials/navbar",
+                        "/js/**", "/images/**", "/aboutus", "/contactus", "/templates/partials/navbar",
                         "/company/signup"
                 ) // anyone can see home, the ads pages, and sign up
                 .permitAll();
+
 
 
         return http.build();
