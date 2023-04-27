@@ -21,28 +21,31 @@
         <div class="container">
             <!-- Search Bar -->
             <div class="container mt-3">
-<!--                <div class="input-group mb-3">-->
-<!--                    <input id="search-term" type="text" class="search-form-control" placeholder="Search for jobs by title, location, or company" aria-label="Search for jobs" aria-describedby="basic-addon2">-->
-<!--                    <div class="input-group-append">-->
-<!--                        <button class="btn search-btn" type="button">Search</button>-->
-<!--                    </div>-->
-<!--                    <form class="col-1  w-auto">-->
-<!--                        <div class="form-select custom-select-style">-->
-<!--                            <select class="form-control ">-->
-<!--                                    <option selected hidden value="">Filter</option>-->
-<!--                                    <option value="high-low">Pay: High To Low</option>-->
-<!--                                    <option value="low-high">Pay: Low to High</option>-->
-<!--                                    <option value="new-old">Newest to Oldest</option>-->
-<!--                                    <option value="old-new">Oldest to Newest</option>-->
-<!--                                    <option value="full-time">Full Time</option>-->
-<!--                                    <option value="part-time">Part Time</option>-->
-<!--                                    <option value="contract">Contract</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                    </form>-->
-<!--                </div>-->
+
+                <div class="input-group mb-3">
+                    <input id="search-term" type="text" class="search-form-control" placeholder="Search for jobs by title, location, or company" aria-label="Search for jobs" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn search-btn" type="button">Search</button>
+                    </div>
+                    <form class="col-1  w-auto">
+                        <div class="form-select custom-select-style">
+                            <select class="form-control" id="filter-select">
+                                    <option selected hidden value="">Filter</option>
+                                    <option value="high-low">Pay: High To Low</option>
+                                    <option value="low-high">Pay: Low to High</option>
+                                    <option value="new-old">Newest to Oldest</option>
+                                    <option value="old-new">Oldest to Newest</option>
+                                    <option value="full-time">Full Time</option>
+                                    <option value="part-time">Part Time</option>
+                                    <option value="contract">Contract</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+
 
                 <div id="job-card-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-center">
+                <div id="search-error-message" class="d-none text-center mt-3 col-12 col-md-8 offset-md-2"></div>
 
                     <!-- Job Card -->
 <!--                    <div class="card mb-4"></div>-->

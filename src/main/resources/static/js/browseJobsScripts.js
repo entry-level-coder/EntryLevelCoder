@@ -1,5 +1,5 @@
-// let jobsData;
-// let searchedJobs;
+let jobsData;
+let searchedJobs;
 
 document.addEventListener('DOMContentLoaded', async () => {
     const jobCardContainer = document.getElementById('job-card-container');
@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function fetchJobs() {
         const response = await fetch('/json');
         const jobs = await response.json();
-        return jobs.results;
+        jobsData = jobs.results
+        return jobsData;
     }
 
     function createJobCard(job) {
@@ -200,183 +201,122 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     await renderJobs();
 
+    // Add event listener for the search button
+    const searchButton = document.querySelector('.search-btn');
+    searchButton.addEventListener('click', handleSearch);
+
+
+    // Add event listener for the search input field
+    const searchTermInput = document.getElementById('search-term');
+    searchTermInput.addEventListener('input', handleSearch);
+    searchTermInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleSearch();
+        }
+    });
+    // Function to handle search functionality
+    function handleSearch() {
+        const searchTerm = searchTermInput.value.trim().toLowerCase();
+        if (searchTerm === '') {
+            renderJobs(); // call renderJobs() to display all jobs
+            return;
+        }
+        searchedJobs = jobsData.filter((job) => {
+            return (
+                job.title.toLowerCase().includes(searchTerm) ||
+                job.company.display_name.toLowerCase().includes(searchTerm) ||
+                `${job.location.area[3]}, ${job.location.area[1]}`
+                    .toLowerCase()
+                    .includes(searchTerm)
+            );
+        });
+
+        displaySearchedJobs();
+    }
+
+    // Function to display the searched jobs
+    function displaySearchedJobs() {
+        // Hide the loader
+        loader.style.display = 'none';
+
+        // Clear the job card container
+        jobCardContainer.innerHTML = '';
+
+        if (searchedJobs.length === 0) {
+            // Create a message element
+            const message = document.createElement('div');
+            message.className = 'search-error-message text-center mt-5 col-12 col-md-8 offset-md-2';
+            message.innerText = "Sorry...there were no results found";
+
+            // Append the message element to the job card container
+            jobCardContainer.appendChild(message);
+        } else {
+            // Render the job cards
+            searchedJobs.forEach((job) => {
+                const jobCard = createJobCard(job);
+                jobCardContainer.appendChild(jobCard);
+            });
+        }
+    }
+
+    const filterSelect = document.getElementById('filter-select');
+    filterSelect.addEventListener('change', handleFilter);
+
+    function handleFilter() {
+        const filterOption = filterSelect.value;
+
+        const filteredJobs = jobsData.filter((job) => {
+            switch (filterOption) {
+                case 'full-time':
+                    return job.contract_type === 'full_time';
+                case 'part-time':
+                    return job.contract_type === 'part_time';
+                case 'contract':
+                    return job.contract_type === 'contract';
+                default:
+                    return true;
+            }
+        });
+
+        if (filterOption === 'high-low') {
+            filteredJobs.sort((a, b) => b.salary_max - a.salary_max);
+        } else if (filterOption === 'low-high') {
+            filteredJobs.sort((a, b) => a.salary_max - b.salary_max);
+        } else if (filterOption === 'new-old') {
+            filteredJobs.sort((a, b) => new Date(b.created) - new Date(a.created));
+        } else if (filterOption === 'old-new') {
+            filteredJobs.sort((a, b) => new Date(a.created) - new Date(b.created));
+        }
+
+        displayFilteredJobs(filteredJobs);
+    }
+
+    function displayFilteredJobs(filteredJobs) {
+        // Hide the loader
+        loader.style.display = 'none';
+
+        // Clear the job card container
+        jobCardContainer.innerHTML = '';
+
+        if (filteredJobs.length === 0) {
+            // Create a message element
+            const message = document.createElement('div');
+            message.className = 'search-error-message text-center mt-5 col-12 col-md-8 offset-md-2';
+            message.innerText = `Sorry...there are no results for the selected filter`;
+
+            // Append the message element to the job card container
+            jobCardContainer.appendChild(message);
+        } else {
+            // Render the job cards
+            filteredJobs.forEach((job) => {
+                const jobCard = createJobCard(job);
+                jobCardContainer.appendChild(jobCard);
+            });
+        }
+    }
+
+
 });
-
-
-// async function getData() {
-//     try {
-//         const storedData = localStorage.getItem('browseJobsData');
-//         // let data;
-//
-//         if (storedData) {
-//             jobsData = JSON.parse(storedData);
-//         } else {
-//             const response = await fetch(`${jobKey}`);
-//
-//             if (!response.ok) {
-//                 throw new Error(`HTTP error! status: ${response.status}`);
-//             }
-//             const apiData = await response.json();
-//             jobsData = apiData.results;
-//             localStorage.setItem('browseJobsData', JSON.stringify(jobsData));
-//         }
-//         searchedJobs = jobsData;
-//         updateJobCards(jobsData);
-//
-//         console.log(jobsData);
-//
-//         // Hide the loading page and show the job cards container
-//         document.getElementById('loader').style.display = 'none';
-//         document.getElementById('job-card-container').style.display = 'block';
-//
-//     } catch (error) {
-//         console.error('Error:', error);
-//     }
-// }
-//
-// function updateJobCards(data) {
-//     const jobCardContainer = document.getElementById('job-card-container');
-//     jobCardContainer.innerHTML = ''; // clear previous contents
-//
-//     // Create a job card for each job
-//     data.forEach((job) => {
-//         const card = createJobCard(job);
-//         jobCardContainer.appendChild(card);
-//     });
-// }
-//
-// function searchJobs() {
-//     const searchTerm = document.getElementById('search-term').value.toLowerCase();
-//
-//     if (!searchTerm) {
-//         // If the search term is empty, show all jobs
-//         updateJobCards(jobsData);
-//         return;
-//     }
-//
-//     const filteredJobs = jobsData.filter((job) => {
-//
-//         // Provide default values for any undefined properties
-//         const title = job.title?.toLowerCase() || '';
-//         const locationName = job.location?.display_name?.toLowerCase() || '';
-//         const area = job.location?.area || [];
-//         const country = area[0] || '';
-//         const state = area[1] || '';
-//         const county = area[2] || '';
-//         const city = area[3] || '';
-//         const companyName = job.company?.display_name?.toLowerCase() || '';
-//         const description = job.description?.toLowerCase() || '';
-//
-//         // Filter by job title, location, or company name
-//         return (
-//             title.includes(searchTerm) ||
-//             locationName.includes(searchTerm) ||
-//             country.toLowerCase().includes(searchTerm) ||
-//             state.toLowerCase().includes(searchTerm) ||
-//             county.toLowerCase().includes(searchTerm) ||
-//             city.toLowerCase().includes(searchTerm) ||
-//             companyName.includes(searchTerm) ||
-//             description.includes(searchTerm)
-//         );
-//     });
-//
-//     if (filteredJobs.length === 0) {
-//         const noResultsMessage = document.createElement('p');
-//         noResultsMessage.className = 'no-results-message text-center';
-//         noResultsMessage.innerText = 'Sorry...No results found.';
-//         const jobCardContainer = document.getElementById('job-card-container');
-//         jobCardContainer.innerHTML = ''; // clear previous contents
-//         jobCardContainer.appendChild(noResultsMessage);
-//         return;
-//     }
-//
-//
-//     searchedJobs = filteredJobs;
-//
-//     updateJobCards(filteredJobs);
-// }
-//
-// function filterJobs(filterId) {
-//     let filteredJobs;
-//     switch (filterId) {
-//         case 'high-low':
-//             filteredJobs = searchedJobs.slice().sort((a, b) => b.salary_max - a.salary_max);
-//             break;
-//         case 'low-high':
-//             filteredJobs = searchedJobs.slice().sort((a, b) => a.salary_max - b.salary_max);
-//             break;
-//         case 'new-old':
-//             filteredJobs = searchedJobs.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
-//             break;
-//         case 'old-new':
-//             filteredJobs = searchedJobs.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
-//             break;
-//         case 'full-time':
-//             filteredJobs = searchedJobs.filter(job => job.contract_time === "full_time");
-//             break;
-//         case 'part-time':
-//             filteredJobs = searchedJobs.filter(job => job.contract_time === "part_time");
-//             break;
-//         case 'contract':
-//             filteredJobs = searchedJobs.filter(job => job.contract_time === "contract");
-//             break;
-//         default:
-//             filteredJobs = searchedJobs;
-//     }
-//
-//     const jobCardContainer = document.getElementById('job-card-container');
-//     jobCardContainer.innerHTML = ''; // clear previous contents
-//
-//     if (filteredJobs.length === 0) {
-//         const noResultsMessage = document.createElement('p');
-//         noResultsMessage.className = 'no-results-message text-center';
-//         noResultsMessage.innerText = 'Sorry...No results found.';
-//         jobCardContainer.appendChild(noResultsMessage);
-//         return;
-//     }
-//
-//     updateJobCards(filteredJobs);
-// }
-//
-// // function getPostedAgo(date){
-// //     let today = new Date;
-// //     let thisDay = today.getDate();
-// //     let dateCreated = date.getDate();
-// //     let xDay = thisDay - dateCreated;
-// //     if(xDay < 0){
-// //         return 0;
-// //     } else {
-// //         return xDay
-// //     }
-// // }
-//
-// window.onload = function () {
-//     getData();
-//
-//     const searchButton = document.querySelector('.search-btn');
-//     searchButton.addEventListener('click', searchJobs);
-//
-//     const searchTermInput = document.getElementById('search-term');
-//     searchTermInput.addEventListener('keypress', (event) => {
-//         if (event.keyCode === 13) {
-//             event.preventDefault(); // Prevent the form from submitting
-//             searchJobs();
-//         }
-//     });
-//
-//     searchTermInput.addEventListener('input', (event) => {
-//         if (!event.target.value.trim()) {
-//             // If the search term is empty, show all jobs
-//             searchedJobs = jobsData;
-//             updateJobCards(jobsData);
-//         }
-//     });
-//
-//     const filterSelect = document.querySelector('.form-select select');
-//     filterSelect.addEventListener('change', (event) => {
-//         const filterId = event.target.value;
-//         filterJobs(filterId);
-//     });
-// };
 
 

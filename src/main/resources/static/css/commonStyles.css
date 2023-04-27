@@ -77,6 +77,12 @@ button.navbar-toggler:hover{
     border-left-width: 2px; /* override the default left border width */
     border-radius: 5px;
 }
+.search-error-message {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--main-green);
+    margin: 5rem 0;
+}
 
 div.form-select.custom-select-style {
     width: 100%;
