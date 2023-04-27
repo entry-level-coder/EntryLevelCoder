@@ -88,7 +88,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const cardLocation = document.createElement('p');
         cardLocation.className = 'cardLocation';
-        cardLocation.innerText = `${job.location.area[3]}, ${job.location.area[1]}`;
+        // checking to see if the length of area array is 4 and if city or state is undefined or null
+        if(job.location.area.length < 4) {
+            cardLocation.innerText = `Location: Not Provided`;
+        } else if (job.location.area[1] === "undefined" || job.location.area[1] === null) {
+            cardLocation.innerText = `Location: Not Provided`;
+        } else if (job.location.area[3] === "undefined" || job.location.area[3] === null) {
+            cardLocation.innerText = `${job.location.area[1]}`;
+        } else {
+            cardLocation.innerText = `${job.location.area[3]}, ${job.location.area[1]}`;
+        }
 
         const cardDescription = document.createElement('p');
         cardDescription.className = 'cardDescription';
@@ -199,6 +208,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
     }
+
     await renderJobs();
 
     // Add event listener for the search button
@@ -215,6 +225,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             handleSearch();
         }
     });
+
     // Function to handle search functionality
     function handleSearch() {
         const searchTerm = searchTermInput.value.trim().toLowerCase();
