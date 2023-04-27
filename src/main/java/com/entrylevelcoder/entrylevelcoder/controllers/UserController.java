@@ -123,7 +123,7 @@ public class UserController {
         return "companyProfile";
     }
 
-    @GetMapping("company/{id}/edit")
+    @GetMapping("/company/{id}/edit")
     public String updateCompany(@PathVariable("id") long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User company = userDao.findById(id);
@@ -137,7 +137,7 @@ public class UserController {
     }
 
 
-    @PostMapping("company/{id}/update")
+    @PostMapping("/company/{id}/update")
     public String updateCompanyPost(@ModelAttribute User updateCompanies) {
         System.out.println("Inside updateCompanyPost");
         User updateCompany = userDao.findById(updateCompanies.getId());
@@ -152,7 +152,7 @@ public class UserController {
         return "redirect:/company/profile";
     }
 
-    @PostMapping("company/{id}/delete")
+    @PostMapping("/company/{id}/delete")
     public String deleteCompany(@PathVariable long id) {
         userDao.deleteById(id);
         return "redirect:/login";
