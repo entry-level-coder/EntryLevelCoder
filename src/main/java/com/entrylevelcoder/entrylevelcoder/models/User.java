@@ -164,6 +164,10 @@ public class User {
 
     //COMPANY GETTERS AND SETTERS
 
+    public boolean isCompany() {
+        return company;
+    }
+
     public String getCompanyName() {
         return companyName;
     }
@@ -235,4 +239,5 @@ public class User {
     public void setCompany(boolean company) {
         this.company = company;
     }
+
 }
