@@ -1,7 +1,7 @@
 package com.entrylevelcoder.entrylevelcoder.config;
 
-
 import com.entrylevelcoder.entrylevelcoder.services.UserDetailsLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,7 +18,6 @@ public class SecurityConfiguration {
 
     private UserDetailsLoader usersLoader;
 
-
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
         this.usersLoader = usersLoader;
     }
@@ -32,16 +31,6 @@ public class SecurityConfiguration {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-
-
-//    @Bean
-//    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-//        http.authorizeHttpRequests()
-//                .anyRequest().permitAll()
-//                .and().formLogin()
-//                .and().httpBasic();
-//        return http.build();
-//    }
 
 
     @Bean
@@ -63,8 +52,9 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                         // only authenticated users can create ads
-                        "/posts/{id}/update", "/company/profile", "/company/update" // only authenticated users can edit ads
+                        // only authenticated users can create ads
+                        "/posts/{id}/update", "/company/profile", "/company/update", "/users/profile", "/", "users/{id}/edit",
+                        "users/{id}/update", "company/{id}/edit", "company/{id}/update", "company/{id}/delete"// only authenticated users can edit ads
                 )
                 .authenticated()
 
@@ -72,7 +62,8 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                         "/", "/posts", "/posts/create" ,"/users/signup","/company/signup", "/json", "/error/**", "/css/**",
+
+                        "/", "/posts", "/posts/create" ,"/users/signup","/company/signup", "/json", "/error/**", "/css/**",
                         "/js/**", "/images/**", "/users/login", "/aboutus", "/contactus", "/templates/partials/navbar"
                 ) // anyone can see home, the post pages, and sign ups
                 .permitAll();
@@ -80,6 +71,7 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+
 
 
 }
