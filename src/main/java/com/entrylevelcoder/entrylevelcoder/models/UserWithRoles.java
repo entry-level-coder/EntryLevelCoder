@@ -10,9 +10,7 @@ public class UserWithRoles extends User implements UserDetails {
 
 //    private User users;
 
-    public UserWithRoles(User user) {
-        super(user);
-    }
+    public UserWithRoles(User user) {super(user);}
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         String roles = ""; // Since we're not using the authorization part of the component

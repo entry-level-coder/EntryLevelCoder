@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AuthenticationController {
 
-<<<<<<< HEAD
 
-@GetMapping("/users/login")
-public String returnUserLoginPage(){
-    System.out.println("inside returnLoginPage method");
-    return "userLogin";
-}
+
+//@GetMapping("/users/login")
+//public String returnUserLoginPage(){
+//    System.out.println("inside returnLoginPage method");
+//    return "userLogin";
+//}
 
 
 
@@ -22,12 +22,12 @@ public String returnUserLoginPage(){
 //    return "companyLogin";
 //}
 
-=======
+
     @GetMapping("/login")
     public String returnUserLoginPage() {
 //    System.out.println("inside returnLoginPage method");
         return "login";
     }
->>>>>>> main
+
 
 }

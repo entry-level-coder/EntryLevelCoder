@@ -5,9 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -51,7 +55,7 @@ public class SecurityConfiguration {
 
                 /* User Login configuration */
                 .formLogin()
-                .loginPage("/users/login")
+                .loginPage("/login")
                 .defaultSuccessUrl("/posts") // user's home page, it can be any URL
                 .permitAll()
                  // Anyone can go to the login page
@@ -67,7 +71,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/posts/create", // only authenticated users can create ads
-                        "/posts/{id}/edit", "/users/profile", "users/{id}/update", "users/{id}/delete" // only authenticated users can edit ads
+                        "/posts/{id}/edit", "/users/profile", "users/{id}/update", "users/{id}/delete", "users/{id}/edit", "/company/profile", "/company/update" // only authenticated users can edit ads
                 )
                 .authenticated()
 
@@ -76,12 +80,24 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                          "/", "/posts", "/posts/{id}", "/users/signup", "/css/**",
-                        "/js/**", "/images/**", "/users/login", "/company/login", "/aboutus", "/contactus", "/templates/partials/navbar", "/company/signup"
+                        "/js/**", "/images/**", "/login", "/company/login", "/aboutus", "/contactus", "/templates/partials/navbar", "/company/signup"
                 ) // anyone can see home, the ads pages, and sign up
                 .permitAll();
 
 
         return http.build();
     }
+
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("user").password(passwordEncoder().encode("password")).roles("USER")
+//                .and()
+//                .withUser("company").password(passwordEncoder().encode("password")).roles("COMPANY");
+//    }
+////    public boolean isAuthorized() {
+////        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+////        return authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_COMPANY"));
+////    }
 
 }
