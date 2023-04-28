@@ -39,7 +39,7 @@ public class UserController {
         user.setCompany(false);
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/users/login";
+        return "redirect:/login";
     }
 //
 //    @GetMapping("/users/login")
@@ -48,8 +48,8 @@ public class UserController {
 //    }
 
 
-    @GetMapping("/users/{id}/update")
-    public String updateUsersGet(@PathVariable long id, Model model) {
+    @GetMapping("/users/{id}/edit")
+    public String updateUsersGet(@PathVariable("id") long id, Model model) {
         User user = userDao.findById(id);
         model.addAttribute("user", user);
         return "editUserProfile";
@@ -59,24 +59,26 @@ public class UserController {
 
     //Updates User Info
     @PostMapping("/users/{id}/update")
-    public String updateUser(@PathVariable("id") long id, @ModelAttribute User user) {
-        User updateUser = userDao.findById(id);
-        updateUser.setFirstName(user.getFirstName());
-        updateUser.setLastName(user.getLastName());
-        updateUser.setUsername(user.getUsername());
-        updateUser.setPassword(user.getPassword());
+    public String updateUser(@ModelAttribute User updateUsers, Model model) {
+        User updateUser = userDao.findById(updateUsers.getId());
+        updateUser.setFirstName(updateUsers.getFirstName());
+        updateUser.setLastName(updateUsers.getLastName());
+        updateUser.setUsername(updateUsers.getUsername());
 
         // update the post in database using id
         userDao.save(updateUser);
-        return "redirect:posts";
+        System.out.println("Saved!");
+        model.addAttribute("message", "User updated successfully.");
+        return "redirect:/users/profile";
 
     }
 
     //     Delete user by ID
     @PostMapping("/users/{id}/delete")
-    public String deleteUserById(@PathVariable("id") long id, User user) {
+    public String deleteUserById(@PathVariable("id") long id) {
         // Check if the user exists before deleting
         userDao.deleteById(id);
+
         return "redirect:/login";
     }
 
@@ -93,6 +95,7 @@ public class UserController {
             return "companyProfile";
         }
     }
+
 
     // Company mapping
 
@@ -122,17 +125,17 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User company = userDao.findById(sessionUser.getId());
         if(company.getCompany()) {
-        model.addAttribute("company", company);
+            model.addAttribute("company", company);
         } else {
             return "redirect:/";
         }
         return "companyProfile";
     }
 
-    @GetMapping("company/update")
-    public String updateCompany(Model model) {
+    @GetMapping("/company/{id}/edit")
+    public String updateCompany(@PathVariable("id") long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User company = userDao.findById(sessionUser.getId());
+        User company = userDao.findById(id);
         System.out.println(company.getCompany());
         if(company.getCompany()) {
             model.addAttribute("company", company);
@@ -142,15 +145,25 @@ public class UserController {
         return "editCompanyProfile";
     }
 
-    @PostMapping("company/update")
-    public String updateCompanyPost(@ModelAttribute User company) {
-        userDao.save(company);
-        return "redirect: /";
+
+    @PostMapping("/company/{id}/update")
+    public String updateCompanyPost(@ModelAttribute User updateCompanies) {
+        System.out.println("Inside updateCompanyPost");
+        User updateCompany = userDao.findById(updateCompanies.getId());
+        updateCompany.setCompanyName(updateCompanies.getCompanyName());
+        updateCompany.setUsername(updateCompanies.getUsername());
+        updateCompany.setCity(updateCompanies.getCity());
+        updateCompany.setState(updateCompanies.getState());
+        updateCompany.setIndustry(updateCompanies.getIndustry());
+        updateCompany.setUrl(updateCompanies.getUrl());
+        updateCompany.setDescription(updateCompanies.getDescription());
+        userDao.save(updateCompany);
+        return "redirect:/company/profile";
     }
 
-    @PostMapping("company/{id}/delete")
+    @PostMapping("/company/{id}/delete")
     public String deleteCompany(@PathVariable long id) {
         userDao.deleteById(id);
-        return null;
+        return "redirect:/login";
     }
 }
