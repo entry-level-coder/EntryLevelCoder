@@ -36,7 +36,7 @@ public class UserController {
         user.setCompany(false);
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/users/login";
+        return "redirect:/login";
     }
 //
 //    @GetMapping("/users/login")
@@ -93,6 +93,7 @@ public class UserController {
         }
     }
 
+
     // Company mapping
 
     @GetMapping("/company/signup")
@@ -116,7 +117,7 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User company = userDao.findById(sessionUser.getId());
         if(company.getCompany()) {
-        model.addAttribute("company", company);
+            model.addAttribute("company", company);
         } else {
             return "redirect:/";
         }

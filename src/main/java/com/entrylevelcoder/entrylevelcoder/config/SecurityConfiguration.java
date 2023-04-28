@@ -52,9 +52,11 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        // only authenticated users can create ads
-                        "/posts/{id}/update", "/company/profile", "/company/update", "/users/profile", "/", "users/{id}/edit",
-                        "users/{id}/update", "company/{id}/edit", "company/{id}/update", "company/{id}/delete"// only authenticated users can edit ads
+
+                         // only authenticated users can create ads
+                        "/posts/{id}/update", "/company/profile", "/users/profile",  "users/{id}/edit",
+                        "/users/{id}/update", "company/{id}/edit", "/company/{id}/update", "/users/{id}/delete", "/company/{id}/delete"// only authenticated users can edit ads
+
                 )
                 .authenticated()
 

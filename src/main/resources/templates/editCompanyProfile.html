@@ -25,7 +25,9 @@
                             <div class="mb-3">
                                 <label for="companyName" class="form-label"> Company Name:</label>
                                 <input type="text" class="form-control" id="companyName" name="companyName"
-                                th:field="*{companyName}" >
+
+                                       th:field="*{companyName}" >
+
                             </div>
 
                             <div class="mb-3">
@@ -103,33 +105,41 @@
                             <div class="mb-3">
                                 <label for="industry" class="form-label">Industry:</label>
                                 <input type="text" class="form-control" id="industry" name="industry" value="Technology"
-                                th:field="*{industry}" >
+
+                                       th:field="*{industry}" >
+
                             </div>
 
                             <div class="mb-3">
                                 <label for="jobBoardUrl" class="form-label">Job Board URL:</label>
                                 <input type="text" class="form-control" id="jobBoardUrl" name="jobBoardUrl" value="Technology"
-                                th:field="*{url}" >
+
+                                       th:field="*{url}" >
+
                             </div>
 
                             <div class="mb-3">
                                 <label for="companyDescription" class="form-label">Company Description:</label>
                                 <textarea class="form-control" id="companyDescription" name="companyDescription"
-                                 th:field="*{description}" rows="5" ></textarea>
+
+                                          th:field="*{description}" rows="5" ></textarea>
                             </div>
 
                             <div class=" d-flex justify-content-between">
-                            <button type="submit" class="btn edit-company-profile-btn">Edit Profile</button>
+                                <button type="submit" class="btn edit-company-profile-btn">Edit Profile</button>
+
                             </div>
 
                         </form>
 
 
-                    <div>
-                        <form th:action="@{/company/{id}/delete(id=${company.id})}" th:method="post">
-                            <button  type="submit" class="btn btn-danger">Delete Account</button>
-                        </form>
-                         </div>
+
+                        <div>
+                            <form th:action="@{/company/{id}/delete(id=${company.id})}" th:method="post">
+                                <button  type="submit" class="btn btn-danger">Delete Account</button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -137,7 +147,7 @@
     </div>
 
     <!-- Footer -->
-  <div th:replace="partials/footer :: footer"></div>
+    <div th:replace="partials/footer :: footer"></div>
 
 </div>
 
