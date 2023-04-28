@@ -36,9 +36,11 @@
           </form>
 
           <div class="d-flex justify-content-right">
+
             <form th:action="@{/users/{id}/delete(id=${user.id})}" th:method="post">
               <button  type="submit"  class="btn btn-danger" onclick="confirmDelete()">Delete Profile</button>
             </form>
+
           </div>
 
         </div>

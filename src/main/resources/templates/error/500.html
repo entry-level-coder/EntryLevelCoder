@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>403 Error - Page Not Found</title>
+  <title>500 Error - Internal Server Error</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap CSS -->
@@ -11,9 +11,9 @@
 </head>
 <body>
 <div class="error-container">
-  <h1 class="error-code">403</h1>
-  <p class="error-message">403 Forbidden: Access is denied. You do not have permission to view this resource.</p>
-  <a href="index.html" class="btn btn-primary go-back-btn"><i class="fas fa-arrow-left"></i> Go back to Home</a>
+  <h1 class="error-code">500</h1>
+  <p class="error-message">500 Internal Server Error - The server encountered an unexpected condition that prevented it from fulfilling the request. The error may be temporary or permanent. Please try again later or contact the website administrator.</p>
+  <a th:href="@{/}" class="btn btn-primary go-back-btn"><i class="fas fa-arrow-left"></i> Go back to Home</a>
 </div>
 </body>
 </html>

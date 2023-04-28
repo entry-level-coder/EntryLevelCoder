@@ -130,7 +130,7 @@ public class User {
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -138,7 +138,7 @@ public class User {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
@@ -146,7 +146,7 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String username) {
@@ -163,6 +163,10 @@ public class User {
 
 
     //COMPANY GETTERS AND SETTERS
+
+    public boolean isCompany() {
+        return company;
+    }
 
     public String getCompanyName() {
         return companyName;
@@ -235,4 +239,5 @@ public class User {
     public void setCompany(boolean company) {
         this.company = company;
     }
+
 }

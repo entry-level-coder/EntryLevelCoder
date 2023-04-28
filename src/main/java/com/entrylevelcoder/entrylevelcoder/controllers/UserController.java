@@ -7,10 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -111,14 +108,9 @@ public class UserController {
         company.setPassword(hashedPassword);
         company.setCompany(true);
         userDao.save(company);
-        return "redirect:/company/login";
+        return "redirect:/login";
     }
 
-//    @GetMapping("/company/login")
-//    public String companyLogin(Model model) {
-//        model.getAttribute("company");
-//        return "companyLogin";
-//    }
 
     @GetMapping("/company/profile")
     public String companyProfile(Model model) {
