@@ -231,7 +231,7 @@ i{
     font-size: 3rem;
 }
 .about-us-lead{
-   font-size: 1.4rem;
+    font-size: 1.4rem;
 }
 .about-us-para{
     font-size: 1.2rem;
@@ -282,6 +282,10 @@ i{
 .edit-user-profile-btn{
     background-color: var(--main-green);
 }
+.edit-user-profile-btn:hover{
+    color: white;
+    background-color: var(--light-grey);
+}
 /*User Signup Styles*/
 .user-signup-btn{
     background-color: var(--main-green);
@@ -296,6 +300,14 @@ i{
     background-color: var(--main-green);
 }
 
+.delete-profile-btn{
+    color: black;
+    background-color: var(--yellow);
+}
+.delete-profile-btn:hover{
+    color: black;
+    background-color: #E93549;
+}
 
 /*Media Queries Styles*/
 
@@ -309,9 +321,9 @@ i{
 
 @media only screen and (min-width: 250px) and (max-width: 767px) {
     /* CSS rules to be applied when the screen width is between 768px and 1024px */
-   .form-select{
-       padding: 0;
-   }
+    .form-select{
+        padding: 0;
+    }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
