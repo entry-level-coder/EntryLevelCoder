@@ -83,11 +83,15 @@ public class UserController {
 
 
     @GetMapping("/users/profile")
-    public String getToProfileFromLogin( Model model){
-
+    public String getToProfileFromLogin(Model model){
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
-        model.addAttribute("user", user);
-        return "userProfile";
+        if (!user.getCompany()) {
+            model.addAttribute("user", user);
+            return "userProfile";
+        } else {
+            model.addAttribute("company", user);
+            return "companyProfile";
+        }
     }
 
     // Company mapping

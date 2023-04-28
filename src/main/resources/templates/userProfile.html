@@ -11,7 +11,7 @@
 <div class="container my-5 flex-grown">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="text-center">User Profile</h1>
-    <a th:href="@{~/users/1/update}" class="btn edit-user-profile-btn">Edit Profile</a>
+    <a th:href="@{/users/{id}/update(id=${user.id})}" class="btn edit-user-profile-btn">Edit Profile</a>
   </div>
   <div class="row justify-content-center">
     <div class="col-md-8">
