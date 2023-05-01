@@ -55,7 +55,7 @@ public class SecurityConfiguration {
 
                          // only authenticated users can create ads
                         "/posts/{id}/update", "/company/profile", "/users/profile",  "users/{id}/edit",
-                        "/users/{id}/update", "company/{id}/edit", "/company/{id}/update", "/users/{id}/delete", "/company/{id}/delete"// only authenticated users can edit ads
+                        "/users/{id}/update", "company/{id}/edit", "/company/{id}/update", "/users/{id}/delete", "/company/{id}/delete" , "/posts"// only authenticated users can edit ads
 
                 )
                 .authenticated()
@@ -65,7 +65,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
 
-                        "/", "/posts", "/posts/create" ,"/users/signup","/company/signup", "/json", "/error/**", "/css/**",
+                        "/", "/posts/create" ,"/users/signup","/company/signup", "/json", "/error/**", "/css/**",
                         "/js/**", "/images/**", "/users/login", "/aboutus", "/contactus", "/templates/partials/navbar"
                 ) // anyone can see home, the post pages, and sign ups
                 .permitAll();
