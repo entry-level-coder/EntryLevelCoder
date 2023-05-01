@@ -16,6 +16,12 @@
             <div class="card-header login-form-header text-white">
               <h4 class="mb-0">Login</h4>
             </div>
+
+            <div th:if="${param.error}" class="text-danger">
+              <div class="text-center">Invalid Username and Password.</div>
+            </div>
+
+
             <div class="card-body">
               <form th:action="@{/login}" th:method="post">
                 <div class="form-group mb-4">
