@@ -105,6 +105,14 @@
     animation-delay: 0.6s;
 }
 
+.team-link {
+    text-decoration: none;
+    color: var(--light-grey);
+}
+
+.team-link:hover{
+    color: var(--main-green);
+}
 
 @keyframes move_5011 {
     0% {
