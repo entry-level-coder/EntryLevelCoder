@@ -323,4 +323,5 @@ i{
         flex-wrap: wrap; /* Allow the cards to wrap to a new line if necessary */
         justify-content: center; /* Center the cards horizontally */
     }
+
 }
