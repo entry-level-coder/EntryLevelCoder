@@ -378,17 +378,17 @@ i{
     justify-content: space-evenly;
 }
 
-.github-link{
+.github-link {
     height: 35px;
     width: auto;
     text-decoration: none;
     color: black;
 }
-.github-link:hover{
+.github-link:hover {
     cursor: pointer;
     color: white;
 }
-.linkedin-link{
+.linkedin-link {
     height: 35px;
     width: auto;
     text-decoration: none;
@@ -399,7 +399,7 @@ i{
     color: white;
 }
 
-.ricardoPhoto{
+.ricardoPhoto {
     height: 210px;
     width: 173px;
     align-self: center;
@@ -428,8 +428,11 @@ i{
     color: var(--light-grey);
 }
 
-.team-link:hover{
+.team-link:hover {
     color: var(--main-green);
+}
+.dev-row {
+    justify-content: space-between;
 }
 
 /*Media Queries Styles*/
@@ -440,12 +443,41 @@ i{
         width: 100%;
         margin-top: 0.5rem;
     }
+
 }
 
-@media only screen and (min-width: 250px) and (max-width: 767px) {
+@media only screen and (min-width: 250px) and (max-width: 768px) {
     /* CSS rules to be applied when the screen width is between 768px and 1024px */
     .form-select{
         padding: 0;
+    }
+    .dev-row {
+        justify-content: center;
+    }
+    .flip-card {
+        background-color: transparent;
+        width: 275px;
+        height: 400px;
+        perspective: 1000px;
+        font-family: sans-serif;
+        margin-top: 3em;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    /* CSS rules to be applied when the screen width is between 768px and 1024px */
+    .dev-row {
+        justify-content: center;
+    }
+    .flip-card {
+        background-color: transparent;
+        width: 275px;
+        height: 400px;
+        perspective: 1000px;
+        font-family: sans-serif;
+        margin-top: 3em;
+        margin-left: 18px;
+        margin-right: 18px;
     }
 }
 
@@ -456,6 +488,19 @@ i{
     }
     .about-us-para{
         font-size: 1rem;
+    }
+    .dev-row {
+        justify-content: center;
+    }
+    .flip-card {
+        background-color: transparent;
+        width: 275px;
+        height: 400px;
+        perspective: 1000px;
+        font-family: sans-serif;
+        margin-top: 3em;
+        margin-left: 18px;
+        margin-right: 18px;
     }
 }
 
