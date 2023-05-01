@@ -286,6 +286,9 @@ i{
     color: white;
     background-color: var(--light-grey);
 }
+.user-font{
+    font-weight: 300;
+}
 /*User Signup Styles*/
 .user-signup-btn{
     background-color: var(--main-green);
