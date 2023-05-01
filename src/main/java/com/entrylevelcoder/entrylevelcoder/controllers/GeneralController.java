@@ -17,6 +17,8 @@ public class GeneralController {
         return "contactUs";
     }
 
-
-
+    @GetMapping("/team")
+    public String team() {
+        return "team";
+    }
 }
