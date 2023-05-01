@@ -2,6 +2,7 @@ package com.entrylevelcoder.entrylevelcoder.models;
 
 
 import jakarta.persistence.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,9 +146,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUsername() {
-        return this.username;
-    }
+    public String getUsername() {return this.username;}
 
     public void setUsername(String username) {
         this.username = username;
@@ -238,6 +237,12 @@ public class User {
 
     public void setCompany(boolean company) {
         this.company = company;
+    }
+
+
+    public static String maskPassword(String password) {
+        int length = password.length();
+        return "*".repeat(length - 47);
     }
 
 }
