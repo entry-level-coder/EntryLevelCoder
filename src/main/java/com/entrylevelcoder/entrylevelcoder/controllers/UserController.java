@@ -61,6 +61,9 @@ public class UserController {
         updateUser.setFirstName(updateUsers.getFirstName());
         updateUser.setLastName(updateUsers.getLastName());
         updateUser.setUsername(updateUsers.getUsername());
+        updateUser.setDescription(updateUsers.getDescription());
+        updateUser.setPassword(passwordEncoder.encode(updateUsers.getPassword()));
+
 
         // update the post in database using id
         userDao.save(updateUser);
@@ -158,4 +161,8 @@ public class UserController {
         userDao.deleteById(id);
         return "redirect:/login";
     }
+
+
+
+
 }

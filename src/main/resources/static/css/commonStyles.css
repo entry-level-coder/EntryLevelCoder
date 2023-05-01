@@ -1,7 +1,7 @@
 :root {
     --main-green: #90BA44;
     --white: #FFFFFF;
-    --yellow: #FFF278;
+    --yellow: #FFE978;
     --light-grey: #BFBFBF;
     --dark-grey: #555555;
     --bg-light: #f8f9fa;
@@ -285,6 +285,9 @@ i{
 .edit-user-profile-btn:hover{
     color: white;
     background-color: var(--light-grey);
+}
+.user-font{
+    font-weight: 300;
 }
 /*User Signup Styles*/
 .user-signup-btn{

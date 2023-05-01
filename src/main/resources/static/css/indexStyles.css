@@ -2,7 +2,7 @@
 :root {
     --main-green: #90BA44;
     --white: #FFFFFF;
-    --yellow: #FFF278;
+    --yellow: #FFE978;
     --light-grey: #BFBFBF;
     --dark-grey: #555555;
     --red: #E93549;
@@ -332,4 +332,5 @@ i{
         flex-wrap: wrap; /* Allow the cards to wrap to a new line if necessary */
         justify-content: center; /* Center the cards horizontally */
     }
+
 }
