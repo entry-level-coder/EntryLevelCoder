@@ -220,6 +220,11 @@ i{
     background-color: var(--main-green);
 }
 
+.login-form-btn:hover {
+    background-color: var(--light-grey);
+    color: white;
+}
+
 .job-seeker-link:hover, .employer-link:hover {
     color: var(--main-green);
 }
