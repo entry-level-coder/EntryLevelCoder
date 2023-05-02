@@ -286,8 +286,20 @@ i{
     color: white;
     background-color: var(--light-grey);
 }
-.user-font{
+.user-profile-font{
     font-weight: 300;
+    font-size: 2.2rem;
+
+}
+.user-name-font{
+    font-weight: 300;
+    font-size: 1.75rem;
+
+}
+.user-email-font,.user-password-font{
+    font-weight: 300;
+    font-size: 1.25rem;
+
 }
 /*User Signup Styles*/
 .user-signup-btn{

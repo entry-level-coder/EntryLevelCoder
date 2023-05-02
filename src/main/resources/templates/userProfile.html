@@ -11,7 +11,7 @@
   <!-- User Profile -->
   <div class="container my-5 flex-grown">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="text-center user-font">User Profile</h1>
+      <h1 class="text-center user-profile-font">User Profile</h1>
       <a th:href="@{/users/{id}/edit(id=${user.id})}" class="btn edit-user-profile-btn">Edit Profile</a>
 
     </div>
@@ -19,15 +19,15 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-body">
-            <h3 class="text-capitalize user-font"><span th:text="${user.firstName}"></span> <span th:text="${user.lastName}"></span></h3>
+            <h3 class="text-capitalize user-name-font"><span th:text="${user.firstName}"></span> <span th:text="${user.lastName}"></span></h3>
             <hr>
-            <h4 class="user-font">Email:</h4>
-            <h3 class="mb-2 text-muted user-font" th:text="${user.username}"></h3>
+            <h4 class="user-email-font">Email</h4>
+            <h3 class="mb-2 text-muted user-email-font" th:text="${user.username}"></h3>
             <hr>
             <h4 th:text="${user.description}"></h4>
             <hr>
-            <h4>Password:</h4>
-            <h3  th:text="${user.maskPassword(user.password)}"></h3>
+            <h4 class="user-password-font">Password</h4>
+            <h3 class="user-password-font" th:text="${user.maskPassword(user.password)}"></h3>
           </div>
         </div>
       </div>
