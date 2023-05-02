@@ -1,3 +1,4 @@
+/*Job Cards Styling*/
 
 #jobs{
     background-color: rgba(0, 0, 0, 0.5);
@@ -25,12 +26,6 @@
     background-color: var(--light-grey);
     color: var(--white);
 }
-/*#search-error-message {*/
-/*    font-size: 2rem;*/
-/*    font-weight: bold;*/
-/*    color: var(--main-green);*/
-/*    margin: 5rem 0;*/
-/*}*/
 .buttonsWrapper {
     margin-top: 1rem;
 }
@@ -113,6 +108,7 @@
 .team-link:hover{
     color: var(--main-green);
 }
+
 
 @keyframes move_5011 {
     0% {

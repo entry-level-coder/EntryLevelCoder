@@ -57,7 +57,6 @@ button.navbar-toggler:hover{
 
 /*Browse Jobs Section Styles*/
 
-
 /*Search Bar*/
 .input-group {
     display: flex;
@@ -128,7 +127,6 @@ div.form-select{
 .contact-us-footer:hover{
     color: var(--main-green);
 }
-
 
 /*Job Cards*/
 .card {
