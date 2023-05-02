@@ -48,6 +48,6 @@ Please make sure to update tests as appropriate.
 
 To get started with Entry-Level Coder, visit www.entrylevelcoder.com and create an account. Browse job listings, apply filters to narrow your search, and submit your applications directly through the platform.
 
-If you encounter any issues or have any questions, feel free to contact our support team at elc-support@gmail.com.
+If you encounter any issues or have any questions, feel free to contact our support team at contactentrylevelcoder@gmail.com.
 
 Happy job hunting!
