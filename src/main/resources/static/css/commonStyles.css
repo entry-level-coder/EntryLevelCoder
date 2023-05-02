@@ -257,6 +257,10 @@ i{
 .company-signup-btn{
     background-color: var(--main-green);
 }
+.company-signup-btn:hover{
+    background-color: var(--light-grey);
+    color: white;
+}
 .company-login-link{
     color: var(--dark-grey);
 }
@@ -312,6 +316,10 @@ i{
 /*User Signup Styles*/
 .user-signup-btn{
     background-color: var(--main-green);
+}
+.user-signup-btn:hover {
+    background-color: var(--light-grey);
+    color: white;
 }
 .user-already-have-account{
     color: var(--dark-grey);
