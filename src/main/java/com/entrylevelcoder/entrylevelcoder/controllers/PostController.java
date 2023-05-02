@@ -26,11 +26,6 @@ PostController {
         this.postDao = postDao;
     }
 
-//    @GetMapping("/posts")
-//    public String returnPost(Model model){
-//        model.addAttribute("posts", postDao.findAll());
-//        return "browseJobs";
-//    }
 
     @GetMapping("/posts/{id}/post")
     public String returnPost(@PathVariable Long id, Model model) {
@@ -49,12 +44,8 @@ PostController {
     public String returnPostCreateForm(Model model){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = new Post();
-//        if(sessionUser.getCompany()) {
         post.setCompany(companyDao.findById(sessionUser.getId()));
         model.addAttribute("newPost", post);
-//        } else {
-//            return "redirect:/";
-//        }
         return "createJob";
     }
 
@@ -77,21 +68,7 @@ PostController {
         }
         return "editJobPosting";
     }
-//
-//    @PostMapping("")
-//    public String saveUpdatePost(@ModelAttribute Post postUpdates){
-//        Post postToUpdate = postDao.findById(postUpdates.getId()).get();
-//        postToUpdate.setTitle(postUpdates.getTitle());
-//        postToUpdate.setDescription(postUpdates.getDescription());
-//        postToUpdate.setMinSalary(postUpdates.getMinSalary());
-//        postToUpdate.setMaxSalary(postUpdates.getMaxSalary());
-//        postToUpdate.setLocation(postUpdates.getLocation());
-//        postToUpdate.setModality(postUpdates.getModality());
-//        postToUpdate.setPostUrl(postUpdates.getPostUrl());
-//        postDao.save(postToUpdate);
-//        return null;
-//    }
-//
+
     @PostMapping("posts/delete")
     public String deletePost(){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

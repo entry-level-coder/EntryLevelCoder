@@ -16,14 +16,14 @@ public class UserController {
     private final UserRepository userDao;
     private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder){
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
 
     // Allows User To Input Info
     @GetMapping("/users/signup")
-    public String showSignUpForm(Model model){
+    public String showSignUpForm(Model model) {
         model.addAttribute("user", new User());
         return "userSignup";
     }
@@ -31,19 +31,13 @@ public class UserController {
 
     // Saves User Input To Database
     @PostMapping("/users/signup")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setCompany(false);
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
     }
-//
-//    @GetMapping("/users/login")
-//    public String usersLogin(){
-//        return "/userLogin";
-//    }
-
 
     @GetMapping("/users/{id}/edit")
     public String updateUsersGet(@PathVariable("id") long id, Model model) {
@@ -51,7 +45,6 @@ public class UserController {
         model.addAttribute("user", user);
         return "editUserProfile";
     }
-
 
 
     //Updates User Info
@@ -83,9 +76,8 @@ public class UserController {
     }
 
 
-
     @GetMapping("/users/profile")
-    public String getToProfileFromLogin(Model model){
+    public String getToProfileFromLogin(Model model) {
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         if (!user.getCompany()) {
             model.addAttribute("user", user);
@@ -98,7 +90,6 @@ public class UserController {
 
 
     // Company mapping
-
     @GetMapping("/company/signup")
     public String createCompany(Model model) {
         model.addAttribute("company", new User());
@@ -119,7 +110,7 @@ public class UserController {
     public String companyProfile(Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User company = userDao.findById(sessionUser.getId());
-        if(company.getCompany()) {
+        if (company.getCompany()) {
             model.addAttribute("company", company);
         } else {
             return "redirect:/";
@@ -132,7 +123,7 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User company = userDao.findById(id);
         System.out.println(company.getCompany());
-        if(company.getCompany()) {
+        if (company.getCompany()) {
             model.addAttribute("company", company);
         } else {
             return "redirect:/";
@@ -161,8 +152,5 @@ public class UserController {
         userDao.deleteById(id);
         return "redirect:/login";
     }
-
-
-
 
 }

@@ -7,7 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-/** MODEL CLASS FOR USER */
+/**
+ * MODEL CLASS FOR USER
+ */
 
 @Entity
 @Table(name = "users")
@@ -16,9 +18,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column (length = 50)
+    @Column(length = 50)
     private String firstName;
-    @Column (length = 50)
+    @Column(length = 50)
     private String lastName;
     @Column(length = 100)
     private String username;
@@ -35,7 +37,7 @@ public class User {
     private String number;
     private String industry;
     private String city;
-    @Column(columnDefinition =  "CHAR(2) DEFAULT 'XX'")
+    @Column(columnDefinition = "CHAR(2) DEFAULT 'XX'")
     private String state;
     @Column(length = 2000)
     private String description;
@@ -44,7 +46,7 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Users_posts", joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "post_id"))
+            inverseJoinColumns = @JoinColumn(name = "post_id"))
     private List<Post> posts = new ArrayList<>();
 
 
@@ -58,6 +60,7 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
     //JOB SEEKER CONSTRUCTOR
     public User(String firstName, String lastName, String username, String password) {
         this.firstName = firstName;
@@ -146,7 +149,9 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUsername() {return this.username;}
+    public String getUsername() {
+        return this.username;
+    }
 
     public void setUsername(String username) {
         this.username = username;

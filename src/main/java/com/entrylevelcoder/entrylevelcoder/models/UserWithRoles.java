@@ -14,7 +14,9 @@ public class UserWithRoles extends User implements UserDetails {
 //    private User users;
 
 
-    public UserWithRoles(User user) {super(user);}
+    public UserWithRoles(User user) {
+        super(user);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -26,6 +28,7 @@ public class UserWithRoles extends User implements UserDetails {
 
         return authorities;
     }
+
     @Override
     public String getPassword() {
         return super.getPassword();
@@ -56,8 +59,4 @@ public class UserWithRoles extends User implements UserDetails {
         return true;
     }
 
-//    @Override
-//    public String getUsername() {
-//        return users.getUsername();
-//    }
 }
