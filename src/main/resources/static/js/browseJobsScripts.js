@@ -42,19 +42,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Construct the formatted date string
         const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
 
-        let today = new Date;
-        let thisDay = today.getDate();
-        let xDays = thisDay - day;
+        let today = new Date();
+        let timeDifference = today.getTime() - jobDate.getTime();
+        let dayDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
 
-        if (xDays < 0) {
+        if (dayDifference < 0) {
             cardJobDate.innerText = "Posted: Unknown";
         } else {
-            cardJobDate.innerText = "Posted: " + xDays + " days ago";
+            cardJobDate.innerText = "Posted: " + dayDifference + " days ago";
         }
-
-        // cardJobDate.innerText = "Posted: " + getPostedAgo(formattedDate) + " days ago";
-
-        // cardJobDate.innerText = `Date Job Listed: ${formattedDate}`;
 
         const cardJobId = document.createElement('p');
         cardJobId.className = 'cardJobId';
@@ -167,8 +163,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         //     // Save the job to the user's saved jobs list
         //     alert(`Job ${job.id} saved!`);
         // });
-
-
         const cardContent = document.createElement('div');
 
         cardBody.appendChild(cardTitle);
@@ -326,8 +320,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
     }
-
-
 });
 
 

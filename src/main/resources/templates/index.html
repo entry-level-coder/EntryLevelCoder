@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="partials/header :: header-index"></head>
 
 <body>
@@ -16,7 +16,7 @@
       <div class="container">
         <h1 class="jumbotron-title">Find Your Dream Entry-Level Software Developer Job</h1>
         <p class="jumbotron-lead">Connecting employers and talented entry-level software developers across the United States.</p>
-        <a th:href="@{/users/signup}" class="btn hero-btn jumbotron-signup-btn"> Sign up today!</a>
+        <a sec:authorize="!isAuthenticated()" th:href="@{/users/signup}" class="btn hero-btn jumbotron-signup-btn"> Sign up today!</a>
       </div>
     </div>
   </section>
@@ -195,7 +195,7 @@
           <div class="card-body">
             <p class="lead mb-4 cta-card-text">Sign up for a free account today to access our exclusive network of entry-level software developer / web developer jobs from top companies.</p>
 <!--            if user is not logged in-->
-            <a th:href="@{/users/signup}" class="btn btn-lg cta-btn apply-now-btn">Find a Job</a>
+            <a th:href="@{/posts}" class="btn btn-lg cta-btn apply-now-btn">Find a Job</a>
 <!--            if user or company is logged in-->
 <!--            <a th:href="@{/posts}" class="btn btn-lg cta-btn">Find a Job</a>-->
           </div>
