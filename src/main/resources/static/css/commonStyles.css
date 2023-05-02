@@ -244,6 +244,11 @@ i{
 .contact-us-btn{
     background-color: var(--main-green);
 }
+
+.contact-us-btn:hover{
+    background-color: var(--light-grey);
+    color: white;
+}
 /*Company Profile Styles*/
 .profile-header{
     background-color: var(--main-green);
