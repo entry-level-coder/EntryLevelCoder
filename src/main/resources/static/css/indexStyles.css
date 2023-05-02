@@ -30,6 +30,8 @@ button.navbar-toggler:hover{
     background-color: var(--main-green);
 }
 
+/*Hero Section Styling*/
+
 #hero-container{
     background-color: rgba(0, 0, 0, 0.5);
     background-image: url('/images/typing.jpeg');
@@ -48,16 +50,6 @@ button.navbar-toggler:hover{
 svg {
     filter: grayscale(100%);
 }
-#how-it-works{
-    background-image: url('/images/typing.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay;
-    background-attachment: fixed;
-    background-position: 0px 50%;
-    background-color: rgba(0, 0, 0, 0.5); /* Change the last value (0.5) to adjust the opacity */
-    height: auto;
-}
 
 .jumbotron-title{
     font-size: 4.5rem;
@@ -69,8 +61,20 @@ svg {
     background-color: var(--dark-grey);
     color: var(--main-green);
 }
+/*Featured Employers Section Styling*/
 .featured-employers-title{
     font-size: 2.5rem;
+}
+/*How It Works Styling*/
+#how-it-works{
+    background-image: url('/images/typing.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-position: 0px 50%;
+    background-color: rgba(0, 0, 0, 0.5); /* Change the last value (0.5) to adjust the opacity */
+    height: auto;
 }
 #how-it-works{
     height: auto;
@@ -91,6 +95,7 @@ svg {
 .card-text{
     font-size: 1.4rem;
 }
+/*Testimonials Section Styles*/
 #testimonials{
     background-color: var(--light-grey);
 }
@@ -109,6 +114,7 @@ blockquote{
 .carousel-button{
     margin-top: 3rem;
 }
+/*Call To Action Section Styling*/
 #call-to-action{
     background-image: url('/images/typing.jpeg');
     background-size: cover;
@@ -150,7 +156,7 @@ blockquote{
     background-color: var(--light-grey);
     color: var(--white);
 }
-
+/*Featured Jobs Section Styling*/
 #featured-jobs{
     height: auto;
 }
@@ -185,7 +191,7 @@ blockquote{
     background-color: var(--light-grey);
     color: var(--white);
 }
-
+/*Job Modal Section Styling*/
 #job-modal .modal-body {
     max-height: 400px;
     overflow-y: auto;
@@ -210,7 +216,7 @@ blockquote{
 #job-modal .modal-body::-webkit-scrollbar-thumb {
     background-color: #EEEE;
 }
-
+/*Footer Section Styling*/
 .footer{
     background-color: var(--dark-grey);
     color: var(--light-grey);
@@ -311,7 +317,7 @@ i{
         width: 0.2em;
     }
 }
-
+/*Media Queries*/
 @media (max-width: 767px) {
     .featured-job-card {
         flex-basis: 100%;
