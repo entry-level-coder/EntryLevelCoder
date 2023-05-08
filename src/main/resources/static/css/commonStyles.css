@@ -487,8 +487,7 @@ i{
     }
 }
 
-@media only screen and (min-width: 250px) and (max-width: 768px) {
-    /* CSS rules to be applied when the screen width is between 768px and 1024px */
+@media only screen and (min-width: 100px) and (max-width: 768px) {
     .form-select{
         padding: 0;
     }
@@ -502,6 +501,9 @@ i{
         perspective: 1000px;
         font-family: sans-serif;
         margin-top: 3em;
+    }
+    .user-signup-fname{
+        margin-bottom: 1rem;
     }
 }
 
